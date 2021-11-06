@@ -153,6 +153,14 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+            
+            <!-- https://jisblee.me/board/view/0/1/402/en -->
+            <!-- maven war plugin -->
+    		<plugin>
+          		<artifactId>maven-war-plugin</artifactId>
+          		<version>3.2.2</version>
+       		</plugin>
+       		
         </plugins>
     </build>
 </project>
