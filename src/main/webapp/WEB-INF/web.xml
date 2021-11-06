@@ -24,6 +24,41 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<servlet> <!-- DBCP 연동 서블렛 -->
+    	<servlet-name>DBCPool</servlet-name>
+    	<servlet-class>kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBCPool</servlet-class>
+    	<init-param> <!-- Connection Pool 이름 -->
+    	  <param-name>poolName</param-name> <!-- 변수명 -->
+    	  <param-value>sirbay</param-value> <!-- 변수값 -->
+    	</init-param>
+    	<init-param><!-- JDBC Driver -->
+    	  <param-name>jdbcDriver</param-name>
+    	  <param-value>com.mysql.jdbc.Driver</param-value>
+    	</init-param>
+    	<init-param><!-- MySQL 서버 주소 -->
+    	  <param-name>jdbcURL</param-name>
+     	  <param-value>jdbc:mysql://localhost:3306/test?useSSL=false</param-value>
+    	</init-param>
+    	<init-param><!-- 계정명 -->
+    	  <param-name>user</param-name>
+    	  <param-value>sirbayAdmin</param-value>
+    	</init-param>
+    	<init-param><!-- 패스워드 -->
+    	  <param-name>password</param-name>
+    	  <param-value>!!sirbay@@</param-value>
+    	</init-param>
+    	<init-param><!-- 순간 동시 접속자수 -->
+    	  <param-name>maxActive</param-name>
+    	  <param-value>10</param-value>
+    	</init-param>
+    	<init-param><!-- 대기중인 접속자수 -->
+    	  <param-name>maxIdle</param-name>
+    	  <param-value>10</param-value>
+    	</init-param>
+      
+    	<load-on-startup>1</load-on-startup><!-- 톱캣 실행시 자동 실행 -->
+  	</servlet>
   
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>

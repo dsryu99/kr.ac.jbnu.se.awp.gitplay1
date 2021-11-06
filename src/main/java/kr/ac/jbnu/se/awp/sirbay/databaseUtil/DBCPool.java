@@ -5,9 +5,11 @@ import javax.servlet.http.HttpServlet;
 
 import org.apache.commons.dbcp2.ConnectionFactory;
 import org.apache.commons.dbcp2.DriverManagerConnectionFactory;
+import org.apache.commons.dbcp2.PoolableConnection;
 import org.apache.commons.dbcp2.PoolableConnectionFactory;
 import org.apache.commons.dbcp2.PoolingDriver;
 import org.apache.commons.pool2.impl.GenericObjectPool;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 
 public class DBCPool extends HttpServlet {
@@ -24,9 +26,15 @@ public class DBCPool extends HttpServlet {
 		try {
 			Class.forName(jdbcDriver);
 			
-			GenericObjectPool connectionPool = new GenericObjectPool(null);
-			connectionPool.setMaxTotal(maxActive);
-			connectionPool.setMaxIdle(maxIdle);
+			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcDriver, user, password);
+			
+			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
+			
+			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
+			poolConfig.setMaxTotal(maxActive);
+			poolConfig.setMaxIdle(maxIdle);
+			
+			GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<PoolableConnection>(poolableConnFactory,poolConfig);
 			
 			ConnectionFactory connectionFactory = new DriverManagerConnectionFactory(jdbcURL, user, password);
 			
