@@ -5,7 +5,7 @@ import java.util.Date;
 public class SurveyDTO {
 	private String surveyID;
 	private String userID;
-	private Date usrveyCreatedTime;//Date형식은 "yyyy-MM-dd HH:mm:SS"
+	private Date surveyCreatedTime;//Date형식은 "yyyy-MM-dd HH:mm:SS"
 	private Date surveyStartTime;
 	private Date surveyEndTime;
 	private String surveyTitle;
@@ -22,10 +22,10 @@ public class SurveyDTO {
 		this.userID = userID;
 	}
 	public Date getUsrveyCreatedTime() {
-		return usrveyCreatedTime;
+		return surveyCreatedTime;
 	}
 	public void setUsrveyCreatedTime(Date usrveyCreatedTime) {
-		this.usrveyCreatedTime = usrveyCreatedTime;
+		this.surveyCreatedTime = usrveyCreatedTime;
 	}
 	public Date getSurveyStartTime() {
 		return surveyStartTime;
