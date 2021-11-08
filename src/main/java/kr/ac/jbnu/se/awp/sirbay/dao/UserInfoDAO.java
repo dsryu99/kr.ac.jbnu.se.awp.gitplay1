@@ -10,7 +10,7 @@ import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 public class UserInfoDAO implements UserInfoDAOIF {
 
 	@Override
-	public ResultSet userInfoSelect(UserInfoDTO userInfoDTO) {
+	public ResultSet userInfoSelect(String userID) {
 		String SQL = "SELECT * FROM UserInfo WHERE userID = ?";//select userinfo by userID
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -18,7 +18,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userInfoDTO.getUserID());
+			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
 			return rs;//결과 반환
 		} catch (Exception e) {
@@ -33,19 +33,19 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoInsert(UserInfoDTO userInfoDTO) {
+	public int userInfoInsert(String userID, String userName, int userAge, String userJob, String userAddress, int userSex) {
 		String SQL = "INSERT INTO UserInfo VALUES(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userInfoDTO.getUserID());
-			pstmt.setString(2, userInfoDTO.getUserName());
-			pstmt.setInt(3, userInfoDTO.getUserAge());
-			pstmt.setString(4, userInfoDTO.getUserJob());
-			pstmt.setString(5, userInfoDTO.getUserAddress());
-			pstmt.setInt(6, userInfoDTO.getUserSex());
+			pstmt.setString(1, userID);
+			pstmt.setString(2, userName);
+			pstmt.setInt(3, userAge);
+			pstmt.setString(4, userJob);
+			pstmt.setString(5, userAddress);
+			pstmt.setInt(6, userSex);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -58,19 +58,18 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoUpdate(UserInfoDTO userInfoDTO) {
+	public int userInfoUpdate(String userName, int userAge, String userJob, String userAddress, int userSex) {
 		String SQL = "UPDATE UserInfo SET UserName = ?, UserAge = ?, UserJob = ?, UserAddress = ?, UserSex = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userInfoDTO.getUserID());
-			pstmt.setString(2, userInfoDTO.getUserName());
-			pstmt.setInt(3, userInfoDTO.getUserAge());
-			pstmt.setString(4, userInfoDTO.getUserJob());
-			pstmt.setString(5, userInfoDTO.getUserAddress());
-			pstmt.setInt(6, userInfoDTO.getUserSex());
+			pstmt.setString(1, userName);
+			pstmt.setInt(2, userAge);
+			pstmt.setString(3, userJob);
+			pstmt.setString(4, userAddress);
+			pstmt.setInt(5, userSex);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -83,14 +82,14 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoDelete(UserInfoDTO userInfoDTO) {
+	public int userInfoDelete(String userID) {
 		String SQL = "DELETE FROM UserInfo WHERE userID = ?";//delete userinfo by userID
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userInfoDTO.getUserID());
+			pstmt.setString(1, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
