@@ -10,7 +10,7 @@ import kr.ac.jbnu.se.awp.sirbay.dto.UserDTO;
 public class UserDAO implements UserDAOIF {
 
 	@Override
-	public ResultSet userSelect(UserDTO userDTO) {
+	public ResultSet userSelect(String userID) {
 		String SQL = "SELECT * FROM User WHERE userID = ?";//userID를 통해서만 검색 가능
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -18,7 +18,7 @@ public class UserDAO implements UserDAOIF {
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userDTO.getUserID());
+			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
 			return rs;//결과 반환
 		} catch (Exception e) {
@@ -33,15 +33,15 @@ public class UserDAO implements UserDAOIF {
 	}
 
 	@Override
-	public int userInsert(UserDTO userDTO) {
+	public int userInsert(String userID, String userPassword) {
 		String SQL = "INSERT INTO User VALUES(?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userDTO.getUserID());
-			pstmt.setString(2, userDTO.getUserPassword());
+			pstmt.setString(1, userID);
+			pstmt.setString(2, userPassword);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -54,14 +54,14 @@ public class UserDAO implements UserDAOIF {
 	}
 
 	@Override
-	public int userUpdate(UserDTO userDTO) {
+	public int userUpdate(String userPassword) {
 		String SQL = "UPDATE User SET userPassword = ?";//userID에는 변경을 가할 수 없도록 함
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userDTO.getUserPassword());
+			pstmt.setString(1, userPassword);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -74,14 +74,14 @@ public class UserDAO implements UserDAOIF {
 	}
 
 	@Override
-	public int userDelete(UserDTO userDTO) {
+	public int userDelete(String userID) {
 		String SQL = "DELETE FROM User WHERE userID = ?";//userID를 통해서만 삭제 가능
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userDTO.getUserID());
+			pstmt.setString(1, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -92,5 +92,4 @@ public class UserDAO implements UserDAOIF {
 		}
 		return -1;//DB오류
 	}
-	
 }
