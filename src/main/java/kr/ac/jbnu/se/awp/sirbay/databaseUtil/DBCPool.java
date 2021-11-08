@@ -14,14 +14,14 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 public class DBCPool extends HttpServlet {
 	public void init(ServletConfig config) {
-		String poolName = config.getInitParameter("poolName");        // Pool 이름
+		String poolName = config.getInitParameter("poolName");        // Pool �씠由�
 		String jdbcDriver = config.getInitParameter("jdbcDriver");    // Driver Class
-		String jdbcURL = config.getInitParameter("jdbcURL");          // MySQL 서버 주소
-		String user = config.getInitParameter("user");                // 계정 아이디
-		String password = config.getInitParameter("password");        // 계정 비밀번호
+		String jdbcURL = config.getInitParameter("jdbcURL");          // MySQL �꽌踰� 二쇱냼
+		String user = config.getInitParameter("user");                // 怨꾩젙 �븘�씠�뵒
+		String password = config.getInitParameter("password");        // 怨꾩젙 鍮꾨�踰덊샇
 		
-		int maxActive = 0;        // 최대 연결수 
-		int maxIdle = 0;          // 대기중인 연결수  
+		int maxActive = 0;        // 理쒕� �뿰寃곗닔 
+		int maxIdle = 0;          // ��湲곗쨷�씤 �뿰寃곗닔  
 		
 		try {
 			Class.forName(jdbcDriver);
@@ -46,7 +46,7 @@ public class DBCPool extends HttpServlet {
 			driver.registerPool(poolName, connectionPool);
 			
 			System.out.println("---------------------------------------------------");
-			System.out.println("     >> DBCP Connection Pool이 실행되었습니다 <<     ");
+			System.out.println("     >> DBCP Connection Pool Execute <<     ");
 			System.out.println("---------------------------------------------------");
 			
 		} catch (Exception e) {
