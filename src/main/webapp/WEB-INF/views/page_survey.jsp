@@ -4,20 +4,14 @@
 
 <!DOCTYPE html>
 
-<!-- 설문 - 만료 여부, 질문 수-->
-<!-- 질문 - 질문 제목, 답변 타입(객관식, 주관식), 답변 -->
-<!-- 결과 - 객관식 문항 별 선택 횟수 -->
-
-<!-- 임시 변수 -->
-<c:set var="isExpired" value="false" />
-<c:set var="questionDesc" value="truetest" />
-<c:set var="isMultipleChoiceQuestion" value="false" />
-
+<!-- 만료 여부, 질문 갯수, 질문들, 질문들 별 답변타입 -->
 
 <html>
 <head>
 <meta charset="UTF-8">
 	<title>
+		<!-- 만료 여부 -->
+		<c:set var="isExpired" value="false" />
 		<c:choose>
 			<c:when test="${isExpired == 'true'}">
 				<c:out value="결과 확인" />
@@ -31,75 +25,46 @@
 <body>
 	<H1>설문</H1>
 	<HR>
+	<!-- 질문 갯수, 질문들 별 답변 타입 -->
+	<script type="text/javascript">
+		function add_question(){
+			var hr = document.createElement('hr');
+			document.getElementById('questionForm').appendChild(hr);
+			var div = document.createElement('div');
+    		div.innerHTML = document.getElementById('questionForm').innerHTML;
+  			document.getElementById('questionForm').appendChild(div);
+		}
+	</script>
 	
-	<!-- 만료 여부 -->
-	<c:if test="${isExpired == 'true'}">
-		<!-- 결과 확인 페이지 -->
-		<!-- 질문 수 -->
-		<c:forEach var="question" items="questionList" varStatus="qestionStatus">
-			<br>
-			<hr style="border: solid 2px blue;">
-		
-			질문 ${qestionStatus.count}
-			<br>
-			<br>
-			<!-- 질문 제목 -->
-			${qestionDesc}
-			<HR>
-			답변
-			<br>
-			<br>
-			<!-- 질문 답변 타입 -->
-			<c:if test="${isMultipleChoiceQuestion == 'true'}">
-				<!-- 객관식 -->
-				<c:forEach var="multipleChoiseQuestionItem" items="multipleChoiseQuestionItemList" varStatus="answerStatus">
-					<!-- 객관식 문항, 객관식 문항 별 선택 횟수-->
-					${answerStatus.count}번 ${multipleChoiseQuestionItem.itemContent} <!-- 몇 번 선택됨 -->
-				</c:forEach>
-			</c:if>
-			<c:if test="${isMultipleChoiceQuestion == 'false'}">
-				<!-- 주관식 -->
-				<c:forEach var="surveyAnswer" items="surveyAnswerList" varStatus="answerStatus">
-					<!-- 주관식 문항-->
-					${status.count}. ${surveyAnswer.answer} 
-				</c:forEach>
-			</c:if>
-		</c:forEach>
-		<hr style="border: solid 2px blue;">
-	</c:if>
+	<input type=button onclick="add_question()">
 	
 	
-	<c:if test="${isExpired == 'false'}">
-		<!-- 설문 참여 페이지 -->
-		<!-- 질문 수 -->
-		<c:forEach var="question" items="questionList" varStatus="qestionStatus">
-			<br>
-			<hr style="border: solid 2px blue;">
-			<!-- 질문 제목 -->
-			질문 ${qestionStatus.count} ${qestionDesc}
-			<br>
-			<br>
-			<HR>
-			답변
-			<br>
-			<br>
-			<!-- 질문 답변 타입 -->
-			<!-- 답변 이름 정해야함 -->
-			<c:if test="${isMultipleChoiceQuestion == 'true'}">
-				<!-- 객관식 -->
-				<c:forEach var="multipleChoiseQuestionItem" items="multipleChoiseQuestionItemList" varStatus="answerStatus">
-					<!-- 객관식 문항, 객관식 문항 별 선택 횟수-->
-					<input type = checkbox  value = "${multipleChoiseQuestionItem.itemContent}">
-				</c:forEach>
-			</c:if>
-			<c:if test="${isMultipleChoiceQuestion == 'false'}">
-				<!-- 주관식 -->
-				<c:forEach var="surveyAnswer" items="surveyAnswerList" varStatus="answerStatus">
-					<input type = text size = 100> 
-				</c:forEach>
-			</c:if>
-		</c:forEach>
-		<hr style="border: solid 2px blue;">
-	</c:if>
+	<table border = "1" cellpadding = 5 cellspacing = 0 width = 1000>
+		<tr>
+			<td id = questionForm>
+			<div id = question>
+				질문
+				<br>
+				<br>
+				<input type = text name = question size = 100>
+				<HR>
+				답변
+				<br>
+				<br>
+				<!-- 답변 타입 -->
+				<c:set var="questionType" value="choice " />
+				<c:choose>
+					<c:when test="${questionType == 'choice'}">
+						객관식
+					</c:when>
+					<c:otherwise>
+						주관식
+					</c:otherwise>
+				</c:choose>
+				</div>
+			</td>
+		</tr>
+	</table>
+
 </body>
 </html>

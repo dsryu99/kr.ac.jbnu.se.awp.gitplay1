@@ -14,14 +14,14 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 public class DBCPool extends HttpServlet {
 	public void init(ServletConfig config) {
-		String poolName = config.getInitParameter("poolName");        // Pool ÀÌ¸§
+		String poolName = config.getInitParameter("poolName");        // Pool ì´ë¦„
 		String jdbcDriver = config.getInitParameter("jdbcDriver");    // Driver Class
-		String jdbcURL = config.getInitParameter("jdbcURL");          // MySQL ¼­¹ö ÁÖ¼Ò
-		String user = config.getInitParameter("user");                // °èÁ¤ ¾ÆÀÌµð
-		String password = config.getInitParameter("password");        // °èÁ¤ ºñ¹Ð¹øÈ£
+		String jdbcURL = config.getInitParameter("jdbcURL");          // MySQL ì„œë²„ ì£¼ì†Œ
+		String user = config.getInitParameter("user");                // ê³„ì • ì•„ì´ë””
+		String password = config.getInitParameter("password");        // ê³„ì • ë¹„ë°€ë²ˆí˜¸
 		
-		int maxActive = 0;        // ÃÖ´ë ¿¬°á¼ö 
-		int maxIdle = 0;          // ´ë±âÁßÀÎ ¿¬°á¼ö  
+		int maxActive = 0;        // ìµœëŒ€ ì—°ê²°ìˆ˜ 
+		int maxIdle = 0;          // ëŒ€ê¸°ì¤‘ì¸ ì—°ê²°ìˆ˜  
 		
 		try {
 			Class.forName(jdbcDriver);
@@ -46,7 +46,7 @@ public class DBCPool extends HttpServlet {
 			driver.registerPool(poolName, connectionPool);
 			
 			System.out.println("---------------------------------------------------");
-			System.out.println("     >> DBCP Connection PoolÀÌ ½ÇÇàµÇ¾ú½À´Ï´Ù <<     ");
+			System.out.println("     >> DBCP Connection Poolì´ ì‹¤í–‰ë˜ì—ˆìŠµë‹ˆë‹¤ <<     ");
 			System.out.println("---------------------------------------------------");
 			
 		} catch (Exception e) {
