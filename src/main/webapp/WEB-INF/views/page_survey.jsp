@@ -8,7 +8,7 @@
 
 <!-- 임시 변수 -->
 <c:set var="isExpired" value="false" />
-<c:set var="questionDesc" value="truetest" />
+<c:set var="questionDesc" value="질문 제목" />
 <c:set var="isMultipleChoiceQuestion" value="false" />
 
 
@@ -33,15 +33,15 @@
 	<!-- 만료 여부 -->
 	<c:if test="${isExpired == 'true'}">
 		<!-- 결과 확인 페이지 -->
-		<c:forEach var="question" items="questionList" varStatus="qestionStatus">
+		<c:forEach var="question" items="questionList" varStatus="questionStatus">
 			<br>
 			<hr style="border: solid 2px blue;">
 		
-			질문 ${qestionStatus.count}
+			질문 ${questionStatus.count}
 			<br>
 			<br>
 			<!-- 질문 제목 -->
-			${qestionDesc}
+			${questionDesc}
 			<HR>
 			답변
 			<br>
@@ -68,13 +68,18 @@
 	
 	<c:if test="${isExpired == 'false'}">
 		<!-- 설문 참여 페이지 -->
-		<c:forEach var="question" items="questionList" varStatus="qestionStatus">
+		
+	<!-- 설문 내용 DB 저장 + 메인 페이지로 이동 action -->	
+	<form action = " " name = " ">
+		
+		<c:forEach var="question" items="questionList" varStatus="questionStatus">
 			<br>
 			<hr style="border: solid 2px blue;">
 			<!-- 질문 제목 -->
-			질문 ${qestionStatus.count} ${qestionDesc}
+			질문 ${questionStatus.count}
 			<br>
 			<br>
+			${questionDesc}
 			<HR>
 			답변
 			<br>
@@ -85,17 +90,23 @@
 				<!-- 객관식 -->
 				<c:forEach var="multipleChoiseQuestionItem" items="multipleChoiseQuestionItemList" varStatus="answerStatus">
 					<!-- 객관식 문항, 객관식 문항 별 선택 횟수-->
-					<input type = checkbox  value = "${multipleChoiseQuestionItem.itemContent}">
+					<input type = checkbox value = "${multipleChoiseQuestionItem.itemContent}" name = "multipleAnswer" required>
 				</c:forEach>
 			</c:if>
 			<c:if test="${isMultipleChoiceQuestion == 'false'}">
 				<!-- 주관식 -->
 				<c:forEach var="surveyAnswer" items="surveyAnswerList" varStatus="answerStatus">
-					<input type = text size = 100> 
+					<input type = text size = 100 required> 
 				</c:forEach>
 			</c:if>
 		</c:forEach>
+		
 		<hr style="border: solid 2px blue;">
+		
+		<input type = "submit" value = "작성완료"/>
+		
+		</form>
+		
 	</c:if>
 </body>
 </html>
