@@ -58,8 +58,8 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoUpdate(String userName, int userAge, String userJob, String userAddress, int userSex) {
-		String SQL = "UPDATE UserInfo SET UserName = ?, UserAge = ?, UserJob = ?, UserAddress = ?, UserSex = ?";
+	public int userInfoUpdate(String userID, String userName, int userAge, String userJob, String userAddress, int userSex) {
+		String SQL = "UPDATE UserInfo SET UserName = ?, UserAge = ?, UserJob = ?, UserAddress = ?, UserSex = ? WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -70,6 +70,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 			pstmt.setString(3, userJob);
 			pstmt.setString(4, userAddress);
 			pstmt.setInt(5, userSex);
+			pstmt.setString(6, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception

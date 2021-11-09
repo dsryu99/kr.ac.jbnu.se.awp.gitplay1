@@ -54,14 +54,15 @@ public class UserDAO implements UserDAOIF {
 	}
 
 	@Override
-	public int userUpdate(String userPassword) {
-		String SQL = "UPDATE User SET userPassword = ?";//userID에는 변경을 가할 수 없도록 함
+	public int userUpdate(String userID, String userPassword) {
+		String SQL = "UPDATE User SET userPassword = ? WHERE userID = ?";//userID에는 변경을 가할 수 없도록 함
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userPassword);
+			pstmt.setString(2, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
