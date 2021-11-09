@@ -13,6 +13,23 @@ public class UserService implements UserServiceIF {
 		try {
 			ResultSet rs = UserDAO.getInstance().userSelect(id);
 			if(rs.next()) {
+				if(rs.getString(2) == password) {
+					return true;
+				}
+				return false;//incorrect password
+			}
+			return false;//incorrect ID
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;//DB exception
+	}
+
+	@Override
+	public boolean isUserExist(String id) {
+		try {
+			ResultSet rs = UserDAO.getInstance().userSelect(id);
+			if(rs.next()) {
 				return false;//duplicated userID exists
 			}
 		} catch (SQLException e) {
@@ -20,12 +37,6 @@ public class UserService implements UserServiceIF {
 			e.printStackTrace();
 		}
 		return true;//userID is valid
-	}
-
-	@Override
-	public boolean isUserExist(String id) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
