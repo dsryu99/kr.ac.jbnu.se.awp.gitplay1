@@ -28,7 +28,7 @@
         <b><font size="6" color="gray">회원가입</font></b>
         <br><br><br>
         
-        <form>
+        <form action="/sirbay/addUser" method="post">
             <table>
                 <tr>
                     <td id="title">아이디</td>
@@ -117,7 +117,7 @@
                 </tr>
             </table>
             <br>
-            <input type="submit" value="가입"/>  <input type="button" value="취소">
+            <input type="submit" value="가입"/>  <input type="button" onClick="javascript:history.back();" value="취소">
         </form>
     </div>
 </body>

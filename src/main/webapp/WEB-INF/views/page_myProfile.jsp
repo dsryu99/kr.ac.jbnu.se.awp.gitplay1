@@ -10,7 +10,7 @@
 	<H2>마이 페이지</H2>
 	
 	<!-- 회원 탈퇴 + 메인페이지로 이동 action -->
-	<form action = " "><input type = "submit" value = "회원탈퇴"> </form>
+	<form action = "/sirbay/unRegister" method="get"><input type = "submit" value = "회원탈퇴"> </form>
 	
 	<HR>
 <!-- 		이름, 성별, 나이, 직업, 거주지역 가져오는 기능 -->
@@ -40,7 +40,7 @@
 	<HR>
 
 	<!-- 메인페이지로 이동 action -->
-	<form action = " "><input type = "submit" value = "이전으로"> </form>
+	<input type = "button" onClick="javascript:history.back();" value = "이전으로">
 	
 </body>
 </html>

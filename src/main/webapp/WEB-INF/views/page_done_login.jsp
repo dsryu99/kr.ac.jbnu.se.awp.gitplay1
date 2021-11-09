@@ -12,7 +12,7 @@
 
 	<div id = "logout_btn">
 		<%--로그아웃 누르는거 리다이렉션 되면서 메인페이지로 넘어가야되나?--%>
-		<form method = post action = "">
+		<form method = post action = "/sirbay/logout">
 			<input type = submit value = "로그아웃" class = "btn">
 		</form>
 	</div>

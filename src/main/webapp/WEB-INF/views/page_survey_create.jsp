@@ -12,6 +12,7 @@
 </head>
 <body>
 <div id = "wrap">
+	<form action = "/sirbay/survey/create/complete" method="post">
 	<div id = "questionBox">
 		<div id = "radioBox">
 				<input type = "radio" name = "subject" value = "객관식" onclick='(checkRadioButton(event))'> 객관식
@@ -59,8 +60,8 @@
 	<input type ="button" value = "plus" onclick = "add_div()">
 	
 	<%-- 설문 작성한거 제출 --%>
-	<form action = "">
-		<input type = button name = "submit" value = "submit">
+	
+		<input type = submit name = "submit" value = "submit">
 	</form>
 </div>
 

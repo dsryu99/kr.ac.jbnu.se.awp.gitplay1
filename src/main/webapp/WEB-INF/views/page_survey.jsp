@@ -70,7 +70,7 @@
 		<!-- 설문 참여 페이지 -->
 		
 	<!-- 설문 내용 DB 저장 + 메인 페이지로 이동 action -->	
-	<form action = " " name = " ">
+	<form action = "/sirbay/survey/join" method="post" name = " ">
 		
 		<c:forEach var="question" items="questionList" varStatus="questionStatus">
 			<br>
