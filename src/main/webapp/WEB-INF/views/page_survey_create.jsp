@@ -57,6 +57,11 @@
 	
 	<div id = 'result'></div>
 	<input type ="button" value = "plus" onclick = "add_div()">
+	
+	<%-- 설문 작성한거 제출 --%>
+	<form action = "">
+		<input type = button name = "submit" value = "submit">
+	</form>
 </div>
 
 </body>
