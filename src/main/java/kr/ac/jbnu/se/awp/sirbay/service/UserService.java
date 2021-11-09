@@ -79,11 +79,18 @@ public class UserService implements UserServiceIF {
 	}
 
 	@Override
-	public boolean checkPw(String password) {
+	public boolean checkPw(String id, String password) {
 		try {
-			
-		} catch (Exception e) {
-			e.getStackTrace();
+			ResultSet rs = userDAO.userSelect(id);
+			if(rs.next()) {
+				if(rs.getString(2) == password) {
+					return true;
+				}
+				return false;//incorrect password
+			}
+			return false;//incorrect ID
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return false;//DB exception
 	}

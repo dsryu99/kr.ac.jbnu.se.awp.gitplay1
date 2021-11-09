@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
-import kr.ac.jbnu.se.awp.sirbay.dto.UserDTO;
 
 public class UserDAO implements UserDAOIF {
 	
