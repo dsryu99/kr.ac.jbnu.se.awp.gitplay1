@@ -17,7 +17,7 @@
 			<div id = "pwd_area">
 				<input type = text name = pwd placeholder = "비밀번호"> 
 			</div>
-			<input type = submit value = "로그인" >
+			<input type = button value = "로그인" >
 			
 		</form>
 	</div>
