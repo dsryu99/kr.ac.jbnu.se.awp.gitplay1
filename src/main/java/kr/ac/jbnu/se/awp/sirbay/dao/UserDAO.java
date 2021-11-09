@@ -8,11 +8,6 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserDTO;
 
 public class UserDAO implements UserDAOIF {
-	private static UserDAO userDAO = new UserDAO();
-	private UserDAO() {}
-	public static UserDAO getInstance() {
-		return userDAO;
-	}
 	
 	@Override
 	public ResultSet userSelect(String userID) {
