@@ -8,7 +8,12 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 
 public class UserInfoDAO implements UserInfoDAOIF {
-
+	private static UserInfoDAO userInfoDAO = new UserInfoDAO();
+	private UserInfoDAO() {};
+	public UserInfoDAO getInstance() {
+		return userInfoDAO;
+	}
+	
 	@Override
 	public ResultSet userInfoSelect(String userID) {
 		String SQL = "SELECT * FROM UserInfo WHERE userID = ?";//select userinfo by userID

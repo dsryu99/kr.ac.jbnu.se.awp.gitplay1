@@ -6,7 +6,7 @@ public class UserInfoDTO {
 	private int userAge;
 	private String userJob;
 	private String userAddress;
-	private int userSex;
+	private int userSex;// male:0, female:1
 	public String getUserID() {
 		return userID;
 	}
