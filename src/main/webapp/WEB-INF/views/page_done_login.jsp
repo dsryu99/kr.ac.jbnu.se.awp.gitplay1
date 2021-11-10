@@ -7,7 +7,7 @@
 <title>로그아웃</title>
 </head>
 	<div>
-		<p><%-- --%>님이 로그인 하셨습니다.
+		<p>홍길동님이 로그인 하셨습니다.
 	</div>
 
 	<div id = "logout_btn">
