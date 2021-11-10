@@ -34,7 +34,7 @@
     	</init-param>
     	<init-param><!-- JDBC Driver -->
     	  <param-name>jdbcDriver</param-name>
-    	  <param-value>com.mysql.jdbc.Driver</param-value>
+    	  <param-value>com.mysql.cj.jdbc.Driver</param-value>
     	</init-param>
     	<init-param><!-- MySQL 서버 주소 -->
     	  <param-name>jdbcURL</param-name>
