@@ -11,6 +11,7 @@ public interface SurveyServiceIF {
 	boolean addSurvey(String userId, String surveyTitle, HashMap<Integer, String> questions, List<MultipleChoiceQuestionItemDTO> choiceAnswers);
 	List<QuestionDTO> getSurvey(String surveyId);
 	List<MultipleChoiceQuestionItemDTO> getMultipleChoiceQuestions(String surveyId, int questionNum);
-	boolean addAnswer(String surveyId, HashMap<Integer, String> answers);
+	boolean isAnswered(String userId, String surveyId);
+	boolean addAnswer(String userId, String surveyId, HashMap<Integer, String> answers);
 	List<SurveyDTO> getAllSurveys();
 }
