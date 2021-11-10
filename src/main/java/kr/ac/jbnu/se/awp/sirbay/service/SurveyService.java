@@ -50,15 +50,21 @@ public class SurveyService implements SurveyServiceIF {
 	}
 
 	@Override
-	public boolean addAnswer(String surveyId, HashMap<Integer, String> answers) {
+	public List<SurveyDTO> getAllSurveys() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAnswered(String userId, String surveyId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public List<SurveyDTO> getAllSurveys() {
+	public boolean addAnswer(String userId, String surveyId, HashMap<Integer, String> answers) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 	
 }
