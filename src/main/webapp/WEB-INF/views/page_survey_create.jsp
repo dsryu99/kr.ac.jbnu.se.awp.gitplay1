@@ -23,10 +23,10 @@
 		</div>
 		
 		<hr style="border: solid 2px blue;">
-		<br>
 	
 		<div id = "questionBox">
 			
+			<br>
 			<div id = "qusetion">
 				Áú¹® : <input type = "text" name ="title" size = 100><br><br>
 			</div>
@@ -68,8 +68,6 @@
 		<input type = submit name = "submit" value = "submit">
 	</form>
 </div>
-
-
 
 <script>
 	document.getElementById("sub").style.display = "none";
