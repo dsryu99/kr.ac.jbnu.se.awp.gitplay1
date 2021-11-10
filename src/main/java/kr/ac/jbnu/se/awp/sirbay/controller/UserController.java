@@ -49,7 +49,7 @@ public class UserController {
 		return "signUp";
 	}
 	
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
 	public String register(Model model, HttpServletRequest request) {
 			
 		return "redirect:";
