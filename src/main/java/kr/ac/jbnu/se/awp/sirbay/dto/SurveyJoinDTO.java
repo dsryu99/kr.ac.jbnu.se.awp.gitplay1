@@ -1,11 +1,9 @@
 package kr.ac.jbnu.se.awp.sirbay.dto;
 
-import java.util.Date;
-
 public class SurveyJoinDTO {
 	private String userID;
 	private String surveyID;
-	private Date joinDate;//DateÇü½ÄÀº "yyyy-MM-dd HH:mm:SS"
+	private String joinDate;//String firm "yyyyMMddHHmmSS"
 	public String getUserID() {
 		return userID;
 	}
@@ -18,10 +16,10 @@ public class SurveyJoinDTO {
 	public void setSurveyID(String surveyID) {
 		this.surveyID = surveyID;
 	}
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return joinDate;
 	}
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
 }

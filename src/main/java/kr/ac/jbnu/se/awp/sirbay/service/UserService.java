@@ -52,7 +52,7 @@ public class UserService implements UserServiceIF {
 			userInfoDAO.userInfoInsert(id, name, age, job, address, sex);
 			return true;
 		} catch (Exception e) {
-			e.getStackTrace();
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -101,7 +101,7 @@ public class UserService implements UserServiceIF {
 			userDAO.userDelete(id);
 			return true;
 		} catch (Exception e) {
-			e.getStackTrace();
+			e.printStackTrace();
 		}
 		return false;//DB exception
 	}
