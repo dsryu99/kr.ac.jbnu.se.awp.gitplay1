@@ -11,59 +11,53 @@
 <title>page_survey_create</title>
 </head>
 <body>
+<H1>汲巩积己</H1>
+<HR>
+
 <div id = "wrap">
 
 	<form action = "/sirbay/survey/create/complete" method="post">
+	
 		<div id = "surbeyTitle">
-			汲巩 力格 : <input type = "text" name ="title"><br><br>
+			汲巩 力格 : <input type = "text" name ="title" size = 100><br><br>
 		</div>
+		
+		<hr style="border: solid 2px blue;">
+		<br>
 	
 		<div id = "questionBox">
+			
+			<div id = "qusetion">
+				龙巩 : <input type = "text" name ="title" size = 100><br><br>
+			</div>
+			
+			<br>
+		
 			<div id = "radioBox">
 				<input type = "radio" name = "subject" value = "按包侥" onclick='(checkRadioButton(event))'> 按包侥
 				<input type = "radio" name = "subject" value = "林包侥" onclick='(checkRadioButton(event))'> 林包侥
-				
-					<div id = 'textarea'>
-					龙巩 : <input type = "text" name ="title"><br><br>
-						<textarea id="content" name="content" rows="3" cols="35"></textarea>
-					</div>
-					
-					<div id = 'sub'>
-					龙巩 : <input type = "text" name ="title"><br><br>
-						<input type = "text" />
-						<input type = "text" />
-						<input type = "text" />
-						<input type = "text" />
-						<input type = "text" />
-					</div>
-					
 			</div>
 
-			<script>
-					document.getElementById("textarea").style.display = "none";
-					document.getElementById("sub").style.display = "none";
-					
-					function checkRadioButton(event){
-						
-						if(event.target.value == "按包侥"){
-							document.getElementById("textarea").style.display = "none";
-							document.getElementById("sub").style.display = "block";
-						}
-						
-						else{
-							document.getElementById("sub").style.display = "none";
-							document.getElementById("textarea").style.display = "block";
-						}
-					}
-					
-					function add_div(){
-						var div = document.createElement('div');
-						
-						div.innerHTML = document.getElementById('questionBox').innerHTML;
-						document.getElementById('result').appendChild(div);
-					}
-			</script>
-			
+			<div id = "answer">
+									
+				<div id = 'sub'>
+					1 <input type = "text" size = 100/>
+					<br>
+					<br>
+					2 <input type = "text" size = 100/>
+					<br>
+					<br>
+					3 <input type = "text" size = 100/>
+					<br>
+					<br>
+					4 <input type = "text" size = 100/>
+					<br>
+					<br>
+					5 <input type = "text" size = 100/>
+					<br>
+				</div>
+			</div>
+			<hr style="border: solid 2px blue;">
 		</div>
 		
 		<div id = 'result'></div>
@@ -74,6 +68,35 @@
 		<input type = submit name = "submit" value = "submit">
 	</form>
 </div>
+
+
+
+<script>
+	document.getElementById("sub").style.display = "none";
+					
+	function checkRadioButton(event){
+				
+		if(event.target.value == "按包侥"){
+			document.getElementById("sub").style.display = "block";
+		}
+					
+		else{
+			document.getElementById("sub").style.display = "none";
+		}
+	}
+				
+	function add_div(){
+		var div = document.createElement('div');
+			
+		var questionBox = document.createElement('questionBox');
+		
+		
+		div.innerHTML = document.getElementById('questionBox').innerHTML;
+		
+		document.getElementById('result').appendChild(div);
+	}
+</script>
+
 
 </body>
 </html>

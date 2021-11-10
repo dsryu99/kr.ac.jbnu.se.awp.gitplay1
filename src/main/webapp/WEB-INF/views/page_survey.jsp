@@ -4,13 +4,13 @@
 
 <!DOCTYPE html>
 
-<!-- 만료 여부, 질문 갯수, 질문들, 질문들 별 답변타입 -->
+<!-- 만료 여부, 질문 갯수, 질문들, 질문들 별 답변타입, 설문 제목-->
 
 <!-- 임시 변수 -->
 <c:set var="isExpired" value="false" />
 <c:set var="questionDesc" value="질문 제목" />
 <c:set var="isMultipleChoiceQuestion" value="false" />
-
+<c:set var="surveyName" value="설문 주제" />
 
 <html>
 <head>
@@ -29,6 +29,11 @@
 <body>
 	<H1>설문</H1>
 	<HR>
+	
+	<!-- 설문 제목 -->
+	<div id = "surbeyTitle">
+		주제 : ${surveyName}
+	</div>
 	
 	<!-- 만료 여부 -->
 	<c:if test="${isExpired == 'true'}">
