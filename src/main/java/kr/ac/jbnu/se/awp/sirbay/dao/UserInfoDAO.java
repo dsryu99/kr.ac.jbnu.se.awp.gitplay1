@@ -32,7 +32,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoInsert(String userID, String userName, String userBirthdate, String userJob, String userAddress, int userSex) {
+	public int userInfoInsert(String userID, String userName, String userBirthdate, String userJob, String userAddress, String userSex) {
 		String SQL = "INSERT INTO UserInfo VALUES(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -44,7 +44,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 			pstmt.setString(3, userBirthdate);
 			pstmt.setString(4, userJob);
 			pstmt.setString(5, userAddress);
-			pstmt.setInt(6, userSex);
+			pstmt.setString(6, userSex);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -57,7 +57,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoUpdate(String userID, String userName, String userBirthdate, String userJob, String userAddress, int userSex) {
+	public int userInfoUpdate(String userID, String userName, String userBirthdate, String userJob, String userAddress, String userSex) {
 		String SQL = "UPDATE UserInfo SET UserName = ?, UserAge = ?, UserJob = ?, UserAddress = ?, UserSex = ? WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -68,7 +68,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 			pstmt.setString(2, userBirthdate);
 			pstmt.setString(3, userJob);
 			pstmt.setString(4, userAddress);
-			pstmt.setInt(5, userSex);
+			pstmt.setString(5, userSex);
 			pstmt.setString(6, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {

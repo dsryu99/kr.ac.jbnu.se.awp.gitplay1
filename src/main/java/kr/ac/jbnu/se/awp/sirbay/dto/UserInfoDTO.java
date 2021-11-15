@@ -6,7 +6,7 @@ public class UserInfoDTO {
 	private String userBirthdate;// form: yyyyMMdd
 	private String userJob;
 	private String userAddress;
-	private int userSex;// male:0, female:1
+	private String userSex;// male:남자, female:여자
 	public String getUserID() {
 		return userID;
 	}
@@ -37,10 +37,10 @@ public class UserInfoDTO {
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-	public int getUserSex() {
+	public String getUserSex() {
 		return userSex;
 	}
-	public void setUserSex(int userSex) {
+	public void setUserSex(String userSex) {
 		this.userSex = userSex;
 	}
 }
