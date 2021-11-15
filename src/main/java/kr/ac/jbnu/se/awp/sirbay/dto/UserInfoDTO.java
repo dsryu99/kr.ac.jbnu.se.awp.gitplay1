@@ -3,7 +3,7 @@ package kr.ac.jbnu.se.awp.sirbay.dto;
 public class UserInfoDTO {
 	private String userID;
 	private String userName;
-	private int userAge;
+	private String userBirthdate;// form: yyyyMMdd
 	private String userJob;
 	private String userAddress;
 	private int userSex;// male:0, female:1
@@ -19,11 +19,11 @@ public class UserInfoDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getUserAge() {
-		return userAge;
+	public String getUserAge() {
+		return userBirthdate;
 	}
-	public void setUserAge(int userAge) {
-		this.userAge = userAge;
+	public void setUserAge(String userBirthdate) {
+		this.userBirthdate = userBirthdate;
 	}
 	public String getUserJob() {
 		return userJob;
