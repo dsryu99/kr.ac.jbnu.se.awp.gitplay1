@@ -5,6 +5,6 @@ import java.sql.ResultSet;
 public interface SurveyDAOIF {
 	public ResultSet surveySelect(String surveyID);
 	public int surveyInsert(String surveyID, String userID, String surveyCreatedTime, String surveyStartTime, String surveyEndTime, String surveyTitle);
-	public int surveyUpdate(String surveyStartTime, String surveyEndTime, String surveyTitle);
+	public int surveyUpdate(String surveyID, String surveyStartTime, String surveyEndTime, String surveyTitle);
 	public int surveyDelete(String surveyID);
 }
