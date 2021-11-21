@@ -46,7 +46,7 @@ public class UserService implements UserServiceIF {
 	}
 
 	@Override
-	public boolean addUser(String id, String password, String name, int age, String job, String address, int sex) {
+	public boolean addUser(String id, String password, String name, String age, String job, String address, String sex) {
 		try {
 			userDAO.userInsert(id, password);
 			userInfoDAO.userInfoInsert(id, name, age, job, address, sex);
@@ -65,10 +65,10 @@ public class UserService implements UserServiceIF {
 				UserInfoDTO userInfoDTO = new UserInfoDTO();
 				userInfoDTO.setUserID(rs.getString(1));
 				userInfoDTO.setUserName(rs.getString(2));
-				userInfoDTO.setUserAge(rs.getInt(3));
+				userInfoDTO.setUserAge(rs.getString(3));
 				userInfoDTO.setUserJob(rs.getString(4));
 				userInfoDTO.setUserAddress(rs.getString(5));
-				userInfoDTO.setUserSex(rs.getInt(6));
+				userInfoDTO.setUserSex(rs.getString(6));
 				return userInfoDTO;
 			}
 			return null;//incorrect ID
