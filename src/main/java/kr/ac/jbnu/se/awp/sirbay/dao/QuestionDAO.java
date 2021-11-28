@@ -30,6 +30,28 @@ public class QuestionDAO implements QuestionDAOIF {
 		}
 		return null;//DB error
 	}
+	
+	@Override
+	public ResultSet questionSelect(String surveyID) {
+		String SQL = "SELECT * FROM question WHERE surveyID = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBConnect.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, surveyID);
+			rs = pstmt.executeQuery();
+			return rs;//result
+		} catch (Exception e) {
+			e.getStackTrace();
+		} finally {
+			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
+		}
+		return null;//DB error
+	}
 
 	@Override
 	public int questionInsert(int questionNum, String surveyID, String questionDesc, boolean isEssential,

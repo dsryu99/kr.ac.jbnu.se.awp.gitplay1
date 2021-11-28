@@ -1,5 +1,7 @@
 package kr.ac.jbnu.se.awp.sirbay.service;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,6 +32,8 @@ public class SurveyService implements SurveyServiceIF {
 	public boolean addSurvey(String userId, String surveyTitle, HashMap<Integer, String> questions,
 			List<MultipleChoiceQuestionItemDTO> choiceAnswers) {
 		try {
+			surveyDAO.surveyInsert(surveyTitle, userId, surveyTitle, surveyTitle, userId, surveyTitle);
+			//pls fix
 			return false;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,8 +43,24 @@ public class SurveyService implements SurveyServiceIF {
 
 	@Override
 	public List<QuestionDTO> getSurvey(String surveyId) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			List<QuestionDTO> list = new ArrayList<QuestionDTO>();
+			ResultSet rs = questionDAO.questionSelect(surveyId);
+			while(rs.next()) {
+				QuestionDTO questionDTO = new QuestionDTO();
+				questionDTO.setQuestionNum(rs.getInt(1));
+				questionDTO.setSurveyID(rs.getString(2));
+				questionDTO.setQuestionDesc(rs.getString(3));
+				questionDTO.setEssential(rs.getBoolean(4));
+				questionDTO.setMultipleChoiceQuestion(rs.getBoolean(5));
+				list.add(questionDTO);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return null;//DB exception
 	}
 
 	@Override
