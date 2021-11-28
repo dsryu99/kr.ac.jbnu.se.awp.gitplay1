@@ -29,6 +29,27 @@ public class SurveyDAO implements SurveyDAOIF {
 		}
 		return null;//DB error
 	}
+	
+	@Override
+	public ResultSet surveySelect() {
+		String SQL = "SELECT * FROM survey";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBConnect.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			return rs;//result
+		} catch (Exception e) {
+			e.getStackTrace();
+		} finally {
+			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
+		}
+		return null;//DB error
+	}
 
 	@Override
 	public int surveyInsert(String surveyID, String userID, String surveyCreatedTime, String surveyStartTime,

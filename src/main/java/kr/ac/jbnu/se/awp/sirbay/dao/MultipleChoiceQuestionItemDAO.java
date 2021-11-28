@@ -31,6 +31,29 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 		}
 		return null;//DB error
 	}
+	
+	@Override
+	public ResultSet multipleChoiceQuestionItemSelect(int questionNum, String surveyID) {
+		String SQL = "SELECT * FROM multipleChoiceQuestionItem WHERE questionNum = ? AND surveyID = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBConnect.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, questionNum);
+			pstmt.setString(2, surveyID);
+			rs = pstmt.executeQuery();
+			return rs;//result
+		} catch (Exception e) {
+			e.getStackTrace();
+		} finally {
+			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
+		}
+		return null;//DB error
+	}
 
 	@Override
 	public int multipleChoiceQuestionItemInsert(int itemNum, int questionNum, String surveyID, String itemContent) {

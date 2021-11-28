@@ -21,10 +21,10 @@ public class SurveyDTO {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
-	public Date getUsrveyCreatedTime() {
+	public Date getSurveyCreatedTime() {
 		return surveyCreatedTime;
 	}
-	public void setUsrveyCreatedTime(Date usrveyCreatedTime) {
+	public void setSurveyCreatedTime(Date usrveyCreatedTime) {
 		this.surveyCreatedTime = usrveyCreatedTime;
 	}
 	public Date getSurveyStartTime() {

@@ -1,7 +1,9 @@
 package kr.ac.jbnu.se.awp.sirbay.service;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -65,25 +67,75 @@ public class SurveyService implements SurveyServiceIF {
 
 	@Override
 	public List<MultipleChoiceQuestionItemDTO> getMultipleChoiceQuestions(String surveyId, int questionNum) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			List<MultipleChoiceQuestionItemDTO> list = new ArrayList<MultipleChoiceQuestionItemDTO>();
+			ResultSet rs = multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemSelect(questionNum, surveyId);
+			while(rs.next()) {
+				MultipleChoiceQuestionItemDTO multipleChoiceQuestionItemDTO = new MultipleChoiceQuestionItemDTO();
+				multipleChoiceQuestionItemDTO.setItemNum(rs.getInt(1));
+				multipleChoiceQuestionItemDTO.setQuestionNum(rs.getInt(2));
+				multipleChoiceQuestionItemDTO.setSurveyID(rs.getString(3));
+				multipleChoiceQuestionItemDTO.setItemContent(rs.getString(4));
+				list.add(multipleChoiceQuestionItemDTO);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return null;//DB exception
 	}
 
 	@Override
 	public List<SurveyDTO> getAllSurveys() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			List<SurveyDTO> list = new ArrayList<SurveyDTO>();
+			ResultSet rs = surveyDAO.surveySelect();
+			while(rs.next()) {
+				SurveyDTO surveyDTO = new SurveyDTO();
+				surveyDTO.setSurveyID(rs.getString(1));
+				surveyDTO.setUserID(rs.getString(2));
+				surveyDTO.setSurveyCreatedTime(rs.getDate(3));
+				surveyDTO.setSurveyStartTime(rs.getDate(4));
+				surveyDTO.setSurveyEndTime(rs.getDate(5));
+				surveyDTO.setSurveyTitle(rs.getString(6));
+				list.add(surveyDTO);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return null;//DB exception
 	}
 
 	@Override
 	public boolean isAnswered(String userId, String surveyId) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			ResultSet rs = surveyJoinDAO.surveyJoinSelect(userId, surveyId);
+			if(rs.next()) {
+				return true;//already answered
+			}
+			return false;//first join
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;//DB error
 	}
 
 	@Override
 	public boolean addAnswer(String userId, String surveyId, HashMap<Integer, String> answers) {
-		// TODO Auto-generated method stub
+		try {
+			for(int key : answers.keySet()) {
+				surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key));
+			}
+			Date dateNow = new Date(System.currentTimeMillis());
+			SimpleDateFormat forteenFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+//			surveyJoinDAO.surveyJoinInsert(userId, surveyId, dateNow);
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
 		return false;
 	}
 	

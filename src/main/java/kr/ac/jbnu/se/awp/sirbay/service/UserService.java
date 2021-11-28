@@ -37,12 +37,13 @@ public class UserService implements UserServiceIF {
 		try {
 			ResultSet rs = userDAO.userSelect(id);
 			if(rs.next()) {
-				return false;//duplicated userID exists
+				return true;//duplicated userID exists
 			}
+			return false;//userID is valid
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return true;//userID is valid
+		return false;//DB error
 	}
 
 	@Override
