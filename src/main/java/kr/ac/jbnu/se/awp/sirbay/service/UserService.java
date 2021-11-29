@@ -47,7 +47,7 @@ public class UserService implements UserServiceIF {
 	}
 
 	@Override
-	public boolean addUser(String id, String password, String name, String age, String job, String address, String sex) {
+	public boolean addUser(String id, String password, String name, String birth, String job, String address, String sex) {
 		try {
 			userDAO.userInsert(id, password);
 			userInfoDAO.userInfoInsert(id, name, age, job, address, sex);
