@@ -1,6 +1,6 @@
 package kr.ac.jbnu.se.awp.sirbay.service;
 
-import java.util.Date;
+import java.sql.Date;
 
 import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 

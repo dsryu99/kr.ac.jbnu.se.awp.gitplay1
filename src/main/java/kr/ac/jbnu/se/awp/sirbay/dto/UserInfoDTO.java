@@ -1,9 +1,11 @@
 package kr.ac.jbnu.se.awp.sirbay.dto;
 
+import java.sql.Date;
+
 public class UserInfoDTO {
 	private String userID;
 	private String userName;
-	private String userBirthdate;// form: yyyyMMdd
+	private Date userBirthdate;// form: yyyyMMdd
 	private String userJob;
 	private String userAddress;
 	private String userSex;// male:남자, female:여자
@@ -19,10 +21,10 @@ public class UserInfoDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserAge() {
+	public Date getUserAge() {
 		return userBirthdate;
 	}
-	public void setUserAge(String userBirthdate) {
+	public void setUserAge(Date userBirthdate) {
 		this.userBirthdate = userBirthdate;
 	}
 	public String getUserJob() {

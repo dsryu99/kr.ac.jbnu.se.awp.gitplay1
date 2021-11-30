@@ -1,6 +1,7 @@
 package kr.ac.jbnu.se.awp.sirbay.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -32,7 +33,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoInsert(String userID, String userName, String userBirthdate, String userJob, String userAddress, String userSex) {
+	public int userInfoInsert(String userID, String userName, Date userBirthdate, String userJob, String userAddress, String userSex) {
 		String SQL = "INSERT INTO UserInfo VALUES(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -41,7 +42,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			pstmt.setString(2, userName);
-			pstmt.setString(3, userBirthdate);
+			pstmt.setDate(3, userBirthdate);
 			pstmt.setString(4, userJob);
 			pstmt.setString(5, userAddress);
 			pstmt.setString(6, userSex);
@@ -57,7 +58,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoUpdate(String userID, String userName, String userBirthdate, String userJob, String userAddress, String userSex) {
+	public int userInfoUpdate(String userID, String userName, Date userBirthdate, String userJob, String userAddress, String userSex) {
 		String SQL = "UPDATE UserInfo SET UserName = ?, UserAge = ?, UserJob = ?, UserAddress = ?, UserSex = ? WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -65,7 +66,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userName);
-			pstmt.setString(2, userBirthdate);
+			pstmt.setDate(2, userBirthdate);
 			pstmt.setString(3, userJob);
 			pstmt.setString(4, userAddress);
 			pstmt.setString(5, userSex);
