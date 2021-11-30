@@ -34,7 +34,8 @@ public class SurveyService implements SurveyServiceIF {
 	public boolean addSurvey(String userId, String surveyTitle, HashMap<Integer, String> questions,
 			List<MultipleChoiceQuestionItemDTO> choiceAnswers) {
 		try {
-			surveyDAO.surveyInsert(surveyTitle, userId, surveyTitle, surveyTitle, userId, surveyTitle);
+			String surveyCreatedTime = currentTime();
+//			surveyDAO.surveyInsert(surveyID, userId, surveyCreatedTime, surveyTitle);
 			//pls fix
 			return false;
 		} catch (Exception e) {
@@ -129,9 +130,9 @@ public class SurveyService implements SurveyServiceIF {
 			for(int key : answers.keySet()) {
 				surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key));
 			}
-			Date dateNow = new Date(System.currentTimeMillis());
-			SimpleDateFormat forteenFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-//			surveyJoinDAO.surveyJoinInsert(userId, surveyId, dateNow);
+			String joinDate = currentTime();
+			surveyJoinDAO.surveyJoinInsert(userId, surveyId, joinDate);
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception
@@ -139,4 +140,10 @@ public class SurveyService implements SurveyServiceIF {
 		return false;
 	}
 	
+	private String currentTime() {
+		Date dateNow = new Date(System.currentTimeMillis());
+		SimpleDateFormat forteenFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		String currentTime = forteenFormat.format(dateNow);
+		return currentTime;
+	}
 }

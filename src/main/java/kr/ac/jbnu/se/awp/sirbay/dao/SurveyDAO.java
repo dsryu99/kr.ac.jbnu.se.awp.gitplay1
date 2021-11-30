@@ -76,6 +76,29 @@ public class SurveyDAO implements SurveyDAOIF {
 		}
 		return -1;//DB오류
 	}
+	
+	@Override
+	public int surveyInsert(String surveyID, String userID, String surveyCreatedTime, String surveyTitle) {
+		String SQL = "INSERT INTO survey (surveyID, userID, SurveyCreatedTime, surveyTitle) VALUES(?,?,?,?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBConnect.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, surveyID);
+			pstmt.setString(2, userID);
+			pstmt.setString(3, surveyCreatedTime);
+			pstmt.setString(4, surveyTitle);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getStackTrace();
+		} finally {
+			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+		}
+		return -1;//DB오류
+	}
 
 	@Override
 	public int surveyUpdate(String surveyID, String surveyStartTime, String surveyEndTime, String surveyTitle) {
@@ -119,4 +142,6 @@ public class SurveyDAO implements SurveyDAOIF {
 		}
 		return -1;//DB오류
 	}
+
+
 }
