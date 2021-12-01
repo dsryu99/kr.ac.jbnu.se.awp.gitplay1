@@ -9,9 +9,9 @@ import kr.ac.jbnu.se.awp.sirbay.dto.SurveyDTO;
 
 public interface SurveyServiceIF {
 	boolean addSurvey(String userId, String surveyTitle, HashMap<Integer, String> questions, List<MultipleChoiceQuestionItemDTO> choiceAnswers);
-	List<QuestionDTO> getSurvey(String surveyId);
-	List<MultipleChoiceQuestionItemDTO> getMultipleChoiceQuestions(String surveyId, int questionNum);
-	boolean isAnswered(String userId, String surveyId);
-	boolean addAnswer(String userId, String surveyId, HashMap<Integer, String> answers);
+	List<QuestionDTO> getSurvey(int surveyId);
+	List<MultipleChoiceQuestionItemDTO> getMultipleChoiceQuestions(int surveyId, int questionNum);
+	boolean isAnswered(String userId, int surveyId);
+	boolean addAnswer(String userId, int surveyId, HashMap<Integer, String> answers);
 	List<SurveyDTO> getAllSurveys();
 }

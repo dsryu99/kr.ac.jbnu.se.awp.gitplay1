@@ -35,7 +35,7 @@ public class SurveyService implements SurveyServiceIF {
 			List<MultipleChoiceQuestionItemDTO> choiceAnswers) {
 		try {
 			String surveyCreatedTime = currentTime();
-//			surveyDAO.surveyInsert(surveyID, userId, surveyCreatedTime, surveyTitle);
+			surveyDAO.surveyInsert(userId, surveyCreatedTime, surveyTitle);
 			//pls fix
 			return false;
 		} catch (Exception e) {
@@ -45,7 +45,7 @@ public class SurveyService implements SurveyServiceIF {
 	}
 
 	@Override
-	public List<QuestionDTO> getSurvey(String surveyId) {
+	public List<QuestionDTO> getSurvey(int surveyId) {
 		try {
 			List<QuestionDTO> list = new ArrayList<QuestionDTO>();
 			ResultSet rs = questionDAO.questionSelect(surveyId);
@@ -67,7 +67,7 @@ public class SurveyService implements SurveyServiceIF {
 	}
 
 	@Override
-	public List<MultipleChoiceQuestionItemDTO> getMultipleChoiceQuestions(String surveyId, int questionNum) {
+	public List<MultipleChoiceQuestionItemDTO> getMultipleChoiceQuestions(int surveyId, int questionNum) {
 		try {
 			List<MultipleChoiceQuestionItemDTO> list = new ArrayList<MultipleChoiceQuestionItemDTO>();
 			ResultSet rs = multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemSelect(questionNum, surveyId);
@@ -94,7 +94,7 @@ public class SurveyService implements SurveyServiceIF {
 			ResultSet rs = surveyDAO.surveySelect();
 			while(rs.next()) {
 				SurveyDTO surveyDTO = new SurveyDTO();
-				surveyDTO.setSurveyID(rs.getString(1));
+				surveyDTO.setSurveyID(rs.getInt(1));
 				surveyDTO.setUserID(rs.getString(2));
 				surveyDTO.setSurveyCreatedTime(rs.getDate(3));
 				surveyDTO.setSurveyStartTime(rs.getDate(4));
@@ -111,13 +111,13 @@ public class SurveyService implements SurveyServiceIF {
 	}
 
 	@Override
-	public boolean isAnswered(String userId, String surveyId) {
+	public boolean isAnswered(String userId, int surveyId) {
 		try {
 			ResultSet rs = surveyJoinDAO.surveyJoinSelect(userId, surveyId);
 			if(rs.next()) {
 				return true;//already answered
 			}
-			return false;//first join
+			return false;//not answered
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -125,7 +125,7 @@ public class SurveyService implements SurveyServiceIF {
 	}
 
 	@Override
-	public boolean addAnswer(String userId, String surveyId, HashMap<Integer, String> answers) {
+	public boolean addAnswer(String userId, int surveyId, HashMap<Integer, String> answers) {
 		try {
 			for(int key : answers.keySet()) {
 				surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key));

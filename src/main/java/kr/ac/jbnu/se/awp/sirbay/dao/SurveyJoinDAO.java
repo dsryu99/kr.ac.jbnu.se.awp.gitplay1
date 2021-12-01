@@ -9,7 +9,7 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 public class SurveyJoinDAO implements SurveyJoinDAOIF {
 
 	@Override
-	public ResultSet surveyJoinSelect(String userID, String surveyID) {
+	public ResultSet surveyJoinSelect(String userID, int surveyID) {
 		String SQL = "SELECT * FROM surveyJoin WHERE userID = ?, surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -18,7 +18,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			rs = pstmt.executeQuery();
 			return rs;//result
 		} catch (Exception e) {
@@ -32,7 +32,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 	}
 
 	@Override
-	public int surveyJoinInsert(String userID, String surveyID, String joinDate) {
+	public int surveyJoinInsert(String userID, int surveyID, String joinDate) {
 		String SQL = "INSERT INTO surveyJoin VALUES(?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -40,7 +40,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			pstmt.setString(3, joinDate);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -54,7 +54,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 	}
 
 	@Override
-	public int surveyJoinUpdate(String userID, String surveyID, String joinDate) {
+	public int surveyJoinUpdate(String userID, int surveyID, String joinDate) {
 		String SQL = "UPDATE surveyJoin SET joinDate = ? WHERE userID = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -62,7 +62,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			pstmt.setString(3, joinDate);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 	}
 
 	@Override
-	public int surveyJoinDelete(String userID, String surveyID) {
+	public int surveyJoinDelete(String userID, int surveyID) {
 		String SQL = "DELETE FROM surveyJoin WHERE userID = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -84,7 +84,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception

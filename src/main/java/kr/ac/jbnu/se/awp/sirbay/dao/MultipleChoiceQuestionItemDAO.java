@@ -9,7 +9,7 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItemDAOIF {
 
 	@Override
-	public ResultSet multipleChoiceQuestionItemSelect(int itemNum, int questionNum, String surveyID) {
+	public ResultSet multipleChoiceQuestionItemSelect(int itemNum, int questionNum, int surveyID) {
 		String SQL = "SELECT * FROM multipleChoiceQuestionItem WHERE itemNum = ? AND questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -19,7 +19,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, itemNum);
 			pstmt.setInt(2, questionNum);
-			pstmt.setString(3, surveyID);
+			pstmt.setInt(3, surveyID);
 			rs = pstmt.executeQuery();
 			return rs;//result
 		} catch (Exception e) {
@@ -33,7 +33,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 	}
 	
 	@Override
-	public ResultSet multipleChoiceQuestionItemSelect(int questionNum, String surveyID) {
+	public ResultSet multipleChoiceQuestionItemSelect(int questionNum, int surveyID) {
 		String SQL = "SELECT * FROM multipleChoiceQuestionItem WHERE questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -42,7 +42,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			rs = pstmt.executeQuery();
 			return rs;//result
 		} catch (Exception e) {
@@ -56,7 +56,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 	}
 
 	@Override
-	public int multipleChoiceQuestionItemInsert(int itemNum, int questionNum, String surveyID, String itemContent) {
+	public int multipleChoiceQuestionItemInsert(int itemNum, int questionNum, int surveyID, String itemContent) {
 		String SQL = "INSERT INTO multipleChoiceQuestionItem VALUES(?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -65,7 +65,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, itemNum);
 			pstmt.setInt(2, questionNum);
-			pstmt.setString(3, surveyID);
+			pstmt.setInt(3, surveyID);
 			pstmt.setString(4, itemContent);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 	}
 
 	@Override
-	public int multipleChoiceQuestionItemUpdate(int itemNum, int questionNum, String surveyID, String itemContent) {
+	public int multipleChoiceQuestionItemUpdate(int itemNum, int questionNum, int surveyID, String itemContent) {
 		String SQL = "UPDATE multipleChoiceQuestionItem SET itemContent = ? WHERE itemNum = ? AND questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -89,7 +89,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 			pstmt.setString(1, itemContent);
 			pstmt.setInt(2, itemNum);
 			pstmt.setInt(3, questionNum);
-			pstmt.setString(4, surveyID);
+			pstmt.setInt(4, surveyID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -102,7 +102,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 	}
 
 	@Override
-	public int multipleChoiceQuestionItemDelete(int itemNum, int questionNum, String surveyID) {
+	public int multipleChoiceQuestionItemDelete(int itemNum, int questionNum, int surveyID) {
 		String SQL = "DELETE FROM multipleChoiceQuestionItem WHERE itemNum = ? AND questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -111,7 +111,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, itemNum);
 			pstmt.setInt(2, questionNum);
-			pstmt.setString(3, surveyID);
+			pstmt.setInt(3, surveyID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception

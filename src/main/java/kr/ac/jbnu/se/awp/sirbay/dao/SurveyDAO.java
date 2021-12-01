@@ -9,7 +9,7 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 public class SurveyDAO implements SurveyDAOIF {
 
 	@Override
-	public ResultSet surveySelect(String surveyID) {
+	public ResultSet surveySelect(int surveyID) {
 		String SQL = "SELECT * FROM survey WHERE surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -17,7 +17,7 @@ public class SurveyDAO implements SurveyDAOIF {
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, surveyID);
+			pstmt.setInt(1, surveyID);
 			rs = pstmt.executeQuery();
 			return rs;//result
 		} catch (Exception e) {
@@ -52,20 +52,19 @@ public class SurveyDAO implements SurveyDAOIF {
 	}
 
 	@Override
-	public int surveyInsert(String surveyID, String userID, String surveyCreatedTime, String surveyStartTime,
+	public int surveyInsert(String userID, String surveyCreatedTime, String surveyStartTime,
 			String surveyEndTime, String surveyTitle) {
-		String SQL = "INSERT INTO survey VALUES(?,?,?,?,?,?)";
+		String SQL = "INSERT INTO survey VALUES(?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, surveyID);
-			pstmt.setString(2, userID);
-			pstmt.setString(3, surveyCreatedTime);
-			pstmt.setString(4, surveyStartTime);
-			pstmt.setString(5, surveyEndTime);
-			pstmt.setString(6, surveyTitle);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, surveyCreatedTime);
+			pstmt.setString(3, surveyStartTime);
+			pstmt.setString(4, surveyEndTime);
+			pstmt.setString(5, surveyTitle);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -78,17 +77,16 @@ public class SurveyDAO implements SurveyDAOIF {
 	}
 	
 	@Override
-	public int surveyInsert(String surveyID, String userID, String surveyCreatedTime, String surveyTitle) {
-		String SQL = "INSERT INTO survey (surveyID, userID, SurveyCreatedTime, surveyTitle) VALUES(?,?,?,?)";
+	public int surveyInsert(String userID, String surveyCreatedTime, String surveyTitle) {
+		String SQL = "INSERT INTO survey (userID, SurveyCreatedTime, surveyTitle) VALUES(?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, surveyID);
-			pstmt.setString(2, userID);
-			pstmt.setString(3, surveyCreatedTime);
-			pstmt.setString(4, surveyTitle);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, surveyCreatedTime);
+			pstmt.setString(3, surveyTitle);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -101,7 +99,7 @@ public class SurveyDAO implements SurveyDAOIF {
 	}
 
 	@Override
-	public int surveyUpdate(String surveyID, String surveyStartTime, String surveyEndTime, String surveyTitle) {
+	public int surveyUpdate(int surveyID, String surveyStartTime, String surveyEndTime, String surveyTitle) {
 		String SQL = "UPDATE survey SET surveyStartTime = ? ,surveyEndTime = ?, surveyTitle = ? WHERE surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -111,7 +109,7 @@ public class SurveyDAO implements SurveyDAOIF {
 			pstmt.setString(1, surveyStartTime);
 			pstmt.setString(2, surveyEndTime);
 			pstmt.setString(3, surveyTitle);
-			pstmt.setString(4, surveyID);
+			pstmt.setInt(4, surveyID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -124,14 +122,14 @@ public class SurveyDAO implements SurveyDAOIF {
 	}
 
 	@Override
-	public int surveyDelete(String surveyID) {
+	public int surveyDelete(int surveyID) {
 		String SQL = "DELETE FROM survey WHERE surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, surveyID);
+			pstmt.setInt(1, surveyID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception

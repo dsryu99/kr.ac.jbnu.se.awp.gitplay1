@@ -9,7 +9,7 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 public class QuestionDAO implements QuestionDAOIF {
 
 	@Override
-	public ResultSet questionSelect(int questionNum, String surveyID) {
+	public ResultSet questionSelect(int questionNum, int surveyID) {
 		String SQL = "SELECT * FROM question WHERE questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -18,7 +18,7 @@ public class QuestionDAO implements QuestionDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			rs = pstmt.executeQuery();
 			return rs;//result
 		} catch (Exception e) {
@@ -32,7 +32,7 @@ public class QuestionDAO implements QuestionDAOIF {
 	}
 	
 	@Override
-	public ResultSet questionSelect(String surveyID) {
+	public ResultSet questionSelect(int surveyID) {
 		String SQL = "SELECT * FROM question WHERE surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -40,7 +40,7 @@ public class QuestionDAO implements QuestionDAOIF {
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, surveyID);
+			pstmt.setInt(1, surveyID);
 			rs = pstmt.executeQuery();
 			return rs;//result
 		} catch (Exception e) {
@@ -54,7 +54,7 @@ public class QuestionDAO implements QuestionDAOIF {
 	}
 
 	@Override
-	public int questionInsert(int questionNum, String surveyID, String questionDesc, boolean isEssential,
+	public int questionInsert(int questionNum, int surveyID, String questionDesc, boolean isEssential,
 			boolean isMultipleChoiceQuestion) {
 		String SQL = "INSERT INTO question VALUES(?,?,?,?,?)";
 		Connection conn = null;
@@ -63,7 +63,7 @@ public class QuestionDAO implements QuestionDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			pstmt.setString(3, questionDesc);
 			pstmt.setBoolean(4, isEssential);
 			pstmt.setBoolean(5, isMultipleChoiceQuestion);
@@ -79,7 +79,7 @@ public class QuestionDAO implements QuestionDAOIF {
 	}
 
 	@Override
-	public int questionUpdate(String questionDesc, boolean isEssential, boolean isMultipleChoiceQuestion, int questionNum, String surveyID) {
+	public int questionUpdate(String questionDesc, boolean isEssential, boolean isMultipleChoiceQuestion, int questionNum, int surveyID) {
 		String SQL = "UPDATE question SET questionDesc = ? ,isEssential = ?, isMultipleChoiceQuestion = ? WHERE questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -90,7 +90,7 @@ public class QuestionDAO implements QuestionDAOIF {
 			pstmt.setBoolean(2, isEssential);
 			pstmt.setBoolean(3, isMultipleChoiceQuestion);
 			pstmt.setInt(4, questionNum);
-			pstmt.setString(5, surveyID);
+			pstmt.setInt(5, surveyID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -103,7 +103,7 @@ public class QuestionDAO implements QuestionDAOIF {
 	}
 
 	@Override
-	public int questionDelete(int questionNum, String surveyID) {
+	public int questionDelete(int questionNum, int surveyID) {
 		String SQL = "DELETE FROM question WHERE questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -111,7 +111,7 @@ public class QuestionDAO implements QuestionDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
-			pstmt.setString(2, surveyID);
+			pstmt.setInt(2, surveyID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception

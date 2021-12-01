@@ -3,16 +3,16 @@ package kr.ac.jbnu.se.awp.sirbay.dto;
 import java.util.Date;
 
 public class SurveyDTO {
-	private String surveyID;
+	private int surveyID;
 	private String userID;
 	private Date surveyCreatedTime;//DateÇü½ÄÀº "yyyy-MM-dd HH:mm:SS"
 	private Date surveyStartTime;
 	private Date surveyEndTime;
 	private String surveyTitle;
-	public String getSurveyID() {
+	public int getSurveyID() {
 		return surveyID;
 	}
-	public void setSurveyID(String surveyID) {
+	public void setSurveyID(int surveyID) {
 		this.surveyID = surveyID;
 	}
 	public String getUserID() {
