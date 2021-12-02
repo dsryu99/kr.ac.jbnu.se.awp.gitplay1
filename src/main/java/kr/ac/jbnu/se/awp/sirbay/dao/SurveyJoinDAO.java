@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+import org.springframework.stereotype.Repository;
 
+import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+@Repository("surveyJoinDAO")
 public class SurveyJoinDAO implements SurveyJoinDAOIF {
 
 	@Override

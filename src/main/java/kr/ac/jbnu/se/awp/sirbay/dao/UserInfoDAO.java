@@ -5,8 +5,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+import org.springframework.stereotype.Repository;
 
+import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+@Repository("userinfoDAO")
 public class UserInfoDAO implements UserInfoDAOIF {
 	
 	@Override

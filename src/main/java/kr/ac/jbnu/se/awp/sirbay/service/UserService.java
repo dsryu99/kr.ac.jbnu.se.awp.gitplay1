@@ -5,11 +5,12 @@ import java.sql.SQLException;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kr.ac.jbnu.se.awp.sirbay.dao.UserDAO;
 import kr.ac.jbnu.se.awp.sirbay.dao.UserInfoDAO;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
-
+@Service
 public class UserService implements UserServiceIF {
 	@Autowired
 	UserDAO userDAO;

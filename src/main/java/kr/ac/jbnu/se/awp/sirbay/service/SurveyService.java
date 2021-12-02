@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kr.ac.jbnu.se.awp.sirbay.dao.MultipleChoiceQuestionItemDAO;
 import kr.ac.jbnu.se.awp.sirbay.dao.QuestionDAO;
@@ -17,7 +18,7 @@ import kr.ac.jbnu.se.awp.sirbay.dao.SurveyJoinDAO;
 import kr.ac.jbnu.se.awp.sirbay.dto.MultipleChoiceQuestionItemDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.QuestionDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyDTO;
-
+@Service
 public class SurveyService implements SurveyServiceIF {
 	@Autowired
 	SurveyDAO surveyDAO;
@@ -35,8 +36,11 @@ public class SurveyService implements SurveyServiceIF {
 			List<MultipleChoiceQuestionItemDTO> choiceAnswers) {
 		try {
 			String surveyCreatedTime = currentTime();
-			surveyDAO.surveyInsert(userId, surveyCreatedTime, surveyTitle);
-			//pls fix
+			int surveyID = surveyDAO.surveyInsert(userId, surveyCreatedTime, surveyTitle);
+//			questionDAO.questionInsert(0, 0, surveyCreatedTime, false, false);
+			for(MultipleChoiceQuestionItemDTO item : choiceAnswers) {
+				multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemInsert(item.getItemNum(), item.getQuestionNum(), surveyID, item.getItemContent());
+			}
 			return false;
 		} catch (Exception e) {
 			e.printStackTrace();

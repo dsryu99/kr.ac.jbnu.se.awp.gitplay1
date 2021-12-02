@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+import org.springframework.stereotype.Repository;
 
+import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+@Repository("surveyDAO")
 public class SurveyDAO implements SurveyDAOIF {
 
 	@Override
@@ -81,6 +83,7 @@ public class SurveyDAO implements SurveyDAOIF {
 		String SQL = "INSERT INTO survey (userID, SurveyCreatedTime, surveyTitle) VALUES(?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -88,12 +91,16 @@ public class SurveyDAO implements SurveyDAOIF {
 			pstmt.setString(2, surveyCreatedTime);
 			pstmt.setString(3, surveyTitle);
 			return pstmt.executeUpdate();
+//			rs = pstmt.executeQuery();
+//			int id = rs.getInt(1);
+//			return id;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getStackTrace();
 		} finally {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
 		return -1;//DB¿À·ù
 	}
