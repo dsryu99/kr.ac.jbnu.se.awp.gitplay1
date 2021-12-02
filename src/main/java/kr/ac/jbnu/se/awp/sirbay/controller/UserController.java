@@ -1,21 +1,27 @@
 package kr.ac.jbnu.se.awp.sirbay.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.ac.jbnu.se.awp.sirbay.service.UserService;
+
 
 @Controller
 public class UserController {
-
+	@Autowired
+	UserService userService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -27,12 +33,25 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(Model model, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.setAttribute("userId", request.getParameter("id"));
-		model.addAttribute("isLogin", true);
-		
-		return "page_main";
+	public String login(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String id = request.getParameter("id");
+		String password = request.getParameter("pwd");
+		boolean isValid = userService.isUserValid(id, password);
+		if(isValid) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", request.getParameter("id"));
+			model.addAttribute("isLogin", true);
+			
+			return "page_main";
+		} else {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('존재하지 않는 사용자이거나 비밀번호가 잘못되었습니다.'); </script>");
+			out.flush();
+			
+			model.addAttribute("isLogin", false);
+			return "redirect:";
+		}
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
@@ -45,19 +64,34 @@ public class UserController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String goRegister(Model model, HttpServletRequest request) {
-			
 		return "signUp";
 	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
 	public String register(Model model, HttpServletRequest request) {
-			
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String gender = request.getParameter("gender");
+		int birthYear = Integer.parseInt(request.getParameter("birth_yy"));
+		int birthMonth = Integer.parseInt(request.getParameter("birth_mm"));
+		int birthDay = Integer.parseInt(request.getParameter("birth_dd"));
+		String email = request.getParameter("email_1") + "@" + request.getParameter("email_2");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		
+		Date birth = new Date(birthYear, birthMonth, birthDay);
+		String job = "무직";
+		userService.addUser(id, password, name, birth, job, address, gender);
 		return "redirect:";
 	}
 	
 	@RequestMapping(value = "/unRegister", method = RequestMethod.GET)
 	public String unRegister(Model model, HttpServletRequest request) {
-		request.getSession().invalidate();
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		userService.deleteUser(userId);
+		session.invalidate();
 		return "redirect:";
 	}
 	
