@@ -18,7 +18,6 @@ public class DBCPool extends HttpServlet {
 	public void init(ServletConfig config) {
 		String poolName = config.getInitParameter("poolName");
 		String jdbcDriver = config.getInitParameter("jdbcDriver");
-		String jdbcUrl = config.getInitParameter("jdbcUrl");
 		String jdbcURL = config.getInitParameter("jdbcURL");
 		String user = config.getInitParameter("user");
 		String password = config.getInitParameter("password");
@@ -29,7 +28,7 @@ public class DBCPool extends HttpServlet {
 		try {
 			Class.forName(jdbcDriver);
 			
-			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, user, password);
+			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcURL, user, password);
 			
 			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
 			

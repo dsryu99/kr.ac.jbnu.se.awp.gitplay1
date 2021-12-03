@@ -19,33 +19,22 @@ public class UserService implements UserServiceIF {
 	
 	@Override
 	public boolean isUserValid(String id, String password) {
-		try {
-			ResultSet rs = userDAO.userSelect(id);
-			if(rs.next()) {
-				if(rs.getString(2) == password) {
-					return true;
-				}
-				return false;//incorrect password
-			}
-			return false;//incorrect ID
-		} catch (SQLException e) {
-			e.printStackTrace();
+		int result = userDAO.userLogin(id, password);
+		if(result==1) {
+			return true;
+		} else {
+			return false;//DB exception
 		}
-		return false;//DB exception
 	}
 
 	@Override
 	public boolean isUserExist(String id) {
-		try {
-			ResultSet rs = userDAO.userSelect(id);
-			if(rs.next()) {
-				return true;//duplicated userID exists
-			}
-			return false;//userID is valid
-		} catch (SQLException e) {
-			e.printStackTrace();
+		int result = userDAO.userExist(id);
+		if(result==1) {
+			return true;
+		} else {
+			return false;//DB exception
 		}
-		return false;//DB error
 	}
 
 	@Override
@@ -83,19 +72,12 @@ public class UserService implements UserServiceIF {
 
 	@Override
 	public boolean checkPw(String id, String password) {
-		try {
-			ResultSet rs = userDAO.userSelect(id);
-			if(rs.next()) {
-				if(rs.getString(2) == password) {
-					return true;
-				}
-				return false;//incorrect password
-			}
-			return false;//incorrect ID
-		} catch (SQLException e) {
-			e.printStackTrace();
+		int result = userDAO.userLogin(id, password);
+		if(result==1) {
+			return true;
+		} else {
+			return false;//DB exception
 		}
-		return false;//DB exception
 	}
 
 	@Override

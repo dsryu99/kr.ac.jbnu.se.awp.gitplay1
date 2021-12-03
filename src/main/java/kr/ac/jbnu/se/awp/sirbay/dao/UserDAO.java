@@ -11,7 +11,7 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 public class UserDAO implements UserDAOIF {
 	
 	@Override
-	public ResultSet userSelect(String userID) {
+	public int userLogin(String userID, String userPassword) {
 		String SQL = "SELECT * FROM User WHERE userID = ?";//userID를 통해서만 검색 가능
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -21,7 +21,13 @@ public class UserDAO implements UserDAOIF {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
-			return rs;//결과 반환
+			if(rs.next()) {
+				if(rs.getString(2) == userPassword) {
+					return 1;//login success
+				}
+				return 0;//incorrect password
+			}
+			return -1;//incorrect id
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getStackTrace();
@@ -30,7 +36,36 @@ public class UserDAO implements UserDAOIF {
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		return null;//DB오류
+		return -2;//DB error
+	}
+	
+	@Override
+	public int userExist(String userID) {
+		String SQL = "SELECT userID FROM User WHERE userID = ?";//userID를 통해서만 검색 가능
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBConnect.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getString(1) == userID) {
+					return 1;//login success
+				}
+				return 0;//incorrect password
+			}
+			return -1;//incorrect id
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getStackTrace();
+		} finally {
+			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
+		}
+		return -2;//DB error
 	}
 
 	@Override
