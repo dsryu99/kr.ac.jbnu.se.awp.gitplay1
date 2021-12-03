@@ -28,7 +28,6 @@ public class UserController {
 		String id = (String)session.getAttribute("userId");
 		if(id == null) model.addAttribute("isLogin", false);
 		else model.addAttribute("isLogin", true);
-		
 		return "page_main";
 	}
 	
@@ -44,13 +43,9 @@ public class UserController {
 			
 			return "page_main";
 		} else {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('존재하지 않는 사용자이거나 비밀번호가 잘못되었습니다.'); </script>");
-			out.flush();
-			
 			model.addAttribute("isLogin", false);
-			return "redirect:";
+			
+			return "page_main";
 		}
 	}
 	
@@ -67,7 +62,7 @@ public class UserController {
 		return "signUp";
 	}
 	
-	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
+	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public String register(Model model, HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
