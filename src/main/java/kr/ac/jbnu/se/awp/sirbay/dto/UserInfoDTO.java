@@ -8,7 +8,8 @@ public class UserInfoDTO {
 	private Date userBirthdate;// form: yyyyMMdd
 	private String userJob;
 	private String userAddress;
-	private String userSex;// male:����, female:����
+	private String userSex;
+	
 	public String getUserID() {
 		return userID;
 	}
@@ -21,10 +22,10 @@ public class UserInfoDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Date getuserBirthdate() {
+	public Date getUserBirthdate() {
 		return userBirthdate;
 	}
-	public void setuserBirthdate(Date userBirthdate) {
+	public void setUserBirthdate(Date userBirthdate) {
 		this.userBirthdate = userBirthdate;
 	}
 	public String getUserJob() {
