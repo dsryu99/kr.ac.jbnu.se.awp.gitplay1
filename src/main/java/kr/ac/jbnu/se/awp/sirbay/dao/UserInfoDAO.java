@@ -8,11 +8,12 @@ import java.sql.ResultSet;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 @Repository("userinfoDAO")
 public class UserInfoDAO implements UserInfoDAOIF {
 	
 	@Override
-	public ResultSet userInfoSelect(String userID) {
+	public UserInfoDTO userInfoSelect(String userID) {
 		String SQL = "SELECT * FROM UserInfo WHERE userID = ?";//select userinfo by userID
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -22,7 +23,17 @@ public class UserInfoDAO implements UserInfoDAOIF {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
-			return rs;//결과 반환
+			if(rs.next()) {
+				UserInfoDTO userInfoDTO = new UserInfoDTO();
+				userInfoDTO.setUserID(rs.getString(1));
+				userInfoDTO.setUserName(rs.getString(2));
+				userInfoDTO.setUserAge(rs.getDate(3));
+				userInfoDTO.setUserJob(rs.getString(4));
+				userInfoDTO.setUserAddress(rs.getString(5));
+				userInfoDTO.setUserSex(rs.getString(6));
+				return userInfoDTO;//결과 반환
+			}
+			return null;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getStackTrace();

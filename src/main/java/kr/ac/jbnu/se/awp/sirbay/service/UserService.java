@@ -51,23 +51,12 @@ public class UserService implements UserServiceIF {
 
 	@Override
 	public UserInfoDTO getUser(String id) {
-		try {
-			ResultSet rs = userInfoDAO.userInfoSelect(id);
-			if(rs.next()) {
-				UserInfoDTO userInfoDTO = new UserInfoDTO();
-				userInfoDTO.setUserID(rs.getString(1));
-				userInfoDTO.setUserName(rs.getString(2));
-				userInfoDTO.setUserAge(rs.getDate(3));
-				userInfoDTO.setUserJob(rs.getString(4));
-				userInfoDTO.setUserAddress(rs.getString(5));
-				userInfoDTO.setUserSex(rs.getString(6));
-				return userInfoDTO;
-			}
-			return null;//incorrect ID
-		} catch (SQLException e) {
-			e.printStackTrace();
+		UserInfoDTO result = userInfoDAO.userInfoSelect(id);
+		if(result != null) {
+			return result;
+		} else {
+			return null;//DB exception
 		}
-		return null;//DB exception
 	}
 
 	@Override
