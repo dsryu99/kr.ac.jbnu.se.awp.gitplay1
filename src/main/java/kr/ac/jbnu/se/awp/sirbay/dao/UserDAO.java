@@ -12,7 +12,7 @@ public class UserDAO implements UserDAOIF {
 	
 	@Override
 	public int userLogin(String userID, String userPassword) {
-		String SQL = "SELECT * FROM User WHERE userID = ?";//userID를 통해서만 검색 가능
+		String SQL = "SELECT userPassword FROM User WHERE userID = ?";//userID를 통해서만 검색 가능
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -22,7 +22,7 @@ public class UserDAO implements UserDAOIF {
 			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				if(rs.getString(2) == userPassword) {
+				if(rs.getString(1).compareTo(userPassword)==0) {
 					return 1;//login success
 				}
 				return 0;//incorrect password

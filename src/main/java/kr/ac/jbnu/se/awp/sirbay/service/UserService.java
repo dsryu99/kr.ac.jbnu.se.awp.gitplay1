@@ -1,7 +1,5 @@
 package kr.ac.jbnu.se.awp.sirbay.service;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ public class UserService implements UserServiceIF {
 		if(result==1) {
 			return true;
 		} else {
-			return false;//DB exception
+			return false;//invalid
 		}
 	}
 
