@@ -8,7 +8,7 @@ public class UserInfoDTO {
 	private Date userBirthdate;// form: yyyyMMdd
 	private String userJob;
 	private String userAddress;
-	private String userSex;// male:³²ÀÚ, female:¿©ÀÚ
+	private String userSex;// male:ï¿½ï¿½ï¿½ï¿½, female:ï¿½ï¿½ï¿½ï¿½
 	public String getUserID() {
 		return userID;
 	}

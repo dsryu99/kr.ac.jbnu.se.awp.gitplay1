@@ -18,23 +18,23 @@
 		<table>
 			<tr>
 				<td>이름</td>
-				<td style = "color:blue" align = 'center'>${user.name}</td>
+				<td style = "color:blue" align = 'center'>${user.userName}</td>
 			</tr>
 			<tr>
 				<td>성별</td>
-				<td style = "color:blue" align = 'center'>${user.sex}</td>
+				<td style = "color:blue" align = 'center'>${user.userSex}</td>
 			</tr>
 			<tr>
 				<td>나이</td>
-				<td style = "color:blue" align = 'center'>${user.age}</td>
+				<td style = "color:blue" align = 'center'>${user}</td>
 			</tr>
 			<tr>
 				<td>직업</td>
-				<td style = "color:blue" align = 'center'>${user.job}</td>
+				<td style = "color:blue" align = 'center'>${user.userJob}</td>
 			</tr>
 			<tr>
 				<td>거주지역</td>
-				<td style = "color:blue" align = 'center'>${user.address}</td>
+				<td style = "color:blue" align = 'center'>${user.userAddress}</td>
 			</tr>
 		</table>
 	<HR>
