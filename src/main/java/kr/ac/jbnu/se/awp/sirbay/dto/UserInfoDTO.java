@@ -21,10 +21,10 @@ public class UserInfoDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Date getUserAge() {
+	public Date getuserBirthdate() {
 		return userBirthdate;
 	}
-	public void setUserAge(Date userBirthdate) {
+	public void setuserBirthdate(Date userBirthdate) {
 		this.userBirthdate = userBirthdate;
 	}
 	public String getUserJob() {

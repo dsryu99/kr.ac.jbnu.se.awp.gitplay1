@@ -27,7 +27,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 				UserInfoDTO userInfoDTO = new UserInfoDTO();
 				userInfoDTO.setUserID(rs.getString(1));
 				userInfoDTO.setUserName(rs.getString(2));
-				userInfoDTO.setUserAge(rs.getDate(3));
+				userInfoDTO.setuserBirthdate(rs.getDate(3));
 				userInfoDTO.setUserJob(rs.getString(4));
 				userInfoDTO.setUserAddress(rs.getString(5));
 				userInfoDTO.setUserSex(rs.getString(6));
