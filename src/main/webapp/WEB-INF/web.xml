@@ -36,9 +36,13 @@
     	  <param-name>jdbcDriver</param-name>
     	  <param-value>com.mysql.cj.jdbc.Driver</param-value>
     	</init-param>
+    	<init-param>
+    		<param-name>jdbcUrl</param-name>
+    		<param-value>jdbc:mysql://localhost:3306/sirbay</param-value>
+    	</init-param>
     	<init-param><!-- MySQL 서버 주소 -->
     	  <param-name>jdbcURL</param-name>
-     	  <param-value>jdbc:mysql://localhost:3306/test?useSSL=false</param-value>
+     	  <param-value>jdbc:mysql://localhost:3306/sirbay?useSSL=false</param-value>
     	</init-param>
     	<init-param><!-- 계정명 -->
     	  <param-name>user</param-name>

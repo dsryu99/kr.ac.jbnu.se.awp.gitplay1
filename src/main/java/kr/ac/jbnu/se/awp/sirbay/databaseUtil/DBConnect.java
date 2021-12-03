@@ -8,8 +8,8 @@ public class DBConnect {
 		Connection conn = null;          
  
 		try{
-			String poolName = "jdbc:apache:commons:dbcp2:sirbay";
-			conn = DriverManager.getConnection(poolName);
+			String jdbcDriver = "jdbc:apache:commons:dbcp:sirbay";
+			conn = DriverManager.getConnection(jdbcDriver);
  
 		}catch(Exception e){
 			e.printStackTrace();

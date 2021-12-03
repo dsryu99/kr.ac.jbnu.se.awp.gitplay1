@@ -1,5 +1,7 @@
 package kr.ac.jbnu.se.awp.sirbay.databaseUtil;
 
+import java.sql.DriverManager;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
 
@@ -16,16 +18,18 @@ public class DBCPool extends HttpServlet {
 	public void init(ServletConfig config) {
 		String poolName = config.getInitParameter("poolName");
 		String jdbcDriver = config.getInitParameter("jdbcDriver");
+		String jdbcUrl = config.getInitParameter("jdbcUrl");
 		String jdbcURL = config.getInitParameter("jdbcURL");
 		String user = config.getInitParameter("user");
 		String password = config.getInitParameter("password");
+		
 		int maxActive = 10;
 		int maxIdle = 10;
 		
 		try {
 			Class.forName(jdbcDriver);
 			
-			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcDriver, user, password);
+			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, user, password);
 			
 			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
 			
@@ -34,13 +38,10 @@ public class DBCPool extends HttpServlet {
 			poolConfig.setMaxIdle(maxIdle);
 			
 			GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<PoolableConnection>(poolableConnFactory,poolConfig);
+			poolableConnFactory.setPool(connectionPool);
 			
-			ConnectionFactory connectionFactory = new DriverManagerConnectionFactory(jdbcURL, user, password);
-			
-			PoolableConnectionFactory poolableConnectionFactory = new PoolableConnectionFactory(connectionFactory, null);
-			poolableConnectionFactory.setPool(connectionPool);
-			
-			PoolingDriver driver = new PoolingDriver();
+			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
+			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:sirbay");
 			
 			driver.registerPool(poolName, connectionPool);
 			
