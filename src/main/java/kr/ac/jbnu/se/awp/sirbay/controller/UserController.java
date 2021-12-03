@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.ac.jbnu.se.awp.sirbay.dto.UserDTO;
+import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 import kr.ac.jbnu.se.awp.sirbay.service.UserService;
 
 
@@ -92,7 +94,9 @@ public class UserController {
 	
 	@RequestMapping(value = "/myPage", method = RequestMethod.POST)
 	public String myPage(Model model, HttpServletRequest request) {
-			
+		String id = (String) request.getSession().getAttribute("userId");
+		UserInfoDTO user = userService.getUser(id);
+		model.addAttribute("user", user);
 		return "page_myProfile";
 	}
 	
