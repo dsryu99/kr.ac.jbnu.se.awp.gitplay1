@@ -11,7 +11,7 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 public class SurveyJoinDAO implements SurveyJoinDAOIF {
 
 	@Override
-	public ResultSet surveyJoinSelect(String userID, int surveyID) {
+	public int surveyJoinIsAnswered(String userID, int surveyID) {
 		String SQL = "SELECT * FROM surveyJoin WHERE userID = ?, surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -22,7 +22,10 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 			pstmt.setString(1, userID);
 			pstmt.setInt(2, surveyID);
 			rs = pstmt.executeQuery();
-			return rs;//result
+			if(rs.next()) {
+				return 1;//already answered
+			}
+			return 0;//result
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {
@@ -30,7 +33,7 @@ public class SurveyJoinDAO implements SurveyJoinDAOIF {
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		return null;//DB error
+		return -2;//DB error
 	}
 
 	@Override

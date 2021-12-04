@@ -1,6 +1,5 @@
 package kr.ac.jbnu.se.awp.sirbay.service;
 
-import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,13 +31,13 @@ public class SurveyService implements SurveyServiceIF {
 	MultipleChoiceQuestionItemDAO multipleChoiceQuestionItemDAO;
 	
 	@Override
-	public boolean addSurvey(String userId, String surveyTitle, HashMap<Integer, String> questions,
+	public boolean addSurvey(String userId, String surveyTitle, List<QuestionDTO> questions,
 			List<MultipleChoiceQuestionItemDTO> choiceAnswers) {
 		try {
 			String surveyCreatedTime = currentTime();
 			int surveyID = surveyDAO.surveyInsert(userId, surveyCreatedTime, surveyTitle);
-			for(Integer key: questions.keySet()) {
-				questionDAO.questionInsert(key, surveyID, "", false, false);//pls fix
+			for(QuestionDTO question: questions) {
+				questionDAO.questionInsert(question.getQuestionNum(), surveyID, question.getQuestionDesc(), question.isEssential(), question.isMultipleChoiceQuestion());
 			}
 			for(MultipleChoiceQuestionItemDTO item : choiceAnswers) {
 				multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemInsert(item.getItemNum(), item.getQuestionNum(), surveyID, item.getItemContent());
@@ -82,16 +81,11 @@ public class SurveyService implements SurveyServiceIF {
 
 	@Override
 	public boolean isAnswered(String userId, int surveyId) {
-		try {
-			ResultSet rs = surveyJoinDAO.surveyJoinSelect(userId, surveyId);
-			if(rs.next()) {
-				return true;//already answered
-			}
-			return false;//not answered
-		} catch (Exception e) {
-			e.printStackTrace();
+		int result = surveyJoinDAO.surveyJoinIsAnswered(userId, surveyId);
+		if(result == 1) {
+			return true;//already answered
 		}
-		return false;//DB error
+		return false;//not answered
 	}
 
 	@Override
