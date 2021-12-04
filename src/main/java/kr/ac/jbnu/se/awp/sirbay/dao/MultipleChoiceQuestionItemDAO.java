@@ -3,19 +3,23 @@ package kr.ac.jbnu.se.awp.sirbay.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+import kr.ac.jbnu.se.awp.sirbay.dto.MultipleChoiceQuestionItemDTO;
 @Repository("multipleChoiceQuestionItem")
 public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItemDAOIF {
 
 	@Override
-	public ResultSet multipleChoiceQuestionItemSelect(int itemNum, int questionNum, int surveyID) {
+	public MultipleChoiceQuestionItemDTO multipleChoiceQuestionItemSelect(int itemNum, int questionNum, int surveyID) {
 		String SQL = "SELECT * FROM multipleChoiceQuestionItem WHERE itemNum = ? AND questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		MultipleChoiceQuestionItemDTO multipleChoiceQuestionItemDTO = new MultipleChoiceQuestionItemDTO();
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -23,7 +27,13 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 			pstmt.setInt(2, questionNum);
 			pstmt.setInt(3, surveyID);
 			rs = pstmt.executeQuery();
-			return rs;//result
+			while(rs.next()) {
+				multipleChoiceQuestionItemDTO.setItemNum(rs.getInt(1));
+				multipleChoiceQuestionItemDTO.setQuestionNum(rs.getInt(2));
+				multipleChoiceQuestionItemDTO.setSurveyID(rs.getString(3));
+				multipleChoiceQuestionItemDTO.setItemContent(rs.getString(4));
+			}
+			return multipleChoiceQuestionItemDTO;
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {
@@ -35,18 +45,27 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 	}
 	
 	@Override
-	public ResultSet multipleChoiceQuestionItemSelect(int questionNum, int surveyID) {
+	public List<MultipleChoiceQuestionItemDTO> multipleChoiceQuestionItemSelect(int questionNum, int surveyID) {
 		String SQL = "SELECT * FROM multipleChoiceQuestionItem WHERE questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		List<MultipleChoiceQuestionItemDTO> list = new ArrayList<MultipleChoiceQuestionItemDTO>();
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
 			pstmt.setInt(2, surveyID);
 			rs = pstmt.executeQuery();
-			return rs;//result
+			while(rs.next()) {
+				MultipleChoiceQuestionItemDTO multipleChoiceQuestionItemDTO = new MultipleChoiceQuestionItemDTO();
+				multipleChoiceQuestionItemDTO.setItemNum(rs.getInt(1));
+				multipleChoiceQuestionItemDTO.setQuestionNum(rs.getInt(2));
+				multipleChoiceQuestionItemDTO.setSurveyID(rs.getString(3));
+				multipleChoiceQuestionItemDTO.setItemContent(rs.getString(4));
+				list.add(multipleChoiceQuestionItemDTO);
+			}
+			return list;
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {

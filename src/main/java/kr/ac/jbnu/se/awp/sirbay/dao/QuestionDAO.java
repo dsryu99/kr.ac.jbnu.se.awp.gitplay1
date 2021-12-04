@@ -3,26 +3,37 @@ package kr.ac.jbnu.se.awp.sirbay.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
+import kr.ac.jbnu.se.awp.sirbay.dto.QuestionDTO;
 @Repository("questionDAO")
 public class QuestionDAO implements QuestionDAOIF {
 
 	@Override
-	public ResultSet questionSelect(int questionNum, int surveyID) {
+	public QuestionDTO questionSelect(int questionNum, int surveyID) {
 		String SQL = "SELECT * FROM question WHERE questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		QuestionDTO questionDTO = new QuestionDTO();
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
 			pstmt.setInt(2, surveyID);
 			rs = pstmt.executeQuery();
-			return rs;//result
+			while(rs.next()) {
+				questionDTO.setQuestionNum(rs.getInt(1));
+				questionDTO.setSurveyID(rs.getString(2));
+				questionDTO.setQuestionDesc(rs.getString(3));
+				questionDTO.setEssential(rs.getBoolean(4));
+				questionDTO.setMultipleChoiceQuestion(rs.getBoolean(5));
+			}
+			return questionDTO;
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {
@@ -34,17 +45,27 @@ public class QuestionDAO implements QuestionDAOIF {
 	}
 	
 	@Override
-	public ResultSet questionSelect(int surveyID) {
+	public List<QuestionDTO> questionSelect(int surveyID) {
 		String SQL = "SELECT * FROM question WHERE surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		List<QuestionDTO> list = new ArrayList<QuestionDTO>();
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, surveyID);
 			rs = pstmt.executeQuery();
-			return rs;//result
+			while(rs.next()) {
+				QuestionDTO questionDTO = new QuestionDTO();
+				questionDTO.setQuestionNum(rs.getInt(1));
+				questionDTO.setSurveyID(rs.getString(2));
+				questionDTO.setQuestionDesc(rs.getString(3));
+				questionDTO.setEssential(rs.getBoolean(4));
+				questionDTO.setMultipleChoiceQuestion(rs.getBoolean(5));
+				list.add(questionDTO);
+			}
+			return list;
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {

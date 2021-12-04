@@ -37,7 +37,9 @@ public class SurveyService implements SurveyServiceIF {
 		try {
 			String surveyCreatedTime = currentTime();
 			int surveyID = surveyDAO.surveyInsert(userId, surveyCreatedTime, surveyTitle);
-//			questionDAO.questionInsert(0, 0, surveyCreatedTime, false, false);
+			for(Integer key: questions.keySet()) {
+				questionDAO.questionInsert(key, surveyID, "", false, false);//pls fix
+			}
 			for(MultipleChoiceQuestionItemDTO item : choiceAnswers) {
 				multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemInsert(item.getItemNum(), item.getQuestionNum(), surveyID, item.getItemContent());
 			}
@@ -50,66 +52,30 @@ public class SurveyService implements SurveyServiceIF {
 
 	@Override
 	public List<QuestionDTO> getSurvey(int surveyId) {
-		try {
-			List<QuestionDTO> list = new ArrayList<QuestionDTO>();
-			ResultSet rs = questionDAO.questionSelect(surveyId);
-			while(rs.next()) {
-				QuestionDTO questionDTO = new QuestionDTO();
-				questionDTO.setQuestionNum(rs.getInt(1));
-				questionDTO.setSurveyID(rs.getString(2));
-				questionDTO.setQuestionDesc(rs.getString(3));
-				questionDTO.setEssential(rs.getBoolean(4));
-				questionDTO.setMultipleChoiceQuestion(rs.getBoolean(5));
-				list.add(questionDTO);
-			}
+		List<QuestionDTO> list = new ArrayList<QuestionDTO>();
+		list = questionDAO.questionSelect(surveyId);
+		if(list != null) {
 			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			// TODO: handle exception
 		}
 		return null;//DB exception
 	}
 
 	@Override
 	public List<MultipleChoiceQuestionItemDTO> getMultipleChoiceQuestions(int surveyId, int questionNum) {
-		try {
-			List<MultipleChoiceQuestionItemDTO> list = new ArrayList<MultipleChoiceQuestionItemDTO>();
-			ResultSet rs = multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemSelect(questionNum, surveyId);
-			while(rs.next()) {
-				MultipleChoiceQuestionItemDTO multipleChoiceQuestionItemDTO = new MultipleChoiceQuestionItemDTO();
-				multipleChoiceQuestionItemDTO.setItemNum(rs.getInt(1));
-				multipleChoiceQuestionItemDTO.setQuestionNum(rs.getInt(2));
-				multipleChoiceQuestionItemDTO.setSurveyID(rs.getString(3));
-				multipleChoiceQuestionItemDTO.setItemContent(rs.getString(4));
-				list.add(multipleChoiceQuestionItemDTO);
-			}
+		List<MultipleChoiceQuestionItemDTO> list = new ArrayList<MultipleChoiceQuestionItemDTO>();
+		list = multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemSelect(questionNum, surveyId);
+		if(list != null) {
 			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			// TODO: handle exception
 		}
 		return null;//DB exception
 	}
 
 	@Override
 	public List<SurveyDTO> getAllSurveys() {
-		try {
-			List<SurveyDTO> list = new ArrayList<SurveyDTO>();
-			ResultSet rs = surveyDAO.surveySelect();
-			while(rs.next()) {
-				SurveyDTO surveyDTO = new SurveyDTO();
-				surveyDTO.setSurveyID(rs.getInt(1));
-				surveyDTO.setUserID(rs.getString(2));
-				surveyDTO.setSurveyCreatedTime(rs.getDate(3));
-				surveyDTO.setSurveyStartTime(rs.getDate(4));
-				surveyDTO.setSurveyEndTime(rs.getDate(5));
-				surveyDTO.setSurveyTitle(rs.getString(6));
-				list.add(surveyDTO);
-			}
+		List<SurveyDTO> list = new ArrayList<SurveyDTO>();
+		list = surveyDAO.surveySelect();
+		if(list != null) {
 			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			// TODO: handle exception
 		}
 		return null;//DB exception
 	}
@@ -131,7 +97,7 @@ public class SurveyService implements SurveyServiceIF {
 	@Override
 	public boolean addAnswer(String userId, int surveyId, HashMap<Integer, String> answers) {
 		try {
-			for(int key : answers.keySet()) {
+			for(Integer key : answers.keySet()) {
 				surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key));
 			}
 			String joinDate = currentTime();
