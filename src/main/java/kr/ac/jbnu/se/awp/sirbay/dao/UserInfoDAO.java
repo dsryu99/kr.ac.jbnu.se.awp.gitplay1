@@ -50,12 +50,14 @@ public class UserInfoDAO implements UserInfoDAOIF {
 		String SQL = "INSERT INTO UserInfo VALUES(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		String birthdate = userBirthdate.getYear()+"-"+userBirthdate.getMonth()+"-"+userBirthdate.getDate();
+		System.out.println(birthdate);
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			pstmt.setString(2, userName);
-			pstmt.setDate(3, userBirthdate);
+			pstmt.setString(3, birthdate);
 			pstmt.setString(4, userJob);
 			pstmt.setString(5, userAddress);
 			pstmt.setString(6, userSex);
