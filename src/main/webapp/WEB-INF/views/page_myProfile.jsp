@@ -26,7 +26,7 @@
 			</tr>
 			<tr>
 				<td>나이</td>
-				<td style = "color:blue" align = 'center'>${user}</td>
+				<td style = "color:blue" align = 'center'>${user.userBirthdate}</td>
 			</tr>
 			<tr>
 				<td>직업</td>
