@@ -88,10 +88,10 @@ public class UserController {
 		String userId = (String)session.getAttribute("userId");
 		userService.deleteUser(userId);
 		session.invalidate();
-		return "redirect:";
+		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/myPage", method = RequestMethod.POST)
+	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public String myPage(Model model, HttpServletRequest request) {
 		String id = (String) request.getSession().getAttribute("userId");
 		UserInfoDTO user = userService.getUser(id);
