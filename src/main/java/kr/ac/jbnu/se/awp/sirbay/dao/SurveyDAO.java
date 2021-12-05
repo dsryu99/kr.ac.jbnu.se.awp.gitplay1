@@ -109,6 +109,7 @@ public class SurveyDAO implements SurveyDAOIF {
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
+		int id = 0;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt1 = conn.prepareStatement(SQL);
@@ -118,7 +119,9 @@ public class SurveyDAO implements SurveyDAOIF {
 			pstmt1.executeUpdate();
 			pstmt2 = conn.prepareStatement(getIdSQL);
 			rs = pstmt2.executeQuery();
-			int id = rs.getInt(1);
+			while(rs.next()) {
+				id = rs.getInt(1);
+			}
 			return id;
 		} catch (Exception e) {
 			// TODO: handle exception

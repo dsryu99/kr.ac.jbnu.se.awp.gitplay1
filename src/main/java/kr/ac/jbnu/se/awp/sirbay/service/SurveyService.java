@@ -37,6 +37,11 @@ public class SurveyService implements SurveyServiceIF {
 			String surveyCreatedTime = currentTime();
 			int surveyID = surveyDAO.surveyInsert(userId, surveyCreatedTime, surveyTitle);
 			for(QuestionDTO question: questions) {
+				System.out.println(question.getQuestionNum());
+				System.out.println(surveyID);
+				System.out.println(question.getQuestionDesc());
+				System.out.println(question.isEssential());
+				System.out.println(question.isMultipleChoiceQuestion());
 				questionDAO.questionInsert(question.getQuestionNum(), surveyID, question.getQuestionDesc(), question.isEssential(), question.isMultipleChoiceQuestion());
 			}
 			for(MultipleChoiceQuestionItemDTO item : choiceAnswers) {
