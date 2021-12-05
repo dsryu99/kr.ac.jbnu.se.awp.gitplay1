@@ -25,7 +25,7 @@
 	var thisMinPage = getThisMinPage(); 
 	
 
-	function getNumList(){
+	function getThisMaxPage(){
 		
 		if(thisMinPage + 4 <= ${maxPage}){
 			return thisMinPage + 4;
@@ -49,64 +49,16 @@
 		} */
 	}
 	
-	var thisPageMax = getNumList();
+	var thisPageMax = getThisMaxPage();
 </script>
 
-<style>
-	#logoLine{
-		border: 0px;
-		height: 30px;
-		background-color: black;
-		border-radius: 5px;
-	}
- 	#contentsArea{
-		width: auto;
-		height: auto;
-		text-align: center;
-	}
-	
-	#upperArea{
-		width: auto;
-		height: auto;
-		display: inline-block;
-	}
 
-	#loginArea{
-		box-sizing: border-box;
-		width: 300px;
-		height: 200px;
-		margin: 20px;
-		border: 2px solid black;
-		border-radius: 10px;
-		padding: 2%;
-		float: left;
-		text-align: left;
-	}
-	#NoticeArea{
-		box-sizing: border-box;
- 		width: 800px;
-		height: 200px;
-		margin: 20px;
-		border: 2px solid black;
-		border-radius: 10px;
-		padding: 2%;
-		float: left;
-	}
-	
-	#surveyArea{
-		box-sizing: border-box;
-		width: 800px;
-		height: auto;
-		margin: 20px;
-		border-right: solid 2px black;
-  		border-left: solid 2px black;
-		padding: 3%;
-		display: inline-block;
-	}
-</style>
 
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel='stylesheet' href='resources/Style.css'>
+
 <meta charset="UTF-8">
 	<title>Home</title>
 </head>
@@ -116,10 +68,9 @@
 <!-- 로고 -->
 <div id = "logoArea" align = "center" style = "width: 100%; height: 50px">
 	<!-- 리다이렉트 -->
-	<form method = "get" action="">
-		<!-- 이미지 로고 출력 -->
-		<input type = "image" src = "" alt = "logo">
-	</form>
+	<a href = "${pageContext.request.contextPath}">
+		<img src = "resources/logo.png" alt = "logo" width = "100px" height = "50px" >
+	</a>
 </div>
 
 <hr id = "logoLine" >
@@ -146,7 +97,7 @@
 							<input type = "text" name = "id" placeholder = "아이디" size = 20>
 						<br>
 						<br>
-							<input type = "text" name = "pwd" placeholder = "비밀번호" size = 20> 
+							<input type = "password" name = "pwd" placeholder = "비밀번호" size = 20> 
 						</form>
 					<!-- 회원가입 버튼 -->
 						<form method = post action = "/sirbay/register" >
@@ -180,45 +131,27 @@
 
 	<!-- 본문 -->
 	<div id = surveyArea style = "float: center">
-<%-- 		<c:forEach var="question" items="questionList" varStatus="questionStatus">
-			질문 ${questionStatus.count}
-			<br>
-			<br>
-			<!-- 질문 제목 -->
-			${questionDesc}
-			<HR>
-			답변
-			<br>
-			<br>
-			<!-- 질문 답변 타입 -->
-			<c:if test="${isMultipleChoiceQuestion == 'true'}">
-				<!-- 객관식 -->
-				<c:forEach var="multipleChoiseQuestionItem" items="multipleChoiseQuestionItemList" varStatus="answerStatus">
-					<!-- 객관식 문항, 객관식 문항 별 선택 횟수-->
-					${answerStatus.count}번 ${multipleChoiseQuestionItem.itemContent} <!-- 몇 번 선택됨 -->
-				</c:forEach>
-			</c:if>
-			<c:if test="${isMultipleChoiceQuestion == 'false'}">
-				<!-- 주관식 -->
-				<c:forEach var="surveyAnswer" items="surveyAnswerList" varStatus="answerStatus">
-					<!-- 주관식 문항-->
-					${status.count}. ${surveyAnswer.answer} 
-				</c:forEach>
-			</c:if>
-		</c:forEach> --%>
-	
-		<ul style = "list-style: none;">
+		<c:forEach var="survey" items="surveyList" varStatus="surveyStatus">
+			<a id = "${surveyStatus.current}" href = "${pageContext.request.contextPath}">
+				<!-- 화면 보여주는 거 수정 필요(이름...) -->
+				${survey}
+			</a>
+		</c:forEach>
+
+<%-- 		<ul style = "list-style: none;">
 			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 3학년 설문조사</a><br></li>
 			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 2학년 설문조사</a><br></li>
 			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 1학년 설문조사</a><br></li>
-		</ul>
+		</ul> --%>
 	</div>
 	
 	<div id = buttonArea>
 		<input type = button onClick = "" value = "< 이전">
-		<c:forEach var="index" begin="${thisMinPage}" end = "10" step = "1">
-			${index}
-			<!-- <a value = "${index}" onClick = "" id = "${i}"></a> -->
+		<!-- 페이지 수 불러오기 -->
+		<c:forEach var="index" begin= "${min}" end = "${max}" step = "1">
+			<a id = "${index}" href = "${pageContext.request.contextPath}">
+				${index}
+			</a>
 		</c:forEach>
 		<input type = button onClick = "" value = "다음 >">
 	</div>
