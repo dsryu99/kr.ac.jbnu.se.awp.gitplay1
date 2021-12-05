@@ -5,6 +5,7 @@ import java.util.List;
 
 import kr.ac.jbnu.se.awp.sirbay.dto.MultipleChoiceQuestionItemDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.QuestionDTO;
+import kr.ac.jbnu.se.awp.sirbay.dto.SurveyAnswerDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyDTO;
 
 public interface SurveyServiceIF {
@@ -14,4 +15,5 @@ public interface SurveyServiceIF {
 	boolean isAnswered(String userId, int surveyId);
 	boolean addAnswer(String userId, int surveyId, HashMap<Integer, String> answers);
 	List<SurveyDTO> getAllSurveys();
+	List<SurveyAnswerDTO> getAnswers(int surveyId);
 }
