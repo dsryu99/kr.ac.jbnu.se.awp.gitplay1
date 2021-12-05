@@ -42,7 +42,7 @@ public class SurveyService implements SurveyServiceIF {
 			for(MultipleChoiceQuestionItemDTO item : choiceAnswers) {
 				multipleChoiceQuestionItemDAO.multipleChoiceQuestionItemInsert(item.getItemNum(), item.getQuestionNum(), surveyID, item.getItemContent());
 			}
-			return false;
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

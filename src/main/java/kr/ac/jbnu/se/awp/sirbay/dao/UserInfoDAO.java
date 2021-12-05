@@ -51,7 +51,6 @@ public class UserInfoDAO implements UserInfoDAOIF {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String birthdate = userBirthdate.getYear()+"-"+userBirthdate.getMonth()+"-"+userBirthdate.getDate();
-		System.out.println(birthdate);
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
