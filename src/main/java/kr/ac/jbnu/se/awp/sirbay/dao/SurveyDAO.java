@@ -131,7 +131,7 @@ public class SurveyDAO implements SurveyDAOIF {
 			try { if(pstmt1 != null) pstmt1.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		return -1;//DB오류
+		return -2;//DB오류
 	}
 
 	@Override
@@ -176,6 +176,4 @@ public class SurveyDAO implements SurveyDAOIF {
 		}
 		return -1;//DB오류
 	}
-
-
 }

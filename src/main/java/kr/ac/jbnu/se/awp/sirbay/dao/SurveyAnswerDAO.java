@@ -11,18 +11,22 @@ import kr.ac.jbnu.se.awp.sirbay.databaseUtil.DBConnect;
 public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 
 	@Override
-	public ResultSet surveyAnswerSelect(int questionNum, int surveyID) {
+	public int surveyAnswerSelect(int questionNum, int surveyID) {
 		String SQL = "SELECT * FROM surveyAnswer WHERE questionNum = ? AND surveyID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int answer = 0;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
 			pstmt.setInt(2, surveyID);
 			rs = pstmt.executeQuery();
-			return rs;//result
+			while(rs.next()) {
+				answer = rs.getInt(1);
+			}
+			return answer;//result
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {
@@ -30,7 +34,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		return null;//DB error
+		return -2;//DB error
 	}
 
 	@Override
@@ -52,7 +56,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		return -1;//DB오류
+		return -1;//DB error
 	}
 
 	@Override
@@ -74,7 +78,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		return -1;//DB오류
+		return -1;//DB error
 	}
 
 	@Override
@@ -95,7 +99,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		return -1;//DB오류
+		return -1;//DB error
 	}
 
 }
