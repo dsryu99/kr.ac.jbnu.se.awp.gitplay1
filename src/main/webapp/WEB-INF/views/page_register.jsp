@@ -175,12 +175,12 @@
                     	</td>
                 	</tr>
                     
-                	<tr>
+                	<!-- <tr>
                     	<td>
 							<a class = "text">이메일</a>
 						</td>
-                	</tr>
-                	
+                	</tr> -->
+<!--                 	
                 	<tr>
                     	<td>
                         	<input type="text" name="email_1" maxlength="30" style = "width: 41.5%"> @
@@ -191,18 +191,29 @@
                             	<option>nate.com</option>                        
                         	</select>
                     	</td>
-                	</tr>
+                	</tr> -->
                     
-                	<tr>
+                	<!-- <tr>
                     	<td>
 							<a class = "text">휴대전화</a>
+						</td>
+                	</tr> -->
+                	<!-- <tr>
+                    	<td>
+                        	<input type="text" name="phone" />
+                    	</td>
+                	</tr> -->
+                	<tr>
+                    	<td>
+							<a class = "text">직업</a>
 						</td>
                 	</tr>
                 	<tr>
                     	<td>
-                        	<input type="text" name="phone" />
+                        	<input type="text" name="job" />
                     	</td>
                 	</tr>
+            
                 	<tr>
                     	<td>
 							<a class = "text">주소</a>

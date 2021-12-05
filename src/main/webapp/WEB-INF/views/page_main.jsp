@@ -131,6 +131,9 @@
 	<!-- 본문 -->
 	<div id = surveyArea style = "float: center">
 		<c:forEach var="survey" items="surveyList" varStatus="surveyStatus">
+			${survey} 
+			<input id = " " onClick = " ">
+			<input id = " " onClick = " ">
 			<a id = "${surveyStatus.current}" href = "${pageContext.request.contextPath}">
 				<!-- 화면 보여주는 거 수정 필요(이름...) -->
 				${survey}

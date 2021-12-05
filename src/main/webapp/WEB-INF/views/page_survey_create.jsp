@@ -48,7 +48,7 @@
 </head>
 <body>
 <!-- 로고 -->
-<div id = "logoArea" align = "center" style = "width: 100%; height: 50px">
+<div id = "logoArea" align = "center" style = "width: 200xp; height: 50px">
 	<!-- 리다이렉트 -->
 	<form method = "get" action="">
 		<!-- 이미지 로고 출력 -->
@@ -72,7 +72,6 @@
 			<hr>
 	
 			<div id = "questionBox">
-			
 				<br>
 				<div id = "qusetion">
 					질문 : <input type = "text" name ="title" size = 70><br><br>
@@ -136,21 +135,22 @@
 		var div = document.createElement('div');
 		
 		//questionBox 생성
-		add_cnt();
 		var questionBox = document.createElement('questionBox');
 		
 		
 		div.innerHTML = document.getElementById('questionBox').innerHTML;
 		
+		add_cnt();
+		div.id = cnt;
+		
 		document.getElementById('result').appendChild(div);
 	}
-	var cnt = 1;
+	var cnt = 0;
 	
 	function add_cnt(){
 		cnt++;
 	}
 </script>
-
 
 </body>
 </html>
