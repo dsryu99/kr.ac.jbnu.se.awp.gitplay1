@@ -4,7 +4,6 @@
 <%@page import="org.springframework.web.bind.annotation.SessionAttributes"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:set var="isLogin" value="false" />
 <c:set var="nowPage" value="10" />
 <c:set var="maxPage" value="11" />
 
@@ -88,7 +87,7 @@
 			<br>
 			<br>
 			<c:choose>
-				<c:when test="${isLogin == 'false'}">
+				<c:when test="${isLogin == false}">
 				<!-- 미 로그인 시 -->
 					<div id = "login">
 					<!-- 로그인 버튼 -->
@@ -120,7 +119,7 @@
 						<br>
 						
 						<!-- 로그아웃 -->
-						<form method = "get" action = "/sirbay/logout" style = "float:bottom">
+						<form method = "post" action = "/sirbay/logout" style = "float:bottom">
 							<input type = "submit" value = "로그아웃">
 						</form>
 					</div>

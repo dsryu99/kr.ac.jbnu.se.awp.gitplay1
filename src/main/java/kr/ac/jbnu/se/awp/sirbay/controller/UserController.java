@@ -42,12 +42,11 @@ public class UserController {
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", request.getParameter("id"));
 			model.addAttribute("isLogin", true);
-			
 			return "page_main";
 		} else {
 			model.addAttribute("isLogin", false);
 			
-			return "page_main";
+			return "redirect:/";
 		}
 	}
 	
@@ -56,7 +55,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		return "redirect:";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
