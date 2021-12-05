@@ -7,10 +7,10 @@
 <!-- 만료 여부, 질문 갯수, 질문들, 질문들 별 답변타입, 설문 제목-->
 
 <!-- 임시 변수 -->
-<c:set var="isExpired" value="false" />
-<c:set var="questionDesc" value="질문 제목" />
+<c:set var="isExpired" value="true" />
+<c:set var="questionDesc" value="기말고사 목표 점수는 몇 점인가요?" />
 <c:set var="isMultipleChoiceQuestion" value="false" />
-<c:set var="surveyName" value="설문 주제" />
+<c:set var="surveyName" value="소프트웨어공학과 3학년 설문조사" />
 
 <html>
 <head>
@@ -35,12 +35,13 @@
 		주제 : ${surveyName}
 	</div>
 	
+	<hr style="border: solid 2px blue;">
+	
 	<!-- 만료 여부 -->
 	<c:if test="${isExpired == 'true'}">
 		<!-- 결과 확인 페이지 -->
 		<c:forEach var="question" items="questionList" varStatus="questionStatus">
 			<br>
-			<hr style="border: solid 2px blue;">
 		
 			질문 ${questionStatus.count}
 			<br>
@@ -67,7 +68,9 @@
 				</c:forEach>
 			</c:if>
 		</c:forEach>
+		
 		<hr style="border: solid 2px blue;">
+			
 	</c:if>
 	
 	
@@ -81,7 +84,8 @@
 			<br>
 			<hr style="border: solid 2px blue;">
 			<!-- 질문 제목 -->
-			질문 ${questionStatus.count}
+			<%-- 질문 ${questionStatus.count} --%>
+			질문 2
 			<br>
 			<br>
 			${questionDesc}
