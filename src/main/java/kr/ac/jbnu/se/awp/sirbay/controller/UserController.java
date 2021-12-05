@@ -79,7 +79,7 @@ public class UserController {
 		Date birth = new Date(birthYear, birthMonth, birthDay);
 		String job = "무직";
 		userService.addUser(id, password, name, birth, job, address, gender);
-		return "redirect:";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/unRegister", method = RequestMethod.GET)

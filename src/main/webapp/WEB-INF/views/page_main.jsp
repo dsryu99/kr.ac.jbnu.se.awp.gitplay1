@@ -110,7 +110,7 @@
 						${id} 님
 					 
 						<!-- 마이페이지 -->
-						<a href="javascript:void(0);" onClick = "log(this);">
+						<a href="${pageContext.request.contextPath}/myPage" onClick = "log(this);">
 							<font size = 2em>
 							내정보
 							</font>
