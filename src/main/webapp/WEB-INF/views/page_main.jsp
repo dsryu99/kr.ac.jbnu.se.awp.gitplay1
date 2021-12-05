@@ -132,11 +132,12 @@
 
 	<!-- 본문 -->
 	<div id = surveyArea>
-		<c:forEach var="survey" items="surveyList" varStatus="surveyStatus">
+		<c:forEach var="survey" items="${surveys}" varStatus="surveyStatus">
 			<a id = "${surveyStatus.current}" href = "${pageContext.request.contextPath}">
 				<!-- 화면 보여주는 거 수정 필요(이름...) -->
-				${survey}
+				${survey.surveyTitle}
 			</a>
+			<br>
 		</c:forEach>
 
 <%-- 		<ul style = "list-style: none;">

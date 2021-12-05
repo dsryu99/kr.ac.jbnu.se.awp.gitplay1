@@ -3,6 +3,7 @@ package kr.ac.jbnu.se.awp.sirbay.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.ac.jbnu.se.awp.sirbay.dto.SurveyDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
+import kr.ac.jbnu.se.awp.sirbay.service.SurveyService;
 import kr.ac.jbnu.se.awp.sirbay.service.UserService;
 
 
@@ -23,6 +26,8 @@ import kr.ac.jbnu.se.awp.sirbay.service.UserService;
 public class UserController {
 	@Autowired
 	UserService userService;
+	@Autowired
+	SurveyService surveyService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
@@ -30,6 +35,15 @@ public class UserController {
 		String id = (String)session.getAttribute("userId");
 		if(id == null) model.addAttribute("isLogin", false);
 		else model.addAttribute("isLogin", true);
+		List<SurveyDTO> surveys = surveyService.getAllSurveys();
+		for(SurveyDTO survey : surveys) {
+			System.out.println(survey.getSurveyID());
+			System.out.println(survey.getSurveyTitle());
+			System.out.println(survey.getUserID());
+			System.out.println(survey.getSurveyCreatedTime());
+		}
+		model.addAttribute("surveys", surveys);
+		
 		return "page_main";
 	}
 	
@@ -42,7 +56,7 @@ public class UserController {
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", request.getParameter("id"));
 			model.addAttribute("isLogin", true);
-			return "page_main";
+			return "redirect:/";
 		} else {
 			model.addAttribute("isLogin", false);
 			
@@ -72,12 +86,12 @@ public class UserController {
 		int birthYear = Integer.parseInt(request.getParameter("birth_yy"));
 		int birthMonth = Integer.parseInt(request.getParameter("birth_mm"));
 		int birthDay = Integer.parseInt(request.getParameter("birth_dd"));
-		String email = request.getParameter("email_1") + "@" + request.getParameter("email_2");
-		String phone = request.getParameter("phone");
+//		String email = request.getParameter("email_1") + "@" + request.getParameter("email_2");
+//		String phone = request.getParameter("phone");
+		String job = request.getParameter("job");
 		String address = request.getParameter("address");
 		
 		Date birth = new Date(birthYear, birthMonth, birthDay);
-		String job = "무직";
 		userService.addUser(id, password, name, birth, job, address, gender);
 		return "redirect:/";
 	}
