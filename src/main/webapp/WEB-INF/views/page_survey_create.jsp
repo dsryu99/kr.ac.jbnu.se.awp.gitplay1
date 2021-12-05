@@ -71,40 +71,7 @@
 			
 			<hr>
 	
-			<div id = "questionBox">
-				<br>
-				<div id = "qusetion">
-					龙巩 : <input type = "text" name ="title" size = 70><br><br>
-				</div>	
-
-				<br>
-
-				<div id = "radioBox">
-					<input type = "checkBox" name = "subject + ${cnt}" value = "按包侥" onclick='(checkRadioButton(event))'> 按包侥
-					<input type = "checkBox" name = "subject" value = "林包侥" onclick='(checkRadioButton(event))'> 林包侥
-				</div>
-
-				<div id = "answer">
-									
-					<div id = 'sub'>
-						1 <input type = "text" size = 100/>
-						<br>
-						<br>
-						2 <input type = "text" size = 100/>
-						<br>
-						<br>
-						3 <input type = "text" size = 100/>
-						<br>
-						<br>
-						4 <input type = "text" size = 100/>
-						<br>
-						<br>
-						5 <input type = "text" size = 100/>
-						<br>
-					</div>
-				</div>
-			<hr style="border: solid 2px blue;">
-			</div>
+			
 		
 			<div id = 'result'></div>
 			<input type ="button" value = "龙巩 眠啊" onclick = "add_div()">
@@ -134,16 +101,18 @@
 		//div 积己
 		var div = document.createElement('div');
 		
-		//questionBox 积己
-		var questionBox = document.createElement('questionBox');
+/* 		//questionBox 积己
+		var questionBox = document.createElement('questionBox'); */
 		
+		var tag = '<div id = "questionBox"><br><div id = "qusetion">龙巩 : <input type = "text" name ="title" size = 70><br><br></div><br><div id = "radioBox"><input type = "checkBox" name = "subject + ${cnt}" value = "按包侥" onclick="(checkRadioButton(event))>" 按包侥<input type = "checkBox" name = "subject" value = "林包侥" onclick="(checkRadioButton(event))"> 林包侥 </div> <div id = "answer"><div id = 'sub'>1 <input type = "text" size = 100/><br><br>2 <input type = "text" size = 100/><br><br>3 <input type = "text" size = 100/><br><br>4 <input type = "text" size = 100/><br><br>5 <input type = "text" size = 100/><br></div></div><hr style="border: solid 2px blue;"></div>';
 		
-		div.innerHTML = document.getElementById('questionBox').innerHTML;
+		/* div.innerHTML = document.getElementById('questionBox').innerHTML; */
+		div.innerHTML = tag;
 		
 		add_cnt();
 		div.id = cnt;
 		
-		document.getElementById('result').appendChild(div);
+		document.getElementById('result').appendChild(div.content.firstChild);
 	}
 	var cnt = 0;
 	

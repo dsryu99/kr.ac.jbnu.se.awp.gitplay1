@@ -127,13 +127,12 @@
 			</c:choose>
 		</div>	
 	</div>
+	
+	<br>
 
 	<!-- 본문 -->
-	<div id = surveyArea style = "float: center">
+	<div id = surveyArea>
 		<c:forEach var="survey" items="surveyList" varStatus="surveyStatus">
-			${survey} 
-			<input id = " " onClick = " ">
-			<input id = " " onClick = " ">
 			<a id = "${surveyStatus.current}" href = "${pageContext.request.contextPath}">
 				<!-- 화면 보여주는 거 수정 필요(이름...) -->
 				${survey}
@@ -145,6 +144,9 @@
 			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 2학년 설문조사</a><br></li>
 			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 1학년 설문조사</a><br></li>
 		</ul> --%>
+		
+		<br>
+		<input type = button onClick = "" value = "설문 생성" style = "float: right">
 	</div>
 	
 	<div id = buttonArea>
