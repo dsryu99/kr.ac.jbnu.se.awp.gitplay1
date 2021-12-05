@@ -7,6 +7,8 @@
 
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 <style>
 	#logoLine{
 		border: 0px;
@@ -31,9 +33,8 @@
 	}
 	#surveyArea{
 		box-sizing: border-box;
-		width: auto;
-		height: 200px;
-		margin: 20px;
+		width: 100%;
+		height: auto;
 		border: 2px solid black;
 		border-radius: 10px;
 		padding: 2%;
@@ -70,8 +71,48 @@
 			</div>
 			
 			<hr>
-	
 			
+			<a class = "text">蜡荤 汲巩</a>
+			<input type = button value = "八祸" onClick = "" style = "float:right">
+			<br>
+			<br>
+			
+			<hr>
+			
+			<div id = "simularArea">
+			</div>
+	
+			<div id = "questionBox">
+				<br>
+				<div id = "qusetion">
+					<a class = "text">龙巩</a>
+					<br>
+					<br> 
+					<input type = "text" name ="title" size = 80>
+					<br>
+					<br>
+				</div>
+				<br>
+				<div id = "radioBox">
+					<input type = "radio" name = "subject" value = "按包侥" onclick="checkRadioButton(event)">
+					按包侥
+					<input type = "radio" name = "subject" value = "林包侥" onclick="checkRadioButton(event)" checked>
+					林包侥
+				</div>
+				<br>
+				<div id = "answer">
+					<div id = 'sub'>
+						1 <input type = "text" size = 80/><br><br>
+						2 <input type = "text" size = 80/><br><br>
+						3 <input type = "text" size = 80/><br><br>
+						4 <input type = "text" size = 80/><br><br>
+						5 <input type = "text" size = 80/><br>
+					</div>
+				</div>
+				<br>
+				<hr>
+				<br>
+			</div>
 		
 			<div id = 'result'></div>
 			<input type ="button" value = "龙巩 眠啊" onclick = "add_div()">
@@ -84,41 +125,34 @@
 </div>
 
 <script>
-	document.getElementById("sub").style.display = "none";
-					
+	var cnt = 1;
+	document.getElementById("answer").style.display = "none";
 	function checkRadioButton(event){
-				
+		console.log(event.target.value);
+		var selection = event.target.parentElement.parentElement.getElementsByTagName("div")[2];
 		if(event.target.value == "按包侥"){
-			document.getElementById("sub").style.display = "block";
+			selection.style.display = "block";
 		}
 					
 		else{
-			document.getElementById("sub").style.display = "none";
+			selection.style.display = "none";
 		}
 	}
-				
+
 	function add_div(){
-		//div 积己
 		var div = document.createElement('div');
+			
+		//questionBox 积己
+		var questionBox = document.createElement('questionBox');
 		
-/* 		//questionBox 积己
-		var questionBox = document.createElement('questionBox'); */
+		div.innerHTML = document.getElementById('questionBox').innerHTML;
+		div.getElementsByTagName("div")[2].id = "answer" + cnt;
+		div.getElementsByTagName("div")[1].children[0].name = "radio" + cnt;
+		div.getElementsByTagName("div")[1].children[1].name = "radio" + cnt++;
 		
-		var tag = '<div id = "questionBox"><br><div id = "qusetion">龙巩 : <input type = "text" name ="title" size = 70><br><br></div><br><div id = "radioBox"><input type = "checkBox" name = "subject + ${cnt}" value = "按包侥" onclick="(checkRadioButton(event))>" 按包侥<input type = "checkBox" name = "subject" value = "林包侥" onclick="(checkRadioButton(event))"> 林包侥 </div> <div id = "answer"><div id = 'sub'>1 <input type = "text" size = 100/><br><br>2 <input type = "text" size = 100/><br><br>3 <input type = "text" size = 100/><br><br>4 <input type = "text" size = 100/><br><br>5 <input type = "text" size = 100/><br></div></div><hr style="border: solid 2px blue;"></div>';
-		
-		/* div.innerHTML = document.getElementById('questionBox').innerHTML; */
-		div.innerHTML = tag;
-		
-		add_cnt();
-		div.id = cnt;
-		
-		document.getElementById('result').appendChild(div.content.firstChild);
+		document.getElementById('result').appendChild(div);
 	}
-	var cnt = 0;
-	
-	function add_cnt(){
-		cnt++;
-	}
+
 </script>
 
 </body>
