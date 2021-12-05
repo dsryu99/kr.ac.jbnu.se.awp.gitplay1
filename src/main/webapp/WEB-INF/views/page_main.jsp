@@ -146,7 +146,7 @@
 		</ul> --%>
 		
 		<br>
-		<input type = button onClick = "" value = "설문 생성" style = "float: right">
+		<form method = "post" action = "/sirbay/survey/create"><input type = submit value = "설문 생성" style = "float: right"></form>
 	</div>
 	
 	<div id = buttonArea>
