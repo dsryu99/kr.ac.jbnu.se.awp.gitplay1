@@ -2,13 +2,19 @@ package kr.ac.jbnu.se.awp.sirbay.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.ac.jbnu.se.awp.sirbay.service.SurveyService;
+
 @Controller
 public class SurveyController {
+	@Autowired
+	SurveyService surveyService;
+	
 	@RequestMapping(value = "/survey/create", method = RequestMethod.POST)
 	public String goCreateSurvey(Model model, HttpServletRequest request) {
 		

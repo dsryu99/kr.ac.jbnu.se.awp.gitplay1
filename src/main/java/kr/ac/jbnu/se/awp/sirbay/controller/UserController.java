@@ -61,7 +61,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String goRegister(Model model, HttpServletRequest request) {
-		return "signUp";
+		return "page_register";
 	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
@@ -97,7 +97,7 @@ public class UserController {
 		String id = (String) request.getSession().getAttribute("userId");
 		UserInfoDTO user = userService.getUser(id);
 		model.addAttribute("user", user);
-		return "page_myProfile";
+		return "page_myPage";
 	}
 	
 }
