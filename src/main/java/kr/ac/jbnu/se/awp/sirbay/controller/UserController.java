@@ -96,7 +96,7 @@ public class UserController {
 		String id = (String) request.getSession().getAttribute("userId");
 		UserInfoDTO user = userService.getUser(id);
 		model.addAttribute("user", user);
-		return "page_myPage";
+		return "page_mypage";
 	}
 	
 }
