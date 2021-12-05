@@ -62,13 +62,19 @@ public class SurveyController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/survey", method = RequestMethod.GET)
-	public String goSurvey(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/survey/join", method = RequestMethod.GET)
+	public String goJoinSurvey(Model model, HttpServletRequest request) {
 		
-		return "page_survey";
+		return "page_survey_join";
 	}
 	
-	@RequestMapping(value = "/survey/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/survey/result", method = RequestMethod.GET)
+	public String goSurveyResult(Model model, HttpServletRequest request) {
+		
+		return "page_survey_result";
+	}
+	
+	@RequestMapping(value = "/survey/join/complete", method = RequestMethod.POST)
 	public String joinSurvey(Model model, HttpServletRequest request) {
 		
 		return "redirect:/";

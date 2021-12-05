@@ -10,17 +10,17 @@
 </head>
 <body>
 <!-- 설문 내용 DB 저장 + 메인 페이지로 이동 action -->	
-	<form action = "/sirbay/survey/join" method="post" name = " ">
+	<form action = "/sirbay/survey/join/complete" method="post" name = " ">
 		
 		<c:forEach var="question" items="questionList" varStatus="questionStatus">
 			<br>
 			<hr style="border: solid 2px blue;">
 			<!-- 질문 제목 -->
 			<!-- 질문 1, 2, 3 -->
-			질문 ${question.~~ }
+			질문 title
 			<br>
 			<br>
-			${questionDesc}
+			desc
 			<HR>
 			답변
 			<br>

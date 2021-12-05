@@ -36,12 +36,6 @@ public class UserController {
 		if(id == null) model.addAttribute("isLogin", false);
 		else model.addAttribute("isLogin", true);
 		List<SurveyDTO> surveys = surveyService.getAllSurveys();
-		for(SurveyDTO survey : surveys) {
-			System.out.println(survey.getSurveyID());
-			System.out.println(survey.getSurveyTitle());
-			System.out.println(survey.getUserID());
-			System.out.println(survey.getSurveyCreatedTime());
-		}
 		model.addAttribute("surveys", surveys);
 		
 		return "page_main";
