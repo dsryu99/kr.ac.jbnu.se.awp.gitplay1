@@ -64,7 +64,7 @@
 				</tr>
 				<tr>
 					<td>나이</td>
-					<td style = "color:blue" align = 'center'>${user.age}</td>
+					<td style = "color:blue" align = 'center'>${user.birthDate}</td>
 				</tr>
 				<tr>
 					<td>직업</td>
@@ -77,7 +77,7 @@
 			</table>
 			
 			<!-- 회원 탈퇴 + 메인페이지로 이동 action -->
-			<form action = "" method="get" style = "float:right">
+			<form action = "/sirbay/unRegister" method="get" style = "float:right">
 				<input type = "submit" value = "회원탈퇴"> 
 			</form>
 		</div>

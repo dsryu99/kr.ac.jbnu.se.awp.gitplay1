@@ -141,7 +141,7 @@
 				<!-- 미 로그인 시 -->
 					<div id = "login">
 					<!-- 로그인 버튼 -->
-						<form method = "post" action = "">
+						<form method = "post" action = "/sirbay/login">
 							<input type = "submit" value = "로그인" style = "float:right; height = 50px">
 							<input type = "text" name = "id" placeholder = "아이디" size = 20>
 						<br>
@@ -149,7 +149,7 @@
 							<input type = "text" name = "pwd" placeholder = "비밀번호" size = 20> 
 						</form>
 					<!-- 회원가입 버튼 -->
-						<form method = post action = "" >
+						<form method = post action = "/sirbay/register" >
 							<input type = "submit" value = "회원 가입">
 						</form>
 					</div>
@@ -169,7 +169,7 @@
 						<br>
 						
 						<!-- 로그아웃 -->
-						<form method = "get" action = "" style = "float:bottom">
+						<form method = "get" action = "/sirbay/logout" style = "float:bottom">
 							<input type = "submit" value = "로그아웃">
 						</form>
 					</div>

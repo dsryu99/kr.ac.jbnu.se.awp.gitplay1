@@ -62,7 +62,7 @@
 
 	<div id = "surveyArea">
 		<!-- 작성 완료 -->
-		<form action = "" method="post">
+		<form action = "/sirbay/survey/create" method="post">
 	
 			<div id = "surbeyTitle">
 				<a class = "text">설문 제목</a>
