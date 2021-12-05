@@ -16,8 +16,8 @@
 			<br>
 			<hr style="border: solid 2px blue;">
 			<!-- 질문 제목 -->
-			<%-- 질문 ${questionStatus.count} --%>
-			질문 2
+			<!-- 질문 1, 2, 3 -->
+			질문 ${question.~~ }
 			<br>
 			<br>
 			${questionDesc}
