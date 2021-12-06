@@ -1,8 +1,8 @@
 package kr.ac.jbnu.se.awp.sirbay.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyDTO;
-import kr.ac.jbnu.se.awp.sirbay.dto.UserDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 import kr.ac.jbnu.se.awp.sirbay.service.SurveyService;
 import kr.ac.jbnu.se.awp.sirbay.service.UserService;
@@ -75,15 +74,12 @@ public class UserController {
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String gender = request.getParameter("gender");
-		int birthYear = Integer.parseInt(request.getParameter("birth_yy"));
-		int birthMonth = Integer.parseInt(request.getParameter("birth_mm"));
-		int birthDay = Integer.parseInt(request.getParameter("birth_dd"));
+		String birth = request.getParameter("birthday");
 //		String email = request.getParameter("email_1") + "@" + request.getParameter("email_2");
 //		String phone = request.getParameter("phone");
 		String job = request.getParameter("job");
 		String address = request.getParameter("address");
 		
-		Date birth = new Date(birthYear, birthMonth, birthDay);
 		userService.addUser(id, password, name, birth, job, address, gender);
 		return "redirect:/";
 	}
