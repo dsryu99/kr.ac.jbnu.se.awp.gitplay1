@@ -143,12 +143,17 @@
 								<br><br> -->
 								1 
 								<input class="form-control" name="selection1" type="text"size=80 />
-								<br><br> 
+								
 								2 
 								<input class="form-control" name="selection1" type="text" size=80 />
-								<br><br>
 								
 								<div id="addSelectionArea" class="addSelectionArea"></div>
+								
+								<br>
+								
+								<div id = "buttonArea" style = "">
+								
+								</div>
 								<input class = "btn btn-light" id="plusButton" type=button value="+"
 									onClick="add_selection(event)"> <input id="minusButton"
 									class="btn btn-light" type=button value="-"
@@ -161,10 +166,11 @@
 					</div>
 
 					<div id='addQuestionArea'></div>
-					<input class="btn btn-light" type="button" value="질문 추가" onclick="add_div()">
-
-					<%-- 설문 작성한거 제출 --%>
-
+					<!-- <div id = "buttonArea" style = "text-align: center">
+						<input class="btn btn-light" type="button" onclick="add_div()" style = "display: inline-block;">
+						<input class="btn btn-light" type= submit name="submit" style = "display: inline-block;">
+					</div> -->
+					<input class="btn btn-light" type="button" value="질문 추가" onclick="add_div()" style = "display: inline-block; float: center" >
 					<input class="btn btn-light" type= submit name="submit" value="작성 완료">
 				</form>
 			</div>
@@ -232,7 +238,7 @@
 		var questionNum = event.target.parentElement.parentElement.className;
 		console.log(questionNum);
 		var addSelectionArea = event.target.parentElement.getElementsByClassName('addSelectionArea')[0];
-		var length = 2 + (addSelectionArea.children.length / 3) + 1;
+		var length = 2 + addSelectionArea.children.length + 1;
 		
 		if(length == 5) event.target.parentElement.getElementsByClassName('btn btn-light')[0].style.display = "none";
 		if(length > 2) event.target.parentElement.getElementsByClassName('btn btn-light')[1].style.display = "inline-block";
@@ -253,19 +259,14 @@
 		addSelectionArea.append(length + " ");
 		addSelectionArea.appendChild(selection);
 		
-		addSelectionArea.append(document.createElement('br'));
-		addSelectionArea.append(document.createElement('br'));
-		
 		console.log(length);
 	}
 	
 	
 	function remove_selection(event){
 		var addSelectionArea = event.target.parentElement.getElementsByClassName('addSelectionArea')[0];
-		var length = 2 + (addSelectionArea.children.length / 3) - 1;
+		var length = 2 + addSelectionArea.children.length - 1;
 		
-		addSelectionArea.removeChild(addSelectionArea.lastChild);
-		addSelectionArea.removeChild(addSelectionArea.lastChild);
 		addSelectionArea.removeChild(addSelectionArea.lastChild);
 		addSelectionArea.removeChild(addSelectionArea.lastChild);
 		
