@@ -143,24 +143,18 @@
 	<br>
 
 	<!-- 본문 -->
-	<div id = surveyArea>
+	<div id = surveyArea style = "text-align:left">
 		<c:forEach var="survey" items="${surveys}"  varStatus="surveyStatus">
 			<!-- 화면 보여주는 거 수정 필요(이름...) -->
-			${survey.surveyTitle}
-			<input type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
-			<input type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/result?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="결과보기"/>
-			<br>
+			<a>${survey.surveyTitle}</a>
+			<input style = "float:right" type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
+			<input style = "float:right" type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/result?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="결과보기"/>
+			<hr>
 		</c:forEach>
-
-<%-- 		<ul style = "list-style: none;">
-			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 3학년 설문조사</a><br></li>
-			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 2학년 설문조사</a><br></li>
-			<li><a href ="${pageContext.request.contextPath}/survey">소프트웨어공학과 1학년 설문조사</a><br></li>
-		</ul> --%>
 		
 		<br>
 		<form method = "post" action = "/sirbay/survey/create">
-			<button type="submit" class="btn btn-primary" style = "float:right;" >설문 생성</button>
+			<button type="submit" class="btn btn-primary" style = "float:right;">설문 생성</button>
 		</form>
 	</div>
 	
