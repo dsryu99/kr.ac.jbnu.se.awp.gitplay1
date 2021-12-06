@@ -8,6 +8,9 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="resources/Style.css">
 <!-- private double similarity(String s1, String s2) {
     	String longer = s1, shorter = s2;
     
@@ -60,7 +63,7 @@
 		height: auto;
 		text-align: center;
 	}
-	#surveysArea{
+/* 	#surveysArea{
 		box-sizing: border-box;
 		width: 800px;
 		height: auto;
@@ -69,7 +72,7 @@
   		border-left: solid 2px black;
 		padding: 3%;
 		display: inline-block;
-	}
+	} */
 	#surveyArea{
 		box-sizing: border-box;
 		width: 100%;
@@ -82,6 +85,7 @@
 	a[class=text]{
 		font-weight:bold;
 	}
+	
 </style>
 <meta charset="EUC-KR">
 <title>page_survey_create</title>
@@ -98,7 +102,7 @@
 
 <hr id = "logoLine" >
 
-<div id = "surveysArea">
+<div id = "surveysArea" class = "input-form main">
 
 	<div id = "surveyArea">
 		<!-- 작성 완료 -->
