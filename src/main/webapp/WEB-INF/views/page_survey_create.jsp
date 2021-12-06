@@ -108,7 +108,8 @@
 
 					<hr>
 
-					<a class="text">유사 설문</a> <input type=button value="검색" onClick=""
+					<a class="text">유사 설문</a> 
+					<input class = "btn btn-light" type=button value="검색" onClick=""
 						style="float: right"> <br> <br>
 
 					<hr>
@@ -148,9 +149,9 @@
 								<br><br>
 								
 								<div id="addSelectionArea" class="addSelectionArea"></div>
-								<input id="plusButton" class="plusButton" type=button value="+"
+								<input class = "btn btn-light" id="plusButton" type=button value="+"
 									onClick="add_selection(event)"> <input id="minusButton"
-									class="minusButton" type=button value="-"
+									class="btn btn-light" type=button value="-"
 									onClick="remove_selection(event)">
 							</div>
 						</div>
@@ -209,7 +210,7 @@
 		
 		var selection = div.getElementsByTagName('div')[2].children[0].getElementsByClassName('form-control');
 		
-		div.getElementsByTagName("div")[2].children[0].getElementsByClassName('minusButton')[0].style.display = "none";
+		div.getElementsByTagName("div")[2].children[0].getElementsByClassName('btn btn-light')[1].style.display = "none";
 		
 		var addSelectionArea = div.getElementsByTagName("div")[2].children[0].getElementsByClassName('addSelectionArea')[0];
 		
@@ -233,8 +234,8 @@
 		var addSelectionArea = event.target.parentElement.getElementsByClassName('addSelectionArea')[0];
 		var length = 2 + (addSelectionArea.children.length / 3) + 1;
 		
-		if(length == 5) event.target.parentElement.getElementsByClassName('plusButton')[0].style.display = "none";
-		if(length > 2) event.target.parentElement.getElementsByClassName('minusButton')[0].style.display = "inline-block";
+		if(length == 5) event.target.parentElement.getElementsByClassName('btn btn-light')[0].style.display = "none";
+		if(length > 2) event.target.parentElement.getElementsByClassName('btn btn-light')[1].style.display = "inline-block";
 		
 /* 		var selection = document.createElement('selection_input');
 		selection.type = "text";
@@ -268,8 +269,8 @@
 		addSelectionArea.removeChild(addSelectionArea.lastChild);
 		addSelectionArea.removeChild(addSelectionArea.lastChild);
 		
-		if(length == 2) event.target.parentElement.getElementsByClassName('minusButton')[0].style.display = "none";
-		if(length < 5) event.target.parentElement.getElementsByClassName('plusButton')[0].style.display = "inline-block";
+		if(length == 2) event.target.parentElement.getElementsByClassName('btn btn-light')[1].style.display = "none";
+		if(length < 5) event.target.parentElement.getElementsByClassName('btn btn-light')[0].style.display = "inline-block";
 		console.log(length);
 	}
 	
