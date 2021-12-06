@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../resources/style.css">
+    <link rel="stylesheet" type="text/css" href="resources/style.css">
 <!-- private double similarity(String s1, String s2) {
     	String longer = s1, shorter = s2;
     
@@ -60,13 +60,12 @@
 <title>page_survey_create</title>
 </head>
 <body>
-<!-- 로고 -->
-<div id = "logoArea" align = "center" style = "width: 200xp; height: 50px">
+
+<div id = "logoArea" align = "center" style = "width: 100%; height: 50px">
 	<!-- 리다이렉트 -->
-	<form method = "get" action="">
-		<!-- 이미지 로고 출력 -->
-		<input type = "image" src = "" alt = "logo">
-	</form>
+	<a href = "${pageContext.request.contextPath}">
+		<img src = "../resources/logo.png" alt = "logo" width = "100px" height = "50px" >
+	</a>
 </div>
 
 <hr id = "logoLine">

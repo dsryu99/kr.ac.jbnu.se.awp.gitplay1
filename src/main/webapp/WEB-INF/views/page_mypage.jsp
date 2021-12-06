@@ -14,6 +14,13 @@
 </head>
 <body>
 
+<div id = "logoArea" align = "center" style = "width: 100%; height: 50px">
+	<!-- 리다이렉트 -->
+	<a href = "${pageContext.request.contextPath}">
+		<img src = "resources/logo.png" alt = "logo" width = "100px" height = "50px" >
+	</a>
+</div>
+
   <div class="container rounded bg-white mt-5 mb-5">
     <div class="row input-form-mypage">
         <div class="col-md-3 border-right">

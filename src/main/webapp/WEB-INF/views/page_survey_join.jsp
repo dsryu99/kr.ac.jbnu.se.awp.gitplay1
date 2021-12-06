@@ -9,18 +9,16 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="../resources/style.css">
+<link rel="stylesheet" type="text/css" href="resources/style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="logoArea" align="center">
-		<!-- 리다이렉트 -->
-		<form method="get" action="">
-			<!-- 이미지 로고 출력 -->
-			<input type="image" src="../resources/logo.png" alt="logo"
-				style="width: 200xp; height: 50px">
-		</form>
+	<div id = "logoArea" align = "center" style = "width: 100%; height: 50px">
+	<!-- 리다이렉트 -->
+		<a href = "${pageContext.request.contextPath}">
+			<img src = "../resources/logo.png" alt = "logo" width = "100px" height = "50px" >
+		</a>
 	</div>
 
 	<hr id="logoLine">

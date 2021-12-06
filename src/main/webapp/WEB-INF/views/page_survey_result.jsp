@@ -13,13 +13,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="logoArea" align="center">
-		<!-- 리다이렉트 -->
-		<form method="get" action="">
-			<!-- 이미지 로고 출력 -->
-			<input type="image" src="../resources/logo.png" alt="logo"
-				style="width: 200xp; height: 50px">
-		</form>
+	<div id = "logoArea" align = "center" style = "width: 100%; height: 50px">
+	<!-- 리다이렉트 -->
+		<a href = "${pageContext.request.contextPath}">
+			<img src = "../resources/logo.png" alt = "logo" width = "100px" height = "50px" >
+		</a>
 	</div>
 
 	<hr id="logoLine">
