@@ -162,14 +162,9 @@
 						</div>
 						<br>
 						<hr>
-						<br>
 					</div>
 
 					<div id='addQuestionArea'></div>
-					<!-- <div id = "buttonArea" style = "text-align: center">
-						<input class="btn btn-light" type="button" onclick="add_div()" style = "display: inline-block;">
-						<input class="btn btn-light" type= submit name="submit" style = "display: inline-block;">
-					</div> -->
 					<input class="btn btn-light" type="button" value="질문 추가" onclick="add_div()" style = "display: inline-block; float: center" >
 					<input class="btn btn-light" type= submit name="submit" value="작성 완료">
 				</form>
