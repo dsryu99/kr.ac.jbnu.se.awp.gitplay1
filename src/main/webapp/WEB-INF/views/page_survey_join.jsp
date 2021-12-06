@@ -10,35 +10,37 @@
 </head>
 <body>
 <!-- 설문 내용 DB 저장 + 메인 페이지로 이동 action -->	
+	<p>${surveyTitle}</p>
 	<form action = "/sirbay/survey/join/complete" method="post">
 		<input type="hidden" value="${surveyId}" name="surveyId"/>
-		<c:forEach var="question" items="questionList" varStatus="questionStatus">
+		<c:forEach var="question" items="${questions}" varStatus="questionStatus">
 			<br>
 			<hr style="border: solid 2px blue;">
 			<!-- 질문 제목 -->
 			<!-- 질문 1, 2, 3 -->
-			질문 title
+			질문 ${question.questionNum}
 			<br>
 			<br>
-			desc
+			${question.questionDesc}
 			<HR>
 			답변
 			<br>
 			<br>
 			<!-- 질문 답변 타입 -->
 			<!-- 답변 이름 정해야함 -->
-			<c:if test="${isMultipleChoiceQuestion == 'true'}">
+			<c:if test="${question.isMultipleChoiceQuestion == true}">
 				<!-- 객관식 -->
-				<c:forEach var="multipleChoiseQuestionItem" items="multipleChoiseQuestionItemList" varStatus="answerStatus">
-					<!-- 객관식 문항, 객관식 문항 별 선택 횟수-->
-					<input type = checkbox value = "${multipleChoiseQuestionItem.itemContent}" name = "multipleAnswer" required>
+				<c:forEach var="multipleQuestion" items="${multipleQuestions}" varStatus="answerStatus">
+					<c:forEach var="Question" items="${multipleQuestion}" varStatus="answerStatus">
+						<c:if test="${Question.questionNum == question.questionNum}">
+							<input type = radio value = "${Question.itemContent}" name = "multipleAnswer" required>${Question.itemContent}</input>
+						</c:if>
+					</c:forEach>
 				</c:forEach>
 			</c:if>
-			<c:if test="${isMultipleChoiceQuestion == 'false'}">
+			<c:if test="${question.isMultipleChoiceQuestion == false}">
 				<!-- 주관식 -->
-				<c:forEach var="surveyAnswer" items="surveyAnswerList" varStatus="answerStatus">
-					<input type = text size = 100 required> 
-				</c:forEach>
+				<input type = text size = 100 name="Answer" required> 
 			</c:if>
 		</c:forEach>
 		

@@ -30,7 +30,7 @@ public class QuestionDTO {
 	public void setEssential(boolean isEssential) {
 		this.isEssential = isEssential;
 	}
-	public boolean isMultipleChoiceQuestion() {
+	public boolean getIsMultipleChoiceQuestion() {
 		return isMultipleChoiceQuestion;
 	}
 	public void setMultipleChoiceQuestion(boolean isMultipleChoiceQuestion) {
