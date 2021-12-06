@@ -51,14 +51,7 @@
 	.SirBay{
 	display:block;
     margin:0px auto;
-}
-	
-	.id-bar{
 	}
-	
-	.password-bar{
-	}
-	
 	.login-Button{
 	    left: 173px;
 	}
@@ -83,7 +76,7 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
     
-    <!-- 마이페이지 css 시작-->
+    /* 마이페이지 css 시작 */
     
     .form-control:focus {
         box-shadow: none;
@@ -143,4 +136,4 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
     }
     
-    <!-- 마이페이지 css 끝-->
+    /* 마이페이지 css 끝 */
