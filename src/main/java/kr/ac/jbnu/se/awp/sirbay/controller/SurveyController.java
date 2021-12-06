@@ -133,11 +133,22 @@ public class SurveyController {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		int surveyId = Integer.parseInt(request.getParameter("surveyId"));
+		System.out.println(surveyService.isAnswered(userId, surveyId));
 		if(surveyService.isAnswered(userId, surveyId)) return "redirect:/";
 		
 		HashMap<Integer, String> answers = new HashMap<Integer, String>();
-		answers.put(1, "hello");
-		answers.put(2, "1");
+		Map<String, String[]> params = request.getParameterMap();
+		for(Iterator<String> it = params.keySet().iterator(); it.hasNext();) {
+			String key = it.next();
+			String value = params.get(key)[0];
+			if(key.contains("subjectiveAnswer")) {
+				int questionNum = Integer.parseInt(key.split("subjectiveAnswer")[1]);
+				answers.put(questionNum, value);
+			} else if(key.contains("multipleAnswer")) {
+				int questionNum = Integer.parseInt(key.split("multipleAnswer")[1]);
+				answers.put(questionNum, value);
+			}
+		}
 		surveyService.addAnswer(userId, surveyId, answers);
 		return "redirect:/";
 	}

@@ -33,14 +33,14 @@
 				<c:forEach var="multipleQuestion" items="${multipleQuestions}" varStatus="answerStatus">
 					<c:forEach var="Question" items="${multipleQuestion}" varStatus="answerStatus">
 						<c:if test="${Question.questionNum == question.questionNum}">
-							<input type = radio value = "${Question.itemContent}" name = "multipleAnswer" required>${Question.itemContent}</input>
+							<input type = radio value = "${Question.itemContent}" name = "multipleAnswer${question.questionNum}" required>${Question.itemContent}</input>
 						</c:if>
 					</c:forEach>
 				</c:forEach>
 			</c:if>
 			<c:if test="${question.isMultipleChoiceQuestion == false}">
 				<!-- 주관식 -->
-				<input type = text size = 100 name="Answer" required> 
+				<input type = text size = 100 name="subjectiveAnswer${question.questionNum}" required> 
 			</c:if>
 		</c:forEach>
 		
