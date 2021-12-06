@@ -34,7 +34,10 @@ public class UserController {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("userId");
 		if(id == null) model.addAttribute("isLogin", false);
-		else model.addAttribute("isLogin", true);
+		else {
+			model.addAttribute("username", userService.getUser(id).getUserName());
+			model.addAttribute("isLogin", true);
+		}
 		List<SurveyDTO> surveys = surveyService.getAllSurveys();
 		model.addAttribute("surveys", surveys);
 		
@@ -49,13 +52,8 @@ public class UserController {
 		if(isValid) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", request.getParameter("id"));
-			model.addAttribute("isLogin", true);
 			return "redirect:/";
-		} else {
-			model.addAttribute("isLogin", false);
-			
-			return "redirect:/";
-		}
+		} else return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)

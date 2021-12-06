@@ -107,7 +107,7 @@
 				<c:otherwise>
 				<!-- 로그인 시 -->
 					<div id = "donelogin">
-						${id} 님
+						${username} 님
 					 
 						<!-- 마이페이지 -->
 						<a href="${pageContext.request.contextPath}/myPage" onClick = "log(this);">
@@ -135,8 +135,8 @@
 		<c:forEach var="survey" items="${surveys}" varStatus="surveyStatus">
 			<!-- 화면 보여주는 거 수정 필요(이름...) -->
 			${survey.surveyTitle}
-			<input type="button" onclick="location.href='/sirbay/survey/join'" value="설문참여"/>
-			<input type="button" onclick="location.href='/sirbay/survey/result'" value="결과보기"/>
+			<input type="button" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
+			<input type="button" onclick="location.href='/sirbay/survey/result?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="결과보기"/>
 			<br>
 		</c:forEach>
 
