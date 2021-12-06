@@ -68,7 +68,7 @@
 	    left: 73px;
 
 	}
-	.input-form{
+	.input-form {
       max-width: 680px;
 
       margin-top: 80px;
@@ -81,4 +81,8 @@
       -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
       -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+    
+    .radio-Button{
+        padding-bottom: 10px;
     }

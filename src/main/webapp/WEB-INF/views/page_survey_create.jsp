@@ -58,11 +58,11 @@
 		background-color: black;
 		border-radius: 5px;
 	}
-	 #contentsArea{
+/* 	 #contentsArea{
 		width: auto;
 		height: auto;
 		text-align: center;
-	}
+	} */
 	#surveyArea{
 		box-sizing: border-box;
 		width: 100%;
@@ -95,12 +95,14 @@
 	<div id="contentsArea">
 		<div id="surveysArea" class="input-form main" style = "display:inline-block">
 
-			<div id="surveyArea" style = "text-align: left">
+			<div id="surveyArea" style = "text-align:left;">
 				<!-- 작성 완료 -->
 				<form action="/sirbay/survey/create/complete" method="post">
 
 					<div id="surbeyTitle">
-						<a class="text">설문 제목</a> <input type="text" name="title" size=70><br>
+						<a class="text">설문 제목</a> 
+						<input type="text" class="form-control" name="title" placeholder="" value="" required>
+						<!-- <input type="text" name="title" size=70> --><br>
 						<br>
 					</div>
 
@@ -113,11 +115,14 @@
 
 					<div id="simularArea"></div>
 
-					<div id="questionBox" class="1">
+					<div id="questionBox">
 						<br>
 						<div id="qusetion">
-							<a class="text">질문</a> <br> <br> <input class="title"
-								type="text" name="title1" size=80> <br> <br>
+							<a class="text">질문</a> <br> <br> 
+							<!-- <input class="title" type="text" name="title1" size=80>  -->
+							<input type="text" class="form-control" name="title1" placeholder="" value="" required>
+							
+							<br>
 						</div>
 						<br>
 						<div id="radioBox">
@@ -127,13 +132,21 @@
 								onclick="checkRadioButton(event)" checked> 주관식
 						</div>
 						<br>
-						<div id="answer1">
+						<div id="answer1" class="1">
 							<div id='sub'>
-								1 <input class="selection1" name="selection1" type="text"
-									size=80 /><br>
-								<br> 2 <input class="selection1" name="selection1"
-									type="text" size=80 /><br>
-								<br>
+								<!-- 1 
+								<input class="selection1" name="selection1" type="text"size=80 />
+								<br><br> 
+								2 
+								<input class="selection1" name="selection1" type="text" size=80 />
+								<br><br> -->
+								1 
+								<input class="form-control" name="selection1" type="text"size=80 />
+								<br><br> 
+								2 
+								<input class="form-control" name="selection1" type="text" size=80 />
+								<br><br>
+								
 								<div id="addSelectionArea" class="addSelectionArea"></div>
 								<input id="plusButton" class="plusButton" type=button value="+"
 									onClick="add_selection(event)"> <input id="minusButton"
@@ -181,15 +194,20 @@
 			
 		//questionBox 생성
 		var questionBox = document.createElement('questionBox');
+		test = questionBox;
+		
 		questionBox.class = cnt;
-		questionBox.children[0].
 		
 		div.innerHTML = document.getElementById('questionBox').innerHTML;
 		
 		div.getElementsByTagName("div")[2].id = "answer" + cnt;
-		var selection = div.getElementsByTagName("div")[2].children[0].getElementsByClassName('selection1');
+		div.getElementsByTagName("div")[2].setAttribute("class", cnt);
+		/* div.getElementsByTagName("div")[2].class = cnt; */
+		/* var selection = div.getElementsByTagName("div")[2].children[0].getElementsByClassName('selection1');
 		selection[0].name = "selection" + cnt;
-		selection[1].name = "selection" + cnt;
+		selection[1].name = "selection" + cnt; */
+		
+		var selection = div.getElementsByTagName('div')[2].children[0].getElementsByClassName('form-control');
 		
 		div.getElementsByTagName("div")[2].children[0].getElementsByClassName('minusButton')[0].style.display = "none";
 		
@@ -207,19 +225,29 @@
 		document.getElementById('addQuestionArea').appendChild(div);
 	}
 	
+	var test;
+	
 	function add_selection(event){
 		var questionNum = event.target.parentElement.parentElement.className;
+		console.log(questionNum);
 		var addSelectionArea = event.target.parentElement.getElementsByClassName('addSelectionArea')[0];
 		var length = 2 + (addSelectionArea.children.length / 3) + 1;
 		
 		if(length == 5) event.target.parentElement.getElementsByClassName('plusButton')[0].style.display = "none";
 		if(length > 2) event.target.parentElement.getElementsByClassName('minusButton')[0].style.display = "inline-block";
 		
-		var selection = document.createElement('input');
+/* 		var selection = document.createElement('selection_input');
 		selection.type = "text";
-		selection.class = "selection" + questionNum;
+		selection.class = "form-control";
 		selection.name = "selection" + questionNum;
-		selection.size = 80;
+		selection.size = 80; */
+		
+ 		var selection = document.createElement('input');
+		selection.type = "text";
+		selection.setAttribute("class", "form-control");
+		/* selection.class = "form-control"; */
+		selection.name = "selection" + questionNum;
+
 		
 		addSelectionArea.append(length + " ");
 		addSelectionArea.appendChild(selection);
