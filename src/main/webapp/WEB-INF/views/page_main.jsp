@@ -147,8 +147,8 @@
 		<c:forEach var="survey" items="${surveys}"  varStatus="surveyStatus">
 			<!-- 화면 보여주는 거 수정 필요(이름...) -->
 			<a>${survey.surveyTitle}</a>
-			<input style = "float:right" type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
-			<input style = "float:right" type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/result?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="결과보기"/>
+			<input style = "float:right" type="button" class = "btn btn-light btn-sm" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
+			<input style = "float:right" type="button" class = "btn btn-light btn-sm" onclick="location.href='/sirbay/survey/result?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="결과보기"/>
 			<hr>
 		</c:forEach>
 		
