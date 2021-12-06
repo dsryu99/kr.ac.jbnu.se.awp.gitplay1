@@ -65,7 +65,7 @@ public class SurveyController {
 				questions.add(question);
 			}
 		}
-		
+		model.addAttribute("surveys", surveyService.getAllSurveys());
 		surveyService.addSurvey(userId, surveyTitle, questions, choiceAnswers);
 		return "redirect:/";
 	}
