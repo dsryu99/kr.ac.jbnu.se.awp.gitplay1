@@ -19,6 +19,7 @@ import kr.ac.jbnu.se.awp.sirbay.dto.MultipleChoiceQuestionItemDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.QuestionDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyAnswerDTO;
 import kr.ac.jbnu.se.awp.sirbay.service.SurveyService;
+import net.sf.json.JSONArray;
 
 @Controller
 public class SurveyController {
@@ -65,7 +66,7 @@ public class SurveyController {
 				questions.add(question);
 			}
 		}
-		model.addAttribute("surveys", surveyService.getAllSurveys());
+		model.addAttribute("surveys", JSONArray.fromObject(surveyService.getAllSurveys()));
 		surveyService.addSurvey(userId, surveyTitle, questions, choiceAnswers);
 		return "redirect:/";
 	}
