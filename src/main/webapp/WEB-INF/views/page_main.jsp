@@ -84,7 +84,7 @@
 	
 		<!-- 공지사항 -->
 		<div id = NoticeArea></div>
-
+	
 		<!-- 로그인 -->
 		<div id = "loginArea">
 			<font size = 5px style = "bold" >로그인</font>
@@ -147,7 +147,7 @@
 
 	<!-- 본문 -->
 	<div id = surveyArea>
-		<c:forEach var="survey" items="${surveys}" varStatus="surveyStatus">
+		<c:forEach var="survey" items="${surveys}"  varStatus="surveyStatus">
 			<!-- 화면 보여주는 거 수정 필요(이름...) -->
 			${survey.surveyTitle}
 			<input type="button" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
