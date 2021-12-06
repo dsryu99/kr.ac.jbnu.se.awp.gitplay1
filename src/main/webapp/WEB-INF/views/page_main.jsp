@@ -122,7 +122,7 @@
 					<div id = "donelogin">
 						${username} 님
 						
-						<form method = "post" action = ""> <!-- 액션 넣어주세요 응기잇 -->
+						<form method = "get" action = "/sirbay/myPage">
 						 	<div class="myPage-Button input-group mb-3" style="top: 23px;" >
 							      <button type="submit" class="btn btn-light">마이페이지</button>
 							</div>
