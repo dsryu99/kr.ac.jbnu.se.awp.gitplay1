@@ -83,7 +83,14 @@
 	<div id = "upperArea">
 	
 		<!-- 공지사항 -->
-		<div id = NoticeArea></div>
+		<div id = NoticeArea style = "text-align:left; padding:3%; width:700px">
+		<h3> <공지사항> </h3><br>
+		페이지가 개설되었습니다.<br> 
+		결과가 항상 누적되고, 언제든 누구나 참여할 수 있는 설문조사 사이트 입니다.<br><br>
+		* 설문 생성을 위해서는 로그인이 필요합니다. <br>
+		* 기타 문의 사항은 ljr0683@gmail.com를 이용해 주세요.<br>
+		
+		</div>
 	
 		<!-- 로그인 -->
 		<div id = "loginArea">
