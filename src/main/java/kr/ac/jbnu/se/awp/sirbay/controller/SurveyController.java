@@ -1,17 +1,12 @@
 package kr.ac.jbnu.se.awp.sirbay.controller;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +56,9 @@ public class SurveyController {
 					String[] selections = map.get("selection" + questionNum);
 					for(int i=0; i<selections.length; i++) {
 						MultipleChoiceQuestionItemDTO mc = new MultipleChoiceQuestionItemDTO();
-						mc.setItemNum(questionNum);
+						mc.setItemNum(i+1);
 						mc.setItemContent(selections[i]);
-						mc.setQuestionNum(i+1);
+						mc.setQuestionNum(questionNum);
 						choiceAnswers.add(mc);
 					}
 				}
@@ -125,7 +120,6 @@ public class SurveyController {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		int surveyId = Integer.parseInt(request.getParameter("surveyId"));
-		System.out.println(surveyService.isAnswered(userId, surveyId));
 		if(surveyService.isAnswered(userId, surveyId)) return "redirect:/";
 		
 		HashMap<Integer, String> answers = new HashMap<Integer, String>();
