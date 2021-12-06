@@ -93,25 +93,19 @@ public class SurveyController {
 	public String goSurveyResult(Model model, HttpServletRequest request) {
 		int surveyId = Integer.parseInt(request.getParameter("id"));
 		String surveyTitle = request.getParameter("title");
-		System.out.println("title: " + surveyTitle);
 		List<QuestionDTO> questions = surveyService.getSurvey(surveyId);
 		List<SurveyAnswerDTO> answers = surveyService.getAnswers(surveyId);
+		List<List<MultipleChoiceQuestionItemDTO>> multipleChoiceQuestions = new ArrayList<List<MultipleChoiceQuestionItemDTO>>();
 		for(QuestionDTO question : questions) {
-			System.out.print(question.getQuestionNum() + "번 질문 : ");
-			System.out.println(question.getQuestionDesc());
 			if(question.getIsMultipleChoiceQuestion()) {
-				List<MultipleChoiceQuestionItemDTO> multipleQuestions = surveyService.getMultipleChoiceQuestions(2, 2);
-				for(MultipleChoiceQuestionItemDTO multipleQuestion : multipleQuestions) {
-					System.out.print(multipleQuestion.getItemNum() + " 번 답 : ");
-					System.out.println(multipleQuestion.getItemContent());
-				}
+				List<MultipleChoiceQuestionItemDTO> multipleQuestions = surveyService.getMultipleChoiceQuestions(surveyId, question.getQuestionNum());
+				multipleChoiceQuestions.add(multipleQuestions);
 			}
 		}
-		for(SurveyAnswerDTO answer : answers) {
-			System.out.print(answer.getQuestionNum() + "번 질문 : ");
-			System.out.println(answer.getAnswer());
-			System.out.println("답변 횟수: " + answer.getCount());
-		}
+		model.addAttribute("title", surveyTitle);
+		model.addAttribute("questions", questions);
+		model.addAttribute("answers", answers);
+		model.addAttribute("multipleQuestions", multipleChoiceQuestions);
 		return "page_survey_result";
 	}
 	
