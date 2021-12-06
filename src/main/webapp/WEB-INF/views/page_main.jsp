@@ -121,22 +121,19 @@
 				<!-- 로그인 시 -->
 					<div id = "donelogin">
 						${username} 님
-					 
-						<!-- 마이페이지 -->
-						<a href="${pageContext.request.contextPath}/myPage" onClick = "log(this);">
-							<font size = 2em>
-							내정보
-							</font>
-						</a> 				
-						<br>
-						<br>
 						
+						<form method = "post" action = ""> <!-- 액션 넣어주세요 응기잇 -->
+						 	<div class="myPage-Button input-group mb-3" style="top: 23px;" >
+							      <button type="submit" class="btn btn-light">마이페이지</button>
+							</div>
+						</form>
 						<!-- 로그아웃 -->
-						<form method = "post" action = "/sirbay/logout" style = "float:bottom">
-							<div class="logout-Button input-group mb-3">
+						<form method = "post" action = "/sirbay/logout" >
+							<div class="logout-Button input-group mb-3" style="top: 26px;">
 						        <button type="submit" class="btn btn-light">로그아웃</button>
 						    </div>
 						</form>
+						
 					</div>
 				</c:otherwise>
 			</c:choose>
