@@ -161,11 +161,11 @@
 					</div>
 
 					<div id='addQuestionArea'></div>
-					<input type="button" value="질문 추가" onclick="add_div()">
+					<input class="btn btn-light" type="button" value="질문 추가" onclick="add_div()">
 
 					<%-- 설문 작성한거 제출 --%>
 
-					<input type=submit name="submit" value="작성 완료">
+					<input class="btn btn-light" type= submit name="submit" value="작성 완료">
 				</form>
 			</div>
 		</div>
