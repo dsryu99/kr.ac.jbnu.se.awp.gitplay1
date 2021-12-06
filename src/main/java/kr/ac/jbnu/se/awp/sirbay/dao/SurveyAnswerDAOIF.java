@@ -5,7 +5,7 @@ import java.util.List;
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyAnswerDTO;
 
 public interface SurveyAnswerDAOIF {
-	public int surveyAnswergetCount(int questionNum, int surveyID);
+	public int surveyAnswergetCount(int questionNum, int surveyID, String answer);
 	public int surveyAnswergetAnswer(int questionNum, int surveyID);
 	public List<SurveyAnswerDTO> surveyAnswergetAllAnswer(int surveyID);
 	public int surveyAnswerInsert(int questionNum, int surveyID, String answer, int count);

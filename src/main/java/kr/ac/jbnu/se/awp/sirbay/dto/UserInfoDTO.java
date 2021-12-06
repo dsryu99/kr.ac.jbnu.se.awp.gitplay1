@@ -1,7 +1,5 @@
 package kr.ac.jbnu.se.awp.sirbay.dto;
 
-import java.sql.Date;
-
 public class UserInfoDTO {
 	private String userID;
 	private String userName;

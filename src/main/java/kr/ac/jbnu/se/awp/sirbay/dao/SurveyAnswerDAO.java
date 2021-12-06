@@ -14,8 +14,8 @@ import kr.ac.jbnu.se.awp.sirbay.dto.SurveyAnswerDTO;
 public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 
 	@Override
-	public int surveyAnswergetCount(int questionNum, int surveyID) {
-		String SQL = "SELECT count FROM surveyAnswer WHERE questionNum = ? AND surveyID = ?";
+	public int surveyAnswergetCount(int questionNum, int surveyID, String answer) {
+		String SQL = "SELECT count FROM surveyAnswer WHERE questionNum = ? AND surveyID = ? AND answer = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -25,6 +25,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, questionNum);
 			pstmt.setInt(2, surveyID);
+			pstmt.setString(3, answer);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				count = rs.getInt(1);
@@ -124,16 +125,16 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 
 	@Override
 	public int surveyAnswerUpdate(int questionNum, int surveyID, String answer, int count) {
-		String SQL = "UPDATE surveyAnswer SET answer = ?, count = ? WHERE questionNum = ? AND surveyID = ?";
+		String SQL = "UPDATE surveyAnswer SET count = ? WHERE questionNum = ? AND surveyID = ? AND answer = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, answer);
-			pstmt.setInt(2, count);
-			pstmt.setInt(3, questionNum);
-			pstmt.setInt(4, surveyID);
+			pstmt.setInt(1, count);
+			pstmt.setInt(2, questionNum);
+			pstmt.setInt(3, surveyID);
+			pstmt.setString(4, answer);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception

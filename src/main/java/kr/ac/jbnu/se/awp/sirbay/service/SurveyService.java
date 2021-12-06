@@ -94,7 +94,7 @@ public class SurveyService implements SurveyServiceIF {
 		try {
 			int count = 0;
 			for(Integer key : answers.keySet()) {
-				count = surveyAnswerDAO.surveyAnswergetCount(key, surveyId);
+				count = surveyAnswerDAO.surveyAnswergetCount(key, surveyId, answers.get(key));
 				if(count == -1) {//first generation
 					surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key), 1);
 				} else if(count == -2) {//DB exception

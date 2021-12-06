@@ -1,6 +1,5 @@
 package kr.ac.jbnu.se.awp.sirbay.dao;
 
-import java.sql.Date;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 
 public interface UserInfoDAOIF {
