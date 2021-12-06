@@ -5,7 +5,7 @@ import java.sql.Date;
 public class UserInfoDTO {
 	private String userID;
 	private String userName;
-	private Date userBirthdate;// form: yyyyMMdd
+	private String userBirthdate;// form: yyyyMMdd
 	private String userJob;
 	private String userAddress;
 	private String userSex;
@@ -22,10 +22,10 @@ public class UserInfoDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Date getUserBirthdate() {
+	public String getUserBirthdate() {
 		return userBirthdate;
 	}
-	public void setUserBirthdate(Date userBirthdate) {
+	public void setUserBirthdate(String userBirthdate) {
 		this.userBirthdate = userBirthdate;
 	}
 	public String getUserJob() {

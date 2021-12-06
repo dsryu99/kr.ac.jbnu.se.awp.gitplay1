@@ -27,7 +27,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 				UserInfoDTO userInfoDTO = new UserInfoDTO();
 				userInfoDTO.setUserID(rs.getString(1));
 				userInfoDTO.setUserName(rs.getString(2));
-				userInfoDTO.setUserBirthdate(rs.getDate(3));
+				userInfoDTO.setUserBirthdate(rs.getString(3));
 				userInfoDTO.setUserJob(rs.getString(4));
 				userInfoDTO.setUserAddress(rs.getString(5));
 				userInfoDTO.setUserSex(rs.getString(6));
@@ -46,17 +46,16 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoInsert(String userID, String userName, Date userBirthdate, String userJob, String userAddress, String userSex) {
+	public int userInfoInsert(String userID, String userName, String userBirthdate, String userJob, String userAddress, String userSex) {
 		String SQL = "INSERT INTO UserInfo VALUES(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String birthdate = userBirthdate.getYear()+"-"+userBirthdate.getMonth()+"-"+userBirthdate.getDate();
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			pstmt.setString(2, userName);
-			pstmt.setString(3, birthdate);
+			pstmt.setString(3, userBirthdate);
 			pstmt.setString(4, userJob);
 			pstmt.setString(5, userAddress);
 			pstmt.setString(6, userSex);
@@ -72,7 +71,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 	}
 
 	@Override
-	public int userInfoUpdate(String userID, String userName, Date userBirthdate, String userJob, String userAddress, String userSex) {
+	public int userInfoUpdate(String userID, String userName, String userBirthdate, String userJob, String userAddress, String userSex) {
 		String SQL = "UPDATE UserInfo SET UserName = ?, UserAge = ?, UserJob = ?, UserAddress = ?, UserSex = ? WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -80,7 +79,7 @@ public class UserInfoDAO implements UserInfoDAOIF {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userName);
-			pstmt.setDate(2, userBirthdate);
+			pstmt.setString(2, userBirthdate);
 			pstmt.setString(3, userJob);
 			pstmt.setString(4, userAddress);
 			pstmt.setString(5, userSex);

@@ -1,7 +1,5 @@
 package kr.ac.jbnu.se.awp.sirbay.service;
 
-import java.sql.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +34,7 @@ public class UserService implements UserServiceIF {
 	}
 
 	@Override
-	public boolean addUser(String id, String password, String name, Date birth, String job, String address, String sex) {
+	public boolean addUser(String id, String password, String name, String birth, String job, String address, String sex) {
 		try {
 			userDAO.userInsert(id, password);
 			userInfoDAO.userInfoInsert(id, name, birth, job, address, sex);
