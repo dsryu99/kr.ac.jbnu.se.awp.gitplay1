@@ -1,5 +1,5 @@
 @charset "EUC-KR";
-#logoLine{
+	#logoLine{
 		border: 0px;
 		height: 30px;
 		background-color: black;
@@ -47,6 +47,16 @@
 		border-right: solid 2px black;
   		border-left: solid 2px black;
 		padding: 3%;
+	}
+	
+	#surveyListArea{
+		box-sizing: border-box;
+		width: auto;
+		height: auto;
+		border: 2px solid black;
+		border-radius: 10px;
+		padding: 2%;
+		display: inline-block;
 	}
 	.SirBay{
 	display:block;

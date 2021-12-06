@@ -52,30 +52,9 @@
 	} -->
 	
 <style>
-	#logoLine{
-		border: 0px;
-		height: 30px;
-		background-color: black;
-		border-radius: 5px;
-	}
-/* 	 #contentsArea{
-		width: auto;
-		height: auto;
-		text-align: center;
-	} */
-	#surveyArea{
-		box-sizing: border-box;
-		width: auto;
-		height: auto;
-		border: 2px solid black;
-		border-radius: 10px;
-		padding: 2%;
-		display: inline-block;
-	}
 	a[class=text]{
 		font-weight:bold;
 	}
-	
 </style>
 <meta charset="UTF-8">
 <title>page_survey_create</title>
@@ -95,7 +74,7 @@
 	<div id="contentsArea">
 		<div id="surveysArea" class="input-form main" style = "display:inline-block">
 
-			<div id="surveyArea" style = "text-align:left;display:inline-block">
+			<div id="surveyListArea" style = "text-align:left;display:inline-block">
 				<!-- 작성 완료 -->
 				<form action="/sirbay/survey/create/complete" method="post">
 
@@ -160,7 +139,6 @@
 									onClick="remove_selection(event)">
 							</div>
 						</div>
-						<br>
 						<hr>
 					</div>
 
