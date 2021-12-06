@@ -65,7 +65,7 @@
 	} */
 	#surveyArea{
 		box-sizing: border-box;
-		width: 100%;
+		width: auto;
 		height: auto;
 		border: 2px solid black;
 		border-radius: 10px;
@@ -90,12 +90,12 @@
 	</form>
 </div>
 
-<hr id = "logoLine" >
+<hr id = "logoLine">
 
 	<div id="contentsArea">
 		<div id="surveysArea" class="input-form main" style = "display:inline-block">
 
-			<div id="surveyArea" style = "text-align:left;">
+			<div id="surveyArea" style = "text-align:left;display:inline-block">
 				<!-- 작성 완료 -->
 				<form action="/sirbay/survey/create/complete" method="post">
 
