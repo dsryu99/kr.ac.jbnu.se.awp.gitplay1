@@ -102,7 +102,7 @@
 
 <hr id = "logoLine" >
 
-<div class = "input-form">
+<div id = "surveysArea" class = "input-form main">
 
 	<div id = "surveyArea">
 		<!-- 작성 완료 -->
