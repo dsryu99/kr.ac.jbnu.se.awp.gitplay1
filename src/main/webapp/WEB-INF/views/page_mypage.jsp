@@ -8,62 +8,13 @@
   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <style>
-    body {
-        background: rgb(99, 39, 120)
-    }
-
-    .form-control:focus {
-        box-shadow: none;
-        border-color: #BA68C8
-    }
-
-    .profile-button {
-        background: rgb(99, 39, 120);
-        box-shadow: none;
-        border: none
-    }
-
-    .profile-button:hover {
-        background: #682773
-    }
-
-    .profile-button:focus {
-        background: #682773;
-        box-shadow: none
-    }
-
-    .profile-button:active {
-        background: #682773;
-        box-shadow: none
-    }
-
-    .back:hover {
-        color: #682773;
-        cursor: pointer
-    }
     
-    .labels {
-        font-size: 15px
-    }
-
-    .add-experience:hover {
-        background: #BA68C8;
-        color: #fff;
-        cursor: pointer;
-        border: solid 1px #BA68C8
-    }
-    
-    .unregister {
-    	margin-bottom: 20px;
-    }
-  </style>
+    <link rel="stylesheet" type="text/css" href="resources/style.css">
 </head>
 <body>
 
   <div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
+    <div class="row input-form-mypage">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
         </div>
@@ -87,9 +38,7 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>
-</div>
-</div>
+      </div>
+	</div>
 </body>
 </html>
