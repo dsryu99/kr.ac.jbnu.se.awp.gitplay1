@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
@@ -44,15 +44,15 @@
 		font-weight:bold;
 	}
 </style>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>page_survey_create</title>
 </head>
 <body>
-<!-- ·Î°í -->
+<!-- ë¡œê³  -->
 <div id = "logoArea" align = "center" style = "width: 200xp; height: 50px">
-	<!-- ¸®´ÙÀÌ·ºÆ® -->
+	<!-- ë¦¬ë‹¤ì´ë ‰íŠ¸ -->
 	<form method = "get" action="">
-		<!-- ÀÌ¹ÌÁö ·Î°í Ãâ·Â -->
+		<!-- ì´ë¯¸ì§€ ë¡œê³  ì¶œë ¥ -->
 		<input type = "image" src = "" alt = "logo">
 	</form>
 </div>
@@ -62,18 +62,18 @@
 <div id = "surveysArea">
 
 	<div id = "surveyArea">
-		<!-- ÀÛ¼º ¿Ï·á -->
+		<!-- ì‘ì„± ì™„ë£Œ -->
 		<form action = "/sirbay/survey/create/complete" method="post">
 	
 			<div id = "surbeyTitle">
-				<a class = "text">¼³¹® Á¦¸ñ</a>
+				<a class = "text">ì„¤ë¬¸ ì œëª©</a>
 				<input type = "text" name ="title" size = 70><br><br>
 			</div>
 			
 			<hr>
 			
-			<a class = "text">À¯»ç ¼³¹®</a>
-			<input type = button value = "°Ë»ö" onClick = "" style = "float:right">
+			<a class = "text">ìœ ì‚¬ ì„¤ë¬¸</a>
+			<input type = button value = "ê²€ìƒ‰" onClick = "" style = "float:right">
 			<br>
 			<br>
 			
@@ -85,7 +85,7 @@
 			<div id = "questionBox">
 				<br>
 				<div id = "qusetion">
-					<a class = "text">Áú¹®</a>
+					<a class = "text">ì§ˆë¬¸</a>
 					<br>
 					<br> 
 					<input type = "text" name ="title" size = 80>
@@ -94,10 +94,10 @@
 				</div>
 				<br>
 				<div id = "radioBox">
-					<input type = "radio" name = "subject" value = "°´°ü½Ä" onclick="checkRadioButton(event)">
-					°´°ü½Ä
-					<input type = "radio" name = "subject" value = "ÁÖ°ü½Ä" onclick="checkRadioButton(event)" checked>
-					ÁÖ°ü½Ä
+					<input type = "radio" name = "subject" value = "ê°ê´€ì‹" onclick="checkRadioButton(event)">
+					ê°ê´€ì‹
+					<input type = "radio" name = "subject" value = "ì£¼ê´€ì‹" onclick="checkRadioButton(event)" checked>
+					ì£¼ê´€ì‹
 				</div>
 				<br>
 				<div id = "answer">
@@ -115,11 +115,11 @@
 			</div>
 		
 			<div id = 'result'></div>
-			<input type ="button" value = "Áú¹® Ãß°¡" onclick = "add_div()">
+			<input type ="button" value = "ì§ˆë¬¸ ì¶”ê°€" onclick = "add_div()">
 		
-			<%-- ¼³¹® ÀÛ¼ºÇÑ°Å Á¦Ãâ --%>
+			<%-- ì„¤ë¬¸ ì‘ì„±í•œê±° ì œì¶œ --%>
 		
-			<input type = submit name = "submit" value = "ÀÛ¼º ¿Ï·á">
+			<input type = submit name = "submit" value = "ì‘ì„± ì™„ë£Œ">
 		</form>
 	</div>
 </div>
@@ -130,7 +130,7 @@
 	function checkRadioButton(event){
 		console.log(event.target.value);
 		var selection = event.target.parentElement.parentElement.getElementsByTagName("div")[2];
-		if(event.target.value == "°´°ü½Ä"){
+		if(event.target.value == "ê°ê´€ì‹"){
 			selection.style.display = "block";
 		}
 					
@@ -142,7 +142,7 @@
 	function add_div(){
 		var div = document.createElement('div');
 			
-		//questionBox »ı¼º
+		//questionBox ìƒì„±
 		var questionBox = document.createElement('questionBox');
 		
 		div.innerHTML = document.getElementById('questionBox').innerHTML;

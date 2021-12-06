@@ -69,7 +69,7 @@
 	            </div>
 	            <div class="col-md-6 mb-3">
 	              <label for="passwordConfirm">비밀번호 확인</label>
-	              <input type="password" class="form-control" name="password" id="pawwWordConfirm" placeholder="" value="" required>
+	              <input type="password" class="form-control" id="pawwWordConfirm" placeholder="" value="" required>
 	              <div class="invalid-feedback">
 	                비밀번호 확인
 	              </div>
@@ -95,7 +95,7 @@
 	          
 	          <div class="mb-3"> 
 	          	<label for="birthday">생년월일</label><!--이거 date로 바꿧는데 name은 그냥 birth-yy로 해놓음 -->
-	          	<input type="date" class="form-control" name="birth_yy" placeholder="">
+	          	<input type="date" class="form-control" name="birthday" placeholder="">
 	          </div>
 	
 	          <div class="mb-3">
@@ -107,7 +107,7 @@
 	          </div>
 	          
 	          <hr class="mb-4">
-	          <button class="btn btn-primary btn-lg btn-block" name="registerBtn" type="submit">가입 완료</button>
+	          	<button class="btn btn-primary btn-lg btn-block" name="registerBtn" type="submit">가입 완료</button>
 	      </div>
 	    </div>
 	    </form>
