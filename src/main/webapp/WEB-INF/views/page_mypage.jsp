@@ -35,7 +35,7 @@
                 </div>
                 
                 <form action = "/sirbay/unRegister" method="get" style = "float:right">
-                  <input type = "submit" value = "회원탈퇴"> 
+                  <button type="button" class="btn btn-warning">회원탈퇴</button>
                 </form>
             </div>
         </div>

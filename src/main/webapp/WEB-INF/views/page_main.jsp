@@ -147,8 +147,8 @@
 		<c:forEach var="survey" items="${surveys}"  varStatus="surveyStatus">
 			<!-- 화면 보여주는 거 수정 필요(이름...) -->
 			${survey.surveyTitle}
-			<input type="button" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
-			<input type="button" onclick="location.href='/sirbay/survey/result?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="결과보기"/>
+			<input type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/join?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="설문참여"/>
+			<input type="button" class = "btn btn-light" onclick="location.href='/sirbay/survey/result?id=${survey.surveyID}&&title=${survey.surveyTitle}'" value="결과보기"/>
 			<br>
 		</c:forEach>
 
@@ -159,19 +159,28 @@
 		</ul> --%>
 		
 		<br>
-		<form method = "post" action = "/sirbay/survey/create"><input type = submit value = "설문 생성" style = "float: right"></form>
+		<form method = "post" action = "/sirbay/survey/create">
+			<button type="submit" class="btn btn-primary" style = "float:right;" >설문 생성</button>
+		</form>
 	</div>
 	
-	<div id = buttonArea>
-		<input type = button onClick = "" value = "< 이전">
-		<!-- 페이지 수 불러오기 -->
-		<c:forEach var="index" begin= "${min}" end = "${max}" step = "1">
-			<a id = "${index}" href = "${pageContext.request.contextPath}">
-				${index}
-			</a>
-		</c:forEach>
-		<input type = button onClick = "" value = "다음 >">
+	<br>
+	
+	<!-- 버튼 기능 추가해야함 -->
+	<div id = buttonArea style = "display:inline-block">
+		<nav aria-label="Page navigation example">
+  			<ul class="pagination">
+    			<li class="page-item"><a class="page-link" href=" "> < </a></li>
+    			<c:forEach var="index" begin= "${min}" end = "${max}" step = "1">
+  					<li class="page-item">
+  						<a class="page-link" id = "${index}" href = "${pageContext.request.contextPath}">${index}</a>
+  					</li>			
+				</c:forEach>
+    			<li class="page-item"><a class="page-link" href=" "> > </a></li>
+  			</ul>
+		</nav>
 	</div>
+
 </div>
 	
 </body>
