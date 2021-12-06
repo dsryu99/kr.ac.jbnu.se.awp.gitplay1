@@ -277,10 +277,14 @@
 		}
 		return 
 	}
-	
-	
-
 </script>
-
+<script>
+var titles = [];
+var ids = [];
+<c:forEach items="${surveys}" var="survey">
+	titles.push("${survey.surveyTitle}");
+	ids.push("${survey.surveyID}");
+</c:forEach>
+</script>
 </body>
 </html>
