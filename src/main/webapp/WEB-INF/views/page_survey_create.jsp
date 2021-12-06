@@ -63,16 +63,6 @@
 		height: auto;
 		text-align: center;
 	}
-/* 	#surveysArea{
-		box-sizing: border-box;
-		width: 800px;
-		height: auto;
-		margin: 20px;
-		border-right: solid 2px black;
-  		border-left: solid 2px black;
-		padding: 3%;
-		display: inline-block;
-	} */
 	#surveyArea{
 		box-sizing: border-box;
 		width: 100%;
@@ -102,72 +92,74 @@
 
 <hr id = "logoLine" >
 
-<div id = "surveysArea" class = "input-form main">
+	<div id="contentsArea">
+		<div id="surveysArea" class="input-form main" style = "display:inline-block">
 
-	<div id = "surveyArea">
-		<!-- 작성 완료 -->
-		<form action = "/sirbay/survey/create/complete" method="post">
-	
-			<div id = "surbeyTitle">
-				<a class = "text">설문 제목</a>
-				<input type = "text" name ="title" size = 70><br><br>
-			</div>
-			
-			<hr>
-			
-			<a class = "text">유사 설문</a>
-			<input type = button value = "검색" onClick = "" style = "float:right">
-			<br>
-			<br>
-			
-			<hr>
-			
-			<div id = "simularArea">
-			</div>
-	
-			<div id = "questionBox" class = "1">
-				<br>
-				<div id = "qusetion">
-					<a class = "text">질문</a>
-					<br>
-					<br> 
-					<input class = "title" type = "text" name ="title1" size = 80>
-					<br>
-					<br>
-				</div>
-				<br>
-				<div id = "radioBox">
-					<input type = "radio" name = "subject" value = "choice" onclick="checkRadioButton(event)">
-					객관식
-					<input type = "radio" name = "subject" value = "subjective" onclick="checkRadioButton(event)" checked>
-					주관식
-				</div>
-				<br>
-				<div id = "answer1">
-					<div id = 'sub'>
-						1 <input class = "selection1" name = "selection1" type = "text" size = 80/><br><br>
-						2 <input class = "selection1" name = "selection1" type = "text" size = 80/><br><br>
-						<div id = "addSelectionArea" class = "addSelectionArea"></div>
-						<input id = "plusButton" class = "plusButton" type = button value = "+" onClick = "add_selection(event)">
-						<input id = "minusButton" class = "minusButton" type = button value = "-" onClick = "remove_selection(event)">
+			<div id="surveyArea" style = "text-align: left">
+				<!-- 작성 완료 -->
+				<form action="/sirbay/survey/create/complete" method="post">
+
+					<div id="surbeyTitle">
+						<a class="text">설문 제목</a> <input type="text" name="title" size=70><br>
+						<br>
 					</div>
-				</div>
-				<br>
-				<hr>
-				<br>
-			</div>
-		
-			<div id = 'addQuestionArea'></div>
-			<input type ="button" value = "질문 추가" onclick = "add_div()">
-		
-			<%-- 설문 작성한거 제출 --%>
-		
-			<input type = submit name = "submit" value = "작성 완료">
-		</form>
-	</div>
-</div>
 
-<script>
+					<hr>
+
+					<a class="text">유사 설문</a> <input type=button value="검색" onClick=""
+						style="float: right"> <br> <br>
+
+					<hr>
+
+					<div id="simularArea"></div>
+
+					<div id="questionBox" class="1">
+						<br>
+						<div id="qusetion">
+							<a class="text">질문</a> <br> <br> <input class="title"
+								type="text" name="title1" size=80> <br> <br>
+						</div>
+						<br>
+						<div id="radioBox">
+							<input type="radio" name="subject" value="choice"
+								onclick="checkRadioButton(event)"> 객관식 <input
+								type="radio" name="subject" value="subjective"
+								onclick="checkRadioButton(event)" checked> 주관식
+						</div>
+						<br>
+						<div id="answer1">
+							<div id='sub'>
+								1 <input class="selection1" name="selection1" type="text"
+									size=80 /><br>
+								<br> 2 <input class="selection1" name="selection1"
+									type="text" size=80 /><br>
+								<br>
+								<div id="addSelectionArea" class="addSelectionArea"></div>
+								<input id="plusButton" class="plusButton" type=button value="+"
+									onClick="add_selection(event)"> <input id="minusButton"
+									class="minusButton" type=button value="-"
+									onClick="remove_selection(event)">
+							</div>
+						</div>
+						<br>
+						<hr>
+						<br>
+					</div>
+
+					<div id='addQuestionArea'></div>
+					<input type="button" value="질문 추가" onclick="add_div()">
+
+					<%-- 설문 작성한거 제출 --%>
+
+					<input type=submit name="submit" value="작성 완료">
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script>
 	var cnt = 2;
 	document.getElementById("answer1").style.display = "none";
  	document.getElementById("minusButton").style.display = "none";

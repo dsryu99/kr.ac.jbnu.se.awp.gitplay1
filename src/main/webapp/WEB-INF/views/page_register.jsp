@@ -46,16 +46,10 @@
 	            <div class="col-md-6 mb-3">
 	              <label for="name">이름</label>
 	              <input type="text" class="form-control" name="name" id="name" placeholder="" value="" required>
-	              <div class="invalid-feedback">
-	                이름을 입력해주세요.
-	              </div>
 	            </div>
 	            <div class="col-md-6 mb-3">
 	              <label for="nickname">아이디</label>
 	              <input type="text" class="form-control" name="id" id="nickname" placeholder="" value="" required>
-	              <div class="invalid-feedback">
-	                아이디를 입력해주세요.
-	              </div>
 	            </div>
 	          </div>
 	          
@@ -63,25 +57,16 @@
 	            <div class="col-md-6 mb-3">
 	              <label for="password">비밀번호</label>
 	              <input type="password" class="form-control" name="password" id="passWord" placeholder="" value="" required>
-	              <div class="invalid-feedback">
-	                비밀번호를 입력해주세요
-	              </div>
 	            </div>
 	            <div class="col-md-6 mb-3">
 	              <label for="passwordConfirm">비밀번호 확인</label>
 	              <input type="password" class="form-control" id="pawwWordConfirm" placeholder="" value="" required>
-	              <div class="invalid-feedback">
-	                비밀번호 확인
-	              </div>
 	            </div>
 	          </div>
 	
 	          <div class="mb-3">
 	            <label for="email">직업</label> <!-- 직업 추가 -->
 	            <input type="text" class="form-control" name="job" id="email" placeholder="" required>
-	            <div class="invalid-feedback">
-	              직업을 입력해주세요
-	            </div>
 	          </div>
 	          
 	          <div class = "radio-Button">
@@ -101,11 +86,7 @@
 	          <div class="mb-3">
 	            <label for="address">주소</label> <!-- 주소 추가 -->
 	            <input type="text" class="form-control" name="address" id="address" placeholder="서울특별시 강남구" required>
-	            <div class="invalid-feedback">
-	              주소를 입력해주세요.
-	            </div>
 	          </div>
-	          
 	          <hr class="mb-4">
 	          	<button class="btn btn-primary btn-lg btn-block" name="registerBtn" type="submit">가입 완료</button>
 	      </div>
