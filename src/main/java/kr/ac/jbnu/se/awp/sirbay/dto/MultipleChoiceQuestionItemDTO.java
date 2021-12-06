@@ -3,7 +3,7 @@ package kr.ac.jbnu.se.awp.sirbay.dto;
 public class MultipleChoiceQuestionItemDTO {
 	private int itemNum;
 	private int questionNum;
-	private String surveyID;
+	private int surveyID;
 	private String itemContent;
 	public int getItemNum() {
 		return itemNum;
@@ -17,10 +17,10 @@ public class MultipleChoiceQuestionItemDTO {
 	public void setQuestionNum(int questionNum) {
 		this.questionNum = questionNum;
 	}
-	public String getSurveyID() {
+	public int getSurveyID() {
 		return surveyID;
 	}
-	public void setSurveyID(String surveyID) {
+	public void setSurveyID(int surveyID) {
 		this.surveyID = surveyID;
 	}
 	public String getItemContent() {

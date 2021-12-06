@@ -30,7 +30,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 			while(rs.next()) {
 				multipleChoiceQuestionItemDTO.setItemNum(rs.getInt(1));
 				multipleChoiceQuestionItemDTO.setQuestionNum(rs.getInt(2));
-				multipleChoiceQuestionItemDTO.setSurveyID(rs.getString(3));
+				multipleChoiceQuestionItemDTO.setSurveyID(rs.getInt(3));
 				multipleChoiceQuestionItemDTO.setItemContent(rs.getString(4));
 			}
 			return multipleChoiceQuestionItemDTO;
@@ -61,7 +61,7 @@ public class MultipleChoiceQuestionItemDAO implements MultipleChoiceQuestionItem
 				MultipleChoiceQuestionItemDTO multipleChoiceQuestionItemDTO = new MultipleChoiceQuestionItemDTO();
 				multipleChoiceQuestionItemDTO.setItemNum(rs.getInt(1));
 				multipleChoiceQuestionItemDTO.setQuestionNum(rs.getInt(2));
-				multipleChoiceQuestionItemDTO.setSurveyID(rs.getString(3));
+				multipleChoiceQuestionItemDTO.setSurveyID(rs.getInt(3));
 				multipleChoiceQuestionItemDTO.setItemContent(rs.getString(4));
 				list.add(multipleChoiceQuestionItemDTO);
 			}

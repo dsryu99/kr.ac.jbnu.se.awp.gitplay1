@@ -28,7 +28,7 @@ public class QuestionDAO implements QuestionDAOIF {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				questionDTO.setQuestionNum(rs.getInt(1));
-				questionDTO.setSurveyID(rs.getString(2));
+				questionDTO.setSurveyID(rs.getInt(2));
 				questionDTO.setQuestionDesc(rs.getString(3));
 				questionDTO.setEssential(rs.getBoolean(4));
 				questionDTO.setMultipleChoiceQuestion(rs.getBoolean(5));
@@ -59,7 +59,7 @@ public class QuestionDAO implements QuestionDAOIF {
 			while(rs.next()) {
 				QuestionDTO questionDTO = new QuestionDTO();
 				questionDTO.setQuestionNum(rs.getInt(1));
-				questionDTO.setSurveyID(rs.getString(2));
+				questionDTO.setSurveyID(rs.getInt(2));
 				questionDTO.setQuestionDesc(rs.getString(3));
 				questionDTO.setEssential(rs.getBoolean(4));
 				questionDTO.setMultipleChoiceQuestion(rs.getBoolean(5));

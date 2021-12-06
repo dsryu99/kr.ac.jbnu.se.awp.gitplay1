@@ -16,6 +16,7 @@ import kr.ac.jbnu.se.awp.sirbay.dao.SurveyDAO;
 import kr.ac.jbnu.se.awp.sirbay.dao.SurveyJoinDAO;
 import kr.ac.jbnu.se.awp.sirbay.dto.MultipleChoiceQuestionItemDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.QuestionDTO;
+import kr.ac.jbnu.se.awp.sirbay.dto.SurveyAnswerDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyDTO;
 @Service
 public class SurveyService implements SurveyServiceIF {
@@ -91,8 +92,16 @@ public class SurveyService implements SurveyServiceIF {
 	@Override
 	public boolean addAnswer(String userId, int surveyId, HashMap<Integer, String> answers) {
 		try {
+			int count = 0;
 			for(Integer key : answers.keySet()) {
-				surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key));
+				count = surveyAnswerDAO.surveyAnswergetCount(key, surveyId);
+				if(count == -1) {//first generation
+					surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key), 1);
+				} else if(count == -2) {//DB exception
+					return false;
+				} else {//success
+					surveyAnswerDAO.surveyAnswerUpdate(key, surveyId, answers.get(key), count+1);
+				}
 			}
 			String joinDate = currentTime();
 			surveyJoinDAO.surveyJoinInsert(userId, surveyId, joinDate);
@@ -109,5 +118,15 @@ public class SurveyService implements SurveyServiceIF {
 		SimpleDateFormat forteenFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		String currentTime = forteenFormat.format(dateNow);
 		return currentTime;
+	}
+
+	@Override
+	public List<SurveyAnswerDTO> getAnswers(int surveyId) {
+		List<SurveyAnswerDTO> list = new ArrayList<SurveyAnswerDTO>();
+		list = surveyAnswerDAO.surveyAnswergetAllAnswer(surveyId);
+		if(list != null) {
+			return list;
+		}
+		return null;//DB exception
 	}
 }
