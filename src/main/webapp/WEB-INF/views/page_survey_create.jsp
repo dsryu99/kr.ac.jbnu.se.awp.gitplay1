@@ -101,7 +101,7 @@
 
 					<div id="surbeyTitle">
 						<a class="text">설문 제목</a> 
-						<input type="text" class="form-control" name="title" placeholder="" value="" required>
+						<input type="text" class="form-control" name="title" placeholder="" value="" required size=80>
 						<!-- <input type="text" name="title" size=70> --><br>
 						<br>
 					</div>
