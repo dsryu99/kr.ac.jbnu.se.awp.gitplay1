@@ -1,234 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
-<style>
-	#logoLine{
-		border: 0px;
-		height: 30px;
-		background-color: black;
-		border-radius: 5px;
-	}
-	#logoArea{
-		text-align: center;
-	}
-	#formArea{
-		box-sizing: border-box;
-		width: auto;
-		height: auto;
-		margin: 20px;
-		border-right: solid 2px black;
-  		border-left: solid 2px black;
-		padding: 3%;
-		display: inline-block;
-		text-align: left;
-	}
-	#contentsArea{
-		width: auto;
-		height: auto;
-		text-align: center;
-	}
-	input[type=text], input[type=password]{
-		width:350px; height:10px;
-		padding:15px;
-		font-size:16px;
-		color:#aaa;
-	}
-	
-	select{
-		width:70px; 
-		height:44px;
-		font-size:16px;
-		color:#aaa;
-	}
-	a[class=text]{
-		font-weight:bold;
-	}
-	
-	input[name=registerBtn]{
-		width: 100px; 
-		font-size:16px; 
-		color:#bbb; 
-		background-color:black; 
-		font-weight:bold;
-		float:right;
-	}
-	
-</style>
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 화면</title>
 
-<title>회원가입 화면</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+    
+    .radio-Button{
+        padding-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-	<div id = "logoArea">
-		<!-- 로고 -->
-		<div id = "logo" style = "width: auto; height: auto; display: inline-block; float:left">
-			<!-- 리다이렉트 -->
-			<form method = "get" action="">
-				<!-- 이미지 로고 출력 -->
-				<input type = "image" src = "" alt = "logo">
-			</form>
-		</div>
-		
-		<div id = "myPage" style = "display: inline-block;">
-			<font size = 5 style = "font-weight:bold">회원가입</font> 
-		</div>
-	</div>
-
-	<hr id = "logoLine" >
+  <div id="aontentsArea">
+  	<div id = "formArea">
+	  <form action="/sirbay/addUser" method="post">    
+	    <div class="input-form-backgroud row">
+	      <div class="input-form col-md-12 mx-auto">
+	        <h4 class="mb-3">회원가입</h4>
+	        
+	          <div class="row">
+	            <div class="col-md-6 mb-3">
+	              <label for="name">이름</label>
+	              <input type="text" class="form-control" name="name" id="name" placeholder="" value="" required>
+	              <div class="invalid-feedback">
+	                이름을 입력해주세요.
+	              </div>
+	            </div>
+	            <div class="col-md-6 mb-3">
+	              <label for="nickname">아이디</label>
+	              <input type="text" class="form-control" name="id" id="nickname" placeholder="" value="" required>
+	              <div class="invalid-feedback">
+	                아이디를 입력해주세요.
+	              </div>
+	            </div>
+	          </div>
+	          
+	          <div class="row">
+	            <div class="col-md-6 mb-3">
+	              <label for="password">비밀번호</label>
+	              <input type="password" class="form-control" name="password" id="passWord" placeholder="" value="" required>
+	              <div class="invalid-feedback">
+	                비밀번호를 입력해주세요
+	              </div>
+	            </div>
+	            <div class="col-md-6 mb-3">
+	              <label for="passwordConfirm">비밀번호 확인</label>
+	              <input type="password" class="form-control" name="password" id="pawwWordConfirm" placeholder="" value="" required>
+	              <div class="invalid-feedback">
+	                비밀번호 확인
+	              </div>
+	            </div>
+	          </div>
 	
-    <div id="contentsArea">
-        
-        <div id = "formArea">
-        
-        	<form action="/sirbay/addUser" method="post">    	
-            	<table style = "border-spacing:5px">
-               		<tr>
-               			<td>
-               				<a class = "text">아이디</a>
-               			</td>
-                	</tr>
-                	
-                	<tr>
-                		<td>
-                       		<input type="text" name="id" maxlength="20">
-                        	   
-                    	</td>
-                	</tr>
-                	
-                	<tr>
-                		<td><input type="button" value="중복확인" style = "float:right"></td>
-                	</tr>
-                        
-                	<tr>
-                   		<td>
-							<a class = "text">비밀번호</a>
-						</td>
-                	</tr>
-                	<tr>
-                		<td>
-                      		<input type="password" name="password" maxlength="15">
-                    	</td>
-                	</tr>
-                
-                	<tr>
-                    	<td>
-							<a class = "text">비밀번호 재확인</a>
-						</td>
-                	</tr>
-                	<tr>
-                		<td>
-                      		<input type="password" name="password" maxlength="15">
-                    	</td>
-                	</tr>
-                    
-	                <tr>
-    	                <td>
-							<a class = "text">이름</a>
-						</td>
-                	</tr>
-                	
-                	<tr>
-                		<td>
-            	            <input type="text" name="name" maxlength="40">
-                	    </td>
-                	</tr>
-                    
-                	<tr>
-                   		<td>
-							<a class = "text">성별</a>
-						</td>
-                	</tr>
-                	
-                	<tr>
-                		<td>
-                        	<input type="radio" name="gender" value="남" checked>남
-                        	<input type="radio" name="gender" value="여" checked>여
-                    	</td>
-                	</tr>
-                    
-                	<tr>
-                    	<td>
-							<a class = "text">생일</a>
-						</td>
-                	</tr>
-                	
-                	<tr>
-                		<td>
-                        	<input type="text" name="birth_yy" maxlength="4" placeholder="년(4자)" size="6" style = "width: 26%">
-                        	<select name="birth_mm" style = "width: 26%">
-                            	<option value="">월</option>
-                            	<option value="01" >1월</option>
-                            	<option value="02" >2월</option>
-                            	<option value="03" >3월</option>
-                            	<option value="04" >4월</option>
-                            	<option value="05" >5월</option>
-                            	<option value="06" >6월</option>
-                            	<option value="07" >7월</option>
-                            	<option value="08" >8월</option>
-                            	<option value="09" >9월</option>
-                            	<option value="10" >10월</option>
-                            	<option value="11" >11월</option>
-                            	<option value="12" >12월</option>
-                        	</select>
-                        	<input type="text" name="birth_dd" maxlength="2" placeholder="일" size="4" style = "width: 26%">
-                    	</td>
-                	</tr>
-                    
-                	<!-- <tr>
-                    	<td>
-							<a class = "text">이메일</a>
-						</td>
-                	</tr> -->
-<!--                 	
-                	<tr>
-                    	<td>
-                        	<input type="text" name="email_1" maxlength="30" style = "width: 41.5%"> @
-                        	<select name="email_2" style = "width: 41.5%">
-                            	<option>naver.com</option>
-                            	<option>daum.net</option>
-                            	<option>gmail.com</option>
-                            	<option>nate.com</option>                        
-                        	</select>
-                    	</td>
-                	</tr> -->
-                    
-                	<!-- <tr>
-                    	<td>
-							<a class = "text">휴대전화</a>
-						</td>
-                	</tr> -->
-                	<!-- <tr>
-                    	<td>
-                        	<input type="text" name="phone" />
-                    	</td>
-                	</tr> -->
-                	<tr>
-                    	<td>
-							<a class = "text">직업</a>
-						</td>
-                	</tr>
-                	<tr>
-                    	<td>
-                        	<input type="text" name="job" />
-                    	</td>
-                	</tr>
-            
-                	<tr>
-                    	<td>
-							<a class = "text">주소</a>
-						</td>
-                	</tr>
-                	<tr>
-                    	<td>
-                        	<input type="text" size="30" name="address"/>
-                    	</td>
-                	</tr>
-            	</table>
-            	<br>
-            	<input name = "registerBtn" type="submit" value="가입"/>  
-        	</form>
-        </div>      
+	          <div class="mb-3">
+	            <label for="email">직업</label> <!-- 직업 추가 -->
+	            <input type="text" class="form-control" name="job" id="email" placeholder="" required>
+	            <div class="invalid-feedback">
+	              직업을 입력해주세요
+	            </div>
+	          </div>
+	          
+	          <div class = "radio-Button">
+	            <div class="form-check form-check-inline">
+	                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="man">남
+	            </div>
+	            <div class="form-check form-check-inline">
+	                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="male">여
+	            </div>
+	         </div>
+	          
+	          <div class="mb-3"> 
+	          	<label for="birthday">생년월일</label><!--이거 date로 바꿧는데 name은 그냥 birth-yy로 해놓음 -->
+	          	<input type="date" class="form-control" name="birth_yy" placeholder="">
+	          </div>
+	
+	          <div class="mb-3">
+	            <label for="address">주소</label> <!-- 주소 추가 -->
+	            <input type="text" class="form-control" name="address" id="address" placeholder="서울특별시 강남구" required>
+	            <div class="invalid-feedback">
+	              주소를 입력해주세요.
+	            </div>
+	          </div>
+	          
+	          <hr class="mb-4">
+	          <button class="btn btn-primary btn-lg btn-block" name="registerBtn" type="submit">가입 완료</button>
+	      </div>
+	    </div>
+	    </form>
     </div>
+  </div>
 </body>
 </html>

@@ -48,3 +48,23 @@
   		border-left: solid 2px black;
 		padding: 3%;
 	}
+	.SirBay{
+	display:block;
+    margin:0px auto;
+}
+	
+	.id-bar {
+	}
+	
+	.password-bar {
+	}
+	
+	.login-Button{
+	    left: 173px;
+	}
+	
+	.register-Button{
+		bottom: 53px;
+	    left: 73px;
+
+	}

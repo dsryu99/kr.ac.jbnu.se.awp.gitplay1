@@ -3,86 +3,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-	#logoLine{
-		border: 0px;
-		height: 30px;
-		background-color: black;
-		border-radius: 5px;
-	}
-	#logoArea{
-		text-align: center;
-	}
-	#profileArea{
-		box-sizing: border-box;
-		width: 800px;
-		height: auto;
-		margin: 20px;
-		border-right: solid 2px black;
-  		border-left: solid 2px black;
-		padding: 3%;
-		display: inline-block;
-	}
-	#contentsArea{
-		width: auto;
-		height: auto;
-		text-align: center;
-	}
-</style>
-<meta charset="UTF-8">
-<title>마이 페이지</title>
+	<meta charset="UTF-8">
+	<title>MyPage</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    body {
+        background: rgb(99, 39, 120)
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(99, 39, 120);
+        box-shadow: none;
+        border: none
+    }
+
+    .profile-button:hover {
+        background: #682773
+    }
+
+    .profile-button:focus {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .profile-button:active {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .back:hover {
+        color: #682773;
+        cursor: pointer
+    }
+    
+    .labels {
+        font-size: 15px
+    }
+
+    .add-experience:hover {
+        background: #BA68C8;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
+    }
+    
+    .unregister {
+    	margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-	<div id = "logoArea">
-		<!-- 로고 -->
-		<div id = "logo" style = "width: auto; height: auto; display: inline-block; float:left">
-			<!-- 리다이렉트 -->
-			<form method = "get" action="">
-				<!-- 이미지 로고 출력 -->
-				<input type = "image" src = "" alt = "logo">
-			</form>
-		</div>
-		
-		<div id = "myPage" style = "display: inline-block;">
-			<font size = 5 style = "font-weight:bold">마이페이지</font> 
-		</div>	
-	</div>
 
-	<hr id = "logoLine" >
-	
-	<div id = contentsArea>
-		<!-- 이름, 성별, 나이, 직업, 거주지역 가져오는 기능 -->
-		<div id = profileArea style = "text-align: left">
-			<table>
-				<tr>
-					<td>이름</td>
-					<td style = "color:blue" align = 'center'>${user.userName}</td>
-				</tr>
-				<tr>
-					<td>성별</td>
-					<td style = "color:blue" align = 'center'>${user.userSex}</td>
-				</tr>
-				<tr>
-					<td>나이</td>
-					<td style = "color:blue" align = 'center'>${user.userBirthdate}</td>
-				</tr>
-				<tr>
-					<td>직업</td>
-					<td style = "color:blue" align = 'center'>${user.userJob}</td>
-				</tr>
-				<tr>
-					<td>거주지역</td>
-					<td style = "color:blue" align = 'center'>${user.userAddress}</td>
-				</tr>
-			</table>
-			
-			<!-- 회원 탈퇴 + 메인페이지로 이동 action -->
-			<form action = "/sirbay/unRegister" method="get" style = "float:right">
-				<input type = "submit" value = "회원탈퇴"> 
-			</form>
-		</div>
-	</div>
-	
-	
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">마이페이지</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12"><span class="font-weight-bold">이름</span><label class="labels">&nbsp; ${user.userName}</label></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels"><span class="font-weight-bold">성별</span></label><label class="labels">&nbsp; ${user.userSex}</label></div>
+                    <div class="col-md-12"><label class="labels"><span class="font-weight-bold">생년월일</span></label><label class="labels">&nbsp; ${user.userBirthdate}</label></div>
+                    <div class="col-md-12"><label class="labels"><span class="font-weight-bold">직업</span></label><label class="labels">&nbsp; ${user.userJob}</label></div>
+                    <div class="col-md-12"><label class="labels"><span class="font-weight-bold">주소</span></label><label class="labels">&nbsp; ${user.userAddress}</label></div>
+                </div>
+                
+                <form action = "/sirbay/unRegister" method="get" style = "float:right">
+                  <input type = "submit" value = "회원탈퇴"> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 </body>
 </html>

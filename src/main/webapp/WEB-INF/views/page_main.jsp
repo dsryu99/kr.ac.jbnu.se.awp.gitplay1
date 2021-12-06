@@ -56,7 +56,11 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel='stylesheet' href='resources/Style.css'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	
+<link rel="stylesheet" type="text/css" href="resources/Style.css">
+
 
 <meta charset="UTF-8">
 	<title>Home</title>
@@ -90,19 +94,28 @@
 				<c:when test="${isLogin == false}">
 				<!-- 미 로그인 시 -->
 					<div id = "login">
-					<!-- 로그인 버튼 -->
-						<form method = "post" action = "/sirbay/login">
-							<input type = "submit" value = "로그인" style = "float:right; height = 50px">
-							<input type = "text" name = "id" placeholder = "아이디" size = 20>
-						<br>
-						<br>
-							<input type = "password" name = "pwd" placeholder = "비밀번호" size = 20> 
+						<form method = "post" action = "/sirbay/login" name="login_form">
+							<div class="mx-auto id-bar input-group mb-3">
+						        <input type="text" name = "id" class="form-control" placeholder="아이디" aria-label="아이디" aria-describedby="button-addon2">
+						    </div>
+						
+						    <div class="mx-auto password-bar input-group mb-3">
+						        <input type="password" name = "pwd" class=" form-control" placeholder="비밀번호" aria-label="비밀번호" aria-describedby="button-addon2">
+						    </div>
+						
+						    <div class="login-Button input-group mb-3" style = "left: 173px;">
+						        <button type="submit" class="btn btn-light">로그인</button>
+						    </div>
+					    </form>
+					    
+					    <form method = post action = "/sirbay/register">
+					    	<div class="register-Button input-group mb-3" style = "bottom: 53px; left: 73px;">
+						        <button type="submit" class="btn btn-light">회원가입</button>
+						    </div>
 						</form>
-					<!-- 회원가입 버튼 -->
-						<form method = post action = "/sirbay/register" >
-							<input type = "submit" value = "회원 가입">
-						</form>
+						
 					</div>
+					
 				</c:when>
 				<c:otherwise>
 				<!-- 로그인 시 -->
@@ -120,7 +133,9 @@
 						
 						<!-- 로그아웃 -->
 						<form method = "post" action = "/sirbay/logout" style = "float:bottom">
-							<input type = "submit" value = "로그아웃">
+							<div class="logout-Button input-group mb-3">
+						        <button type="submit" class="btn btn-light">로그아웃</button>
+						    </div>
 						</form>
 					</div>
 				</c:otherwise>
