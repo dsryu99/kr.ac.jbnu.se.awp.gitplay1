@@ -10,8 +10,8 @@
 </head>
 <body>
 <!-- 설문 내용 DB 저장 + 메인 페이지로 이동 action -->	
-	<form action = "/sirbay/survey/join/complete" method="post" name = " ">
-		
+	<form action = "/sirbay/survey/join/complete" method="post">
+		<input type="hidden" value="${surveyId}" name="surveyId"/>
 		<c:forEach var="question" items="questionList" varStatus="questionStatus">
 			<br>
 			<hr style="border: solid 2px blue;">
