@@ -20,8 +20,8 @@
 			<img src = "../resources/logo.png" alt = "logo" width = "100px" height = "50px" >
 		</a>
 	</div>
-
-	<hr id="logoLine">
+	
+	<div id = "logoLine" ></div>
 
 	<div id="contentsArea">
 		<div id="surveysArea" class="input-form main"

@@ -22,6 +22,9 @@
 		<img src = "resources/logo.png" alt = "logo" width = "100px" height = "50px" >
 	</a>
 </div>
+
+<div id = "logoLine" ></div>
+
   <div id="aontentsArea">
   	<div id = "formArea">
 	  <form action="/sirbay/addUser" method="post">    

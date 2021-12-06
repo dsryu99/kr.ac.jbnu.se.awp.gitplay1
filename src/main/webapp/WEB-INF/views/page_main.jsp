@@ -76,7 +76,7 @@
 	</a>
 </div>
 
-<hr id = "logoLine" >
+<div id = "logoLine" ></div>
 
 <div id = "contentsArea">
 

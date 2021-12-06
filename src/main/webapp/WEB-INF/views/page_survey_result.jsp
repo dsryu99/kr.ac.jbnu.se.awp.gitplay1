@@ -20,7 +20,7 @@
 		</a>
 	</div>
 
-	<hr id="logoLine">
+	<div id = "logoLine" ></div>
 
 	<p>${title}</p>
 	<div id="contentsArea">
