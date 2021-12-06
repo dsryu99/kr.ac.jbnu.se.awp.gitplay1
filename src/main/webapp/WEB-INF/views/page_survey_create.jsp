@@ -180,12 +180,11 @@
 		
 		div.innerHTML = document.getElementById('questionBox').innerHTML;
 		
+		div.getElementsByTagName("div")[0].getElementsByClassName('form-control')[0].name = "title" + cnt;
 		div.getElementsByTagName("div")[2].id = "answer" + cnt;
 		div.getElementsByTagName("div")[2].setAttribute("class", cnt);
-		/* div.getElementsByTagName("div")[2].class = cnt; */
-		/* var selection = div.getElementsByTagName("div")[2].children[0].getElementsByClassName('selection1');
-		selection[0].name = "selection" + cnt;
-		selection[1].name = "selection" + cnt; */
+		div.getElementsByTagName("div")[2].children[0].children[0].name = "selection" + cnt;
+		div.getElementsByTagName("div")[2].children[0].children[1].name = "selection" + cnt;
 		
 		var selection = div.getElementsByTagName('div')[2].children[0].getElementsByClassName('form-control');
 		
