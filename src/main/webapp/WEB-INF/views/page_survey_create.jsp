@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="resources/style.css">
+    <link rel="stylesheet" type="text/css" href="../resources/style.css">
 <!-- private double similarity(String s1, String s2) {
     	String longer = s1, shorter = s2;
     
@@ -87,36 +87,36 @@
 	}
 	
 </style>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>page_survey_create</title>
 </head>
 <body>
-<!-- ·Î°í -->
+<!-- ë¡œê³  -->
 <div id = "logoArea" align = "center" style = "width: 200xp; height: 50px">
-	<!-- ¸®´ÙÀÌ·ºÆ® -->
+	<!-- ë¦¬ë‹¤ì´ë ‰íŠ¸ -->
 	<form method = "get" action="">
-		<!-- ÀÌ¹ÌÁö ·Î°í Ãâ·Â -->
+		<!-- ì´ë¯¸ì§€ ë¡œê³  ì¶œë ¥ -->
 		<input type = "image" src = "" alt = "logo">
 	</form>
 </div>
 
 <hr id = "logoLine" >
 
-<div id = "surveysArea" class = "input-form main">
+<div class = "input-form">
 
 	<div id = "surveyArea">
-		<!-- ÀÛ¼º ¿Ï·á -->
+		<!-- ì‘ì„± ì™„ë£Œ -->
 		<form action = "/sirbay/survey/create/complete" method="post">
 	
 			<div id = "surbeyTitle">
-				<a class = "text">¼³¹® Á¦¸ñ</a>
+				<a class = "text">ì„¤ë¬¸ ì œëª©</a>
 				<input type = "text" name ="title" size = 70><br><br>
 			</div>
 			
 			<hr>
 			
-			<a class = "text">À¯»ç ¼³¹®</a>
-			<input type = button value = "°Ë»ö" onClick = "" style = "float:right">
+			<a class = "text">ìœ ì‚¬ ì„¤ë¬¸</a>
+			<input type = button value = "ê²€ìƒ‰" onClick = "" style = "float:right">
 			<br>
 			<br>
 			
@@ -128,7 +128,7 @@
 			<div id = "questionBox" class = "1">
 				<br>
 				<div id = "qusetion">
-					<a class = "text">Áú¹®</a>
+					<a class = "text">ì§ˆë¬¸</a>
 					<br>
 					<br> 
 					<input class = "title" type = "text" name ="title1" size = 80>
@@ -138,9 +138,9 @@
 				<br>
 				<div id = "radioBox">
 					<input type = "radio" name = "subject" value = "choice" onclick="checkRadioButton(event)">
-					°´°ü½Ä
+					ê°ê´€ì‹
 					<input type = "radio" name = "subject" value = "subjective" onclick="checkRadioButton(event)" checked>
-					ÁÖ°ü½Ä
+					ì£¼ê´€ì‹
 				</div>
 				<br>
 				<div id = "answer1">
@@ -158,11 +158,11 @@
 			</div>
 		
 			<div id = 'addQuestionArea'></div>
-			<input type ="button" value = "Áú¹® Ãß°¡" onclick = "add_div()">
+			<input type ="button" value = "ì§ˆë¬¸ ì¶”ê°€" onclick = "add_div()">
 		
-			<%-- ¼³¹® ÀÛ¼ºÇÑ°Å Á¦Ãâ --%>
+			<%-- ì„¤ë¬¸ ì‘ì„±í•œê±° ì œì¶œ --%>
 		
-			<input type = submit name = "submit" value = "ÀÛ¼º ¿Ï·á">
+			<input type = submit name = "submit" value = "ì‘ì„± ì™„ë£Œ">
 		</form>
 	</div>
 </div>
@@ -187,7 +187,7 @@
 	function add_div(){
 		var div = document.createElement('div');
 			
-		//questionBox »ı¼º
+		//questionBox ìƒì„±
 		var questionBox = document.createElement('questionBox');
 		questionBox.class = cnt;
 		questionBox.children[0].
