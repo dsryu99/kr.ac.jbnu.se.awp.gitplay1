@@ -80,7 +80,7 @@
 
 					<div id="surbeyTitle">
 						<a class="text">설문 제목</a> 
-						<input type="text" class="form-control" name="title" placeholder="" value="" required size=80>
+						<input type="text" class="form-control" name="surveyTitle" placeholder="" value="" required size=80>
 						<!-- <input type="text" name="title" size=70> --><br>
 						<br>
 					</div>
@@ -106,9 +106,9 @@
 						</div>
 						<br>
 						<div id="radioBox">
-							<input type="radio" name="subject" value="choice"
+							<input type="radio" name="radio1" value="choice"
 								onclick="checkRadioButton(event)"> 객관식 <input
-								type="radio" name="subject" value="subjective"
+								type="radio" name="radio1" value="subjective"
 								onclick="checkRadioButton(event)" checked> 주관식
 						</div>
 						<br>

@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,50 +37,40 @@ public class SurveyController {
 	
 	@RequestMapping(value = "/survey/create/complete", method = RequestMethod.POST)
 	public String createSurvey(Model model, HttpServletRequest request) {
-//		Map<String, String[]> map = request.getParameterMap();
-//		for(Iterator<String> it = map.keySet().iterator(); it.hasNext();) {
-//			String key = it.next();
-//			String[] values = map.get(key);
-//			System.out.println("key: " + key);
-//			System.out.println("values:");
-//			for(String value: values) {
-//				System.out.println(value);
-//			}
-//		}
-//		StringBuilder subject = new StringBuilder("subject");
-//		int count = 1;
-//		while(request.getParameter(subject.append(count).toString()) != null) {
-//			count++;
-//		}
-		
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
-//		String surveyTitle = request.getParameter("title");
-		String surveyTitle = "title2";
+		String surveyTitle = request.getParameter("surveyTitle");
 		List<QuestionDTO> questions = new ArrayList<QuestionDTO>();
 		List<MultipleChoiceQuestionItemDTO> choiceAnswers = new ArrayList<MultipleChoiceQuestionItemDTO>();
-		QuestionDTO question = new QuestionDTO();
-		question.setEssential(true);
-		question.setMultipleChoiceQuestion(false);
-		question.setQuestionDesc("question1");
-		question.setQuestionNum(1);
-		QuestionDTO question2 = new QuestionDTO();
-		question2.setEssential(false);
-		question2.setMultipleChoiceQuestion(true);
-		question2.setQuestionDesc("question2");
-		question2.setQuestionNum(2);
-		MultipleChoiceQuestionItemDTO mc1 = new MultipleChoiceQuestionItemDTO();
-		mc1.setItemNum(1);
-		mc1.setItemContent("content1");
-		mc1.setQuestionNum(2);
-		MultipleChoiceQuestionItemDTO mc2 = new MultipleChoiceQuestionItemDTO();
-		mc2.setItemNum(2);
-		mc2.setItemContent("content2");
-		mc2.setQuestionNum(2);
-		questions.add(question);
-		questions.add(question2);
-		choiceAnswers.add(mc1);
-		choiceAnswers.add(mc2);
+		
+		Map<String, String[]> map = request.getParameterMap();
+		for(Iterator<String> it = map.keySet().iterator(); it.hasNext();) {
+			String key = it.next();
+			String[] values = map.get(key);
+			if(key.contains("title")) {
+				int questionNum = Integer.parseInt(key.split("title")[1]);
+				String radio = "radio" + questionNum;
+				QuestionDTO question = new QuestionDTO();
+				question.setEssential(false);
+				question.setQuestionNum(questionNum);
+				question.setQuestionDesc(values[0]);
+				question.setMultipleChoiceQuestion(false);
+				String radioValue = map.get(radio)[0];
+				if(radioValue.equals("choice")) {
+					question.setMultipleChoiceQuestion(true);
+					String[] selections = map.get("selection" + questionNum);
+					for(int i=0; i<selections.length; i++) {
+						MultipleChoiceQuestionItemDTO mc = new MultipleChoiceQuestionItemDTO();
+						mc.setItemNum(questionNum);
+						mc.setItemContent(selections[i]);
+						mc.setQuestionNum(i+1);
+						choiceAnswers.add(mc);
+					}
+				}
+				questions.add(question);
+			}
+		}
+		
 		surveyService.addSurvey(userId, surveyTitle, questions, choiceAnswers);
 		return "redirect:/";
 	}
