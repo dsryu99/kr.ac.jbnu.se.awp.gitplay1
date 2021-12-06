@@ -71,10 +71,10 @@
 	          
 	          <div class = "radio-Button">
 	            <div class="form-check form-check-inline">
-	                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="man">남
+	                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="남">남
 	            </div>
 	            <div class="form-check form-check-inline">
-	                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="male">여
+	                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="여">여
 	            </div>
 	         </div>
 	          
