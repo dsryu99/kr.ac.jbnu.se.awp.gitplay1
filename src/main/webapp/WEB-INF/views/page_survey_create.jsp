@@ -254,31 +254,37 @@ let similarAlgorithm = function(a, b) {
 	  return count
 	}
 
+var testlist = [];
+
 function getSimilarList(){
-	var title = "";
-	var totalList = ${surveys};
+	var title = "test";
 	
-	var length = surveys.length;
-	if(length >= 5) length = 5;
+	var list = [];
+	var cnt = 0;
 	
-	var similarList = new Array(length);
+	var size = title.length;
+	if(size > 5) size = 5;
 	
-	for(let i = 0; i < totalList.length; i++){
-		var similarity = similarAlgorithm(title, totalList[i]);
-		
-		for(let j = 0; j < similarList.length; j++){
-			if(similarList[j] < similarity)
+	var least = ids[0];
+	for(var j = 0;j < size; j++){
+		least = ids[0];
+		for(var i = 0;i<ids.length;i++){
+			if(least == ids[0]) continue;
+			if(least >= similarAlgorithm(title, titles[i])){
+				if(list[cnt] >= similarAlgorithm(title, titles[i])){
+					least = ids[i];
+					console.log(ids[i]);
+				}
+			}
 		}
+		list.push(least);
+		cnt++;
 	}
 	
-	for(let k = 0; k < length; k++){
-		var mostSimularity = similarAlgorithm(title, totalList[0]);
-		for(let i = 1; i< totalList.length; i++){
-			if(mostSimularity)
-		}
-	}
-	return 
+	console.log(list);
 }
+
+getSimilarList();
 
 </script>
 </body>
