@@ -280,7 +280,7 @@ function getSimilarList(){
 		if(mapSort.get(id) == 0) break;
 		var title = titles[ids.indexOf(id)];
 		var element = document.createElement("a");
-		element.setAttribute("href", "/sirbay/survey/join?id=" + id + "&&title=" + title);
+		element.setAttribute("href", "/sirbay/survey/result?id=" + id + "&&title=" + title);
 		element.append(title);
 		area.append(element);
 		area.append(document.createElement("br"));
