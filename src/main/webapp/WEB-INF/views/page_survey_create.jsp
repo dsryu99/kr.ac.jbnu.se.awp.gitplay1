@@ -89,10 +89,9 @@
 					<a class="text">유사 설문</a> 
 					<input class = "btn btn-light" type=button value="검색" onClick="getSimilarList()"
 						style="float: right"> <br> <br>
-
+					<div id="simularArea"></div>
 					<hr>
 
-					<div id="simularArea"></div>
 
 					<div id="questionBox">
 						<br>
@@ -259,34 +258,34 @@ let similarAlgorithm = function(a, b) {
 var testlist = [];
 
 function getSimilarList(){
-	var title = document.getElementById('titleText').value;
+	var surveyTitle = document.getElementById('titleText').value;
 	
 	var list = [];
-	var cnt = 0;
+	var map = new Map;
 	
-	var size = title.length;
-	if(size > 5) size = 5;
-	
-	var most = ids[0];
-	for(var j = 0;j < size; j++){
-		most = ids[0];
-		for(var i = 0;i<ids.length;i++){
-			if(most == ids[0]) continue;
-			if(similarAlgorithm(title, titles[most]) <= similarAlgorithm(title, titles[i])){
-				if(similarAlgorithm(title, titles[list[cnt]]) <= similarAlgorithm(title, titles[i])){
-					most = ids[i];
-					console.log(ids[i]);
-				}
-			}
-		}
-		list.push(most);
-		cnt++;
+	for(var i = 0; i < titles.length; i++) {
+		var similarity = similarAlgorithm(surveyTitle, titles[i]);
+		list.push(similarity);
+		map.set(ids[i], similarity);
 	}
 	
-	console.log(list);
+	const mapSort = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+	var size = 5;
+	if(mapSort.size < 5) size = mapSort.size;
+	var keys = mapSort.keys();
+	var area = document.getElementById("simularArea");
+	while ( area.hasChildNodes() ) { area.removeChild( area.firstChild ); }
+	for(var i = 0; i < size; i++) {
+		var id = keys.next().value;
+		if(mapSort.get(id) == 0) break;
+		var title = titles[ids.indexOf(id)];
+		var element = document.createElement("a");
+		element.setAttribute("href", "/sirbay/survey/join?id=" + id + "&&title=" + title);
+		element.append(title);
+		area.append(element);
+		area.append(document.createElement("br"));
+	}
 }
-
-getSimilarList();
 
 </script>
 </body>
