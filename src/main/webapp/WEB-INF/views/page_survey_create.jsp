@@ -272,14 +272,14 @@ function getSimilarList(){
 		most = ids[0];
 		for(var i = 0;i<ids.length;i++){
 			if(most == ids[0]) continue;
-			if(most <= similarAlgorithm(title, titles[i])){
+			if(similarAlgorithm(title, titles[most]) <= similarAlgorithm(title, titles[i])){
 				if(similarAlgorithm(title, titles[list[cnt]]) <= similarAlgorithm(title, titles[i])){
 					most = ids[i];
 					console.log(ids[i]);
 				}
 			}
 		}
-		list.push(least);
+		list.push(most);
 		cnt++;
 	}
 	
