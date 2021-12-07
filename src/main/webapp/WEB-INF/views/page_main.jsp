@@ -117,7 +117,7 @@
 										placeholder="비밀번호" aria-label="비밀번호"
 										aria-describedby="button-addon2">
 								</div>
-
+								
 								<div class="login-Button input-group mb-3" style="left: 173px;">
 									<button type="submit" class="btn btn-light">로그인</button>
 								</div>
@@ -125,7 +125,7 @@
 
 							<form method=post action="/sirbay/register">
 								<div class="register-Button input-group mb-3"
-									style="bottom: 53px; left: 73px;">
+									style="bottom: 53px; width:93px; left: 73px;">
 									<button type="submit" class="btn btn-light">회원가입</button>
 								</div>
 							</form>
