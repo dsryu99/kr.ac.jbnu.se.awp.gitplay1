@@ -5,50 +5,67 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+a[class=text] {
+	font-weight: bold;
+}
+</style>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../resources/style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<div id = "logoArea" align = "center" style = "width: 100%; height: 50px">
-	<!-- 리다이렉트 -->
-		<a href = "${pageContext.request.contextPath}">
-			<img src = "../resources/logo.png" alt = "logo" width = "100px" height = "50px" >
+	<div id="logoArea" align="center" style="width: 100%; height: 50px">
+		<!-- 리다이렉트 -->
+		<a href="${pageContext.request.contextPath}"> <img
+			src="../resources/logo.png" alt="logo" width="100px" height="50px">
 		</a>
 	</div>
 
-	<div id = "logoLine" ></div>
+	<div id="logoLine"></div>
 
-	<p>${title}</p>
 	<div id="contentsArea">
-		<div id="surveysArea" class="input-form main">
-			<c:forEach var="question" items="${questions}" varStatus="questionStatus">
+		<div id="surveysArea" class="input-form main"
+			style="display: inline-block; text-align:left; width: 800px">
+			<c:forEach var="question" items="${questions}"
+				varStatus="questionStatus">
+				<p>
+					<a class="text">${title}</a>
+				</p>
+				<hr>
 				<br>
-				질문 ${question.questionNum}. ${question.questionDesc}
-				<HR>
-				답변
+				<a class="text">질문 ${question.questionNum}.
+					${question.questionDesc}</a>
+
+				<br>
+				<br>
+				
+				<a class="text">답변</a>
+				<br>
 				<br>
 				<!-- 질문 답변 타입 -->
 				<c:if test="${question.isMultipleChoiceQuestion == true}">
 					<!-- 객관식 -->
 					<c:forEach var="multipleQuestion" items="${multipleQuestions}"
+						varStatus="answerStatus">
+						<c:forEach var="Question" items="${multipleQuestion}"
 							varStatus="answerStatus">
-							<c:forEach var="Question" items="${multipleQuestion}"
-								varStatus="answerStatus">
-								<c:if test="${Question.questionNum == question.questionNum}">
-									${Question.itemNum}. ${Question.itemContent}
-									<c:forEach var="answer" items="${answers}" varStatus="answerStatus">
-										<c:if test="${Question.itemContent == answer.answer}">
-											${answer.answer} - 응답수: ${answer.count}
+							<c:if test="${Question.questionNum == question.questionNum}">
+									<a class="text"> ${Question.itemNum}. ${Question.itemContent}</a>
+									<c:forEach var="answer" items="${answers}"
+									varStatus="answerStatus">
+									<c:if test="${Question.itemContent == answer.answer}">
+											<a class="text"> ${answer.answer} - 응답수: ${answer.count}</a>
 										</c:if>
-									</c:forEach>
-									<br>
-								</c:if>
-							</c:forEach>
+								</c:forEach>
+								<br>
+							</c:if>
 						</c:forEach>
+					</c:forEach>
 				</c:if>
 				<c:if test="${question.isMultipleChoiceQuestion == false}">
 					<!-- 주관식 -->

@@ -63,10 +63,9 @@
 <!-- 로고 -->
 <div id = "logoArea" align = "center" style = "width: 200xp; height: 50px">
 	<!-- 리다이렉트 -->
-	<form method = "get" action="">
-		<!-- 이미지 로고 출력 -->
-		<input type = "image" src = "" alt = "logo">
-	</form>
+	<a href="${pageContext.request.contextPath}"> <img
+			src="../resources/logo.png" alt="logo" width="100px" height="50px">
+	</a>
 </div>
 
 <div id = "logoLine"></div>
@@ -152,7 +151,7 @@
 	</div>
 
 
-	<script>
+<script>
 	var cnt = 2;
 	document.getElementById("answer1").style.display = "none";
  	document.getElementById("minusButton").style.display = "none";
@@ -213,12 +212,6 @@
 		if(length == 5) event.target.parentElement.getElementsByClassName('btn btn-light')[0].style.display = "none";
 		if(length > 2) event.target.parentElement.getElementsByClassName('btn btn-light')[1].style.display = "inline-block";
 		
-/* 		var selection = document.createElement('selection_input');
-		selection.type = "text";
-		selection.class = "form-control";
-		selection.name = "selection" + questionNum;
-		selection.size = 80; */
-		
  		var selection = document.createElement('input');
 		selection.type = "text";
 		selection.setAttribute("class", "form-control");
@@ -243,41 +236,8 @@
 		if(length < 5) event.target.parentElement.getElementsByClassName('btn btn-light')[0].style.display = "inline-block";
 		console.log(length);
 	}
-	
-	let similarAlgorithm = function(a, b) {
-		  let count = 0
-		  for(let i = 0 ; i < a.length - 1 ; i++) {
-		    count = b.includes(a.substr(i, 2)) ? ++count : count
-		  }
-		  return count
-		}
-	
-	function getSimilarList(){
-		var title = "";
-		var totalList = ${surveys};
-		
-		var length = surveys.length;
-		if(length >= 5) length = 5;
-		
-		var similarList = new Array(length);
-		
-		for(let i = 0; i < totalList.length; i++){
-			var similarity = similarAlgorithm(title, totalList[i]);
-			
-			for(let j = 0; j < similarList.length; j++){
-				if(similarList[j] < similarity)
-			}
-		}
-		
-		for(let k = 0; k < length; k++){
-			var mostSimularity = similarAlgorithm(title, totalList[0]);
-			for(let i = 1; i< totalList.length; i++){
-				if(mostSimularity)
-			}
-		}
-		return 
-	}
 </script>
+
 <script>
 var titles = [];
 var ids = [];
@@ -285,6 +245,41 @@ var ids = [];
 	titles.push("${survey.surveyTitle}");
 	ids.push("${survey.surveyID}");
 </c:forEach>
+
+let similarAlgorithm = function(a, b) {
+	  let count = 0
+	  for(let i = 0 ; i < a.length - 1 ; i++) {
+	    count = b.includes(a.substr(i, 2)) ? ++count : count
+	  }
+	  return count
+	}
+
+function getSimilarList(){
+	var title = "";
+	var totalList = ${surveys};
+	
+	var length = surveys.length;
+	if(length >= 5) length = 5;
+	
+	var similarList = new Array(length);
+	
+	for(let i = 0; i < totalList.length; i++){
+		var similarity = similarAlgorithm(title, totalList[i]);
+		
+		for(let j = 0; j < similarList.length; j++){
+			if(similarList[j] < similarity)
+		}
+	}
+	
+	for(let k = 0; k < length; k++){
+		var mostSimularity = similarAlgorithm(title, totalList[0]);
+		for(let i = 1; i< totalList.length; i++){
+			if(mostSimularity)
+		}
+	}
+	return 
+}
+
 </script>
 </body>
 </html>

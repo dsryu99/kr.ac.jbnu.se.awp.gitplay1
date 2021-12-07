@@ -5,11 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	a[class=text]{
+		font-weight:bold;
+	}
+</style>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="resources/style.css">
+<link rel="stylesheet" type="text/css" href="../resources/style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -27,7 +32,10 @@
 		<div id="surveysArea" class="input-form main"
 			style="display: inline-block; text-align:left">
 			<!-- 설문 내용 DB 저장 + 메인 페이지로 이동 action -->
-			<p>${surveyTitle}</p>
+			<p>
+			<a class="text">${surveyTitle}</a>
+			</p> 
+			
 			<form action="/sirbay/survey/join/complete" method="post">
 				<input type="hidden" value="${surveyId}" name="surveyId" />
 				<c:forEach var="question" items="${questions}"
@@ -36,7 +44,7 @@
 					<hr>
 					<!-- 질문 제목 -->
 					<!-- 질문 1, 2, 3 -->
-					질문 ${question.questionNum}. ${question.questionDesc}
+					<a class="text">질문 ${question.questionNum}. ${question.questionDesc}</a>
 					<br>
 					<br>
 					<!-- 질문 답변 타입 -->
