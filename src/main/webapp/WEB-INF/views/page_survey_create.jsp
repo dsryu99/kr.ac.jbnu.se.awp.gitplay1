@@ -259,7 +259,7 @@ let similarAlgorithm = function(a, b) {
 var testlist = [];
 
 function getSimilarList(){
-	var title = document.getElementsById("titleText").value;
+	var title = document.getElementById('titleText').value;
 	
 	var list = [];
 	var cnt = 0;
@@ -267,14 +267,14 @@ function getSimilarList(){
 	var size = title.length;
 	if(size > 5) size = 5;
 	
-	var least = ids[0];
+	var most = ids[0];
 	for(var j = 0;j < size; j++){
-		least = ids[0];
+		most = ids[0];
 		for(var i = 0;i<ids.length;i++){
-			if(least == ids[0]) continue;
-			if(least >= similarAlgorithm(title, titles[i])){
-				if(list[cnt] >= similarAlgorithm(title, titles[i])){
-					least = ids[i];
+			if(most == ids[0]) continue;
+			if(most <= similarAlgorithm(title, titles[i])){
+				if(similarAlgorithm(title, titles[list[cnt]]) <= similarAlgorithm(title, titles[i])){
+					most = ids[i];
 					console.log(ids[i]);
 				}
 			}
