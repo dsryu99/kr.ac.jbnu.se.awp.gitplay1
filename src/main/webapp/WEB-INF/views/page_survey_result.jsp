@@ -59,7 +59,7 @@ a[class=text] {
 									<c:forEach var="answer" items="${answers}"
 									varStatus="answerStatus">
 									<c:if test="${Question.itemContent == answer.answer}">
-											<a class="text"> ${answer.answer} - 응답수: ${answer.count}</a>
+											<a class="text"> - 응답수: ${answer.count}</a>
 										</c:if>
 								</c:forEach>
 								<br>

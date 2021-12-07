@@ -100,9 +100,10 @@
 			</div>
 
 			<div id="loginArea" style="float: left">
-				<font size=5px style="">로그인</font> <br> <br>
+				
 				<c:choose>
 					<c:when test="${isLogin == false}">
+					<font size=5px style="">로그인</font> <br> <br>
 						<!-- 미 로그인 시 -->
 						<div id="login">
 							<form method="post" action="/sirbay/login" name="login_form">
@@ -134,7 +135,8 @@
 					<c:otherwise>
 						<!-- 로그인 시 -->
 						<div id="donelogin">
-							${username} 님
+							<h2>안녕하세요</h2>
+							<h3>${username} 님</h3>
 
 							<form method="get" action="/sirbay/myPage">
 								<div class="myPage-Button input-group mb-3" style="top: 23px;">
