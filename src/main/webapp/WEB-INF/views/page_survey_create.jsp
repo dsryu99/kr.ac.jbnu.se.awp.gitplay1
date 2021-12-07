@@ -79,7 +79,7 @@
 
 					<div id="surbeyTitle">
 						<a class="text">설문 제목</a> 
-						<input type="text" class="form-control" name="surveyTitle" placeholder="" value="" required size=80>
+						<input id = "titleText" type="text" class="form-control" name="surveyTitle" placeholder="" value="" required size=80>
 						<!-- <input type="text" name="title" size=70> --><br>
 						<br>
 					</div>
@@ -87,7 +87,7 @@
 					<hr>
 
 					<a class="text">유사 설문</a> 
-					<input class = "btn btn-light" type=button value="검색" onClick=""
+					<input class = "btn btn-light" type=button value="검색" onClick="getSimilarList()"
 						style="float: right"> <br> <br>
 
 					<hr>
@@ -259,7 +259,7 @@ let similarAlgorithm = function(a, b) {
 var testlist = [];
 
 function getSimilarList(){
-	var title = "test";
+	var title = document.getElementsById("titleText").value;
 	
 	var list = [];
 	var cnt = 0;
