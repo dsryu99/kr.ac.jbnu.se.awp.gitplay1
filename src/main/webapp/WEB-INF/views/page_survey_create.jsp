@@ -61,12 +61,12 @@
 </head>
 <body>
 <!-- 로고 -->
-<div id = "logoArea" align = "center" style = "width: 200xp; height: 50px">
-	<!-- 리다이렉트 -->
-	<a href="${pageContext.request.contextPath}"> <img
-			src="../resources/logo.png" alt="logo" width="100px" height="50px">
-	</a>
-</div>
+<div id="logoArea" align="center" style="width: 100%; height: auto">
+		<!-- 리다이렉트 -->
+		<a href="${pageContext.request.contextPath}"> <img
+			src="../resources/logo.png" alt="logo" width="200px" height="80px">
+		</a>
+	</div>
 
 <div id = "logoLine"></div>
 
@@ -236,6 +236,8 @@
 		if(length < 5) event.target.parentElement.getElementsByClassName('btn btn-light')[0].style.display = "inline-block";
 		console.log(length);
 	}
+	
+	
 </script>
 
 <script>

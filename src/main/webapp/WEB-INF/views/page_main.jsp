@@ -74,10 +74,10 @@
 
 
 	<!-- 로고 -->
-	<div id="logoArea" align="center" style="width: 100%; height: 50px">
+	<div id="logoArea" align="center" style="width: 100%; height: auto">
 		<!-- 리다이렉트 -->
 		<a href="${pageContext.request.contextPath}"> <img
-			src="resources/logo.png" alt="logo" width="100px" height="50px">
+			src="resources/logo.png" alt="logo" width="200px" height="80px">
 		</a>
 	</div>
 

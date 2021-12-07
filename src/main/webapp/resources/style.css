@@ -76,7 +76,6 @@
 	box-sizing: border-box;
 	width: auto;
 	height: auto;
-	border: 2px solid black;
 	border-radius: 10px;
 	padding: 2%;
 	display: inline-block;
@@ -145,7 +144,7 @@
 }
 
 .labels {
-	font-size: 15px
+	font-size: 20px
 }
 
 .add-experience:hover {
