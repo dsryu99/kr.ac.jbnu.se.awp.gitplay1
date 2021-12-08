@@ -33,7 +33,7 @@
 			style="display: inline-block; text-align:left">
 			<!-- 설문 내용 DB 저장 + 메인 페이지로 이동 action -->
 			<p>
-			<a class="text">${surveyTitle}</a>
+			<a class="text" style="font-size: 24px">${surveyTitle}</a>
 			</p> 
 			
 			<form action="/sirbay/survey/join/complete" method="post">
@@ -44,7 +44,7 @@
 					<hr>
 					<!-- 질문 제목 -->
 					<!-- 질문 1, 2, 3 -->
-					<a class="text">질문 ${question.questionNum}. ${question.questionDesc}</a>
+					<a class="text" style="font-size: 18px">질문 ${question.questionNum}. <span style="font-size: 16px; font-weight: normal;">${question.questionDesc}</span></a>
 					<br>
 					<br>
 					<!-- 질문 답변 타입 -->

@@ -32,37 +32,33 @@ a[class=text] {
 		<div id="surveysArea" class="input-form main"
 			style="display: inline-block; text-align:left; width: 800px">
 			<p>
-				<a class="text">${title}</a>
+				<a class="text" style="font-size: 24px">${title}</a>
 			</p>
 			<c:forEach var="question" items="${questions}"
 				varStatus="questionStatus">
-				<hr>
+				<hr style="margin-top:40px;">
 				<br>
-				<a class="text">질문 ${question.questionNum}.
-					${question.questionDesc}</a>
+				<a class="text" style="font-size: 18px">질문 ${question.questionNum}.
+					<span style="font-size: 16px;font-weight: normal;">${question.questionDesc}</span></a>
 
 				<br>
 				<br>
 				
-				<a class="text">답변</a>
-				<br>
-				<br>
+				<p><a class="text">답변</a></p>
 				<!-- 질문 답변 타입 -->
 				<c:if test="${question.isMultipleChoiceQuestion == true}">
 					<!-- 객관식 -->
-					<c:forEach var="multipleQuestion" items="${multipleQuestions}"
-						varStatus="answerStatus">
-						<c:forEach var="Question" items="${multipleQuestion}"
-							varStatus="answerStatus">
+					<c:forEach var="multipleQuestion" items="${multipleQuestions}" varStatus="answerStatus">
+						<c:forEach var="Question" items="${multipleQuestion}" varStatus="answerStatus">
 							<c:if test="${Question.questionNum == question.questionNum}">
 									${Question.itemNum}. ${Question.itemContent}
 									<c:forEach var="answer" items="${answers}"
 									varStatus="answerStatus">
 									<c:if test="${Question.itemContent == answer.answer}">
-											 - 응답수: ${answer.count}
-										</c:if>
+										<span style="font-size:12px; font-weight: 700"> - 응답수: ${answer.count}</span>
+									</c:if>
+									<br>
 								</c:forEach>
-								<br>
 							</c:if>
 						</c:forEach>
 					</c:forEach>
@@ -72,8 +68,7 @@ a[class=text] {
 					<c:forEach var="answer" items="${answers}" varStatus="answerStatus">
 						<!-- 주관식 문항-->
 						<c:if test="${question.questionNum == answer.questionNum}">
-							${answer.answer} - 응답수: ${answer.count}
-							<br>
+							● ${answer.answer}<br><div style="font-size:12px; font-weight: 700; margin-bottom: 10px;"> - 응답수: ${answer.count}</div>
 						</c:if>
 					</c:forEach>
 				</c:if>
