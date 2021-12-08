@@ -51,13 +51,13 @@ a[class=text] {
 					<c:forEach var="multipleQuestion" items="${multipleQuestions}" varStatus="answerStatus">
 						<c:forEach var="Question" items="${multipleQuestion}" varStatus="answerStatus">
 							<c:if test="${Question.questionNum == question.questionNum}">
-									${Question.itemNum}. ${Question.itemContent}
-									<c:forEach var="answer" items="${answers}"
-									varStatus="answerStatus">
-									<c:if test="${Question.itemContent == answer.answer}">
-										<span style="font-size:12px; font-weight: 700"> - 응답수: ${answer.count}</span><br>
-									</c:if>
-								</c:forEach>
+								<div>${Question.itemNum}. ${Question.itemContent}
+									<c:forEach var="answer" items="${answers}" varStatus="answerStatus">
+										<c:if test="${Question.itemContent == answer.answer}">
+											<span style="font-size:12px; font-weight: 700"> - 응답수: ${answer.count}</span>
+										</c:if>
+									</c:forEach>
+								</div>
 							</c:if>
 						</c:forEach>
 					</c:forEach>
