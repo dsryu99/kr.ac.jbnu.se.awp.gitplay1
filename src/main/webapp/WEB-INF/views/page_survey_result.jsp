@@ -55,9 +55,8 @@ a[class=text] {
 									<c:forEach var="answer" items="${answers}"
 									varStatus="answerStatus">
 									<c:if test="${Question.itemContent == answer.answer}">
-										<span style="font-size:12px; font-weight: 700"> - 응답수: ${answer.count}</span>
+										<span style="font-size:12px; font-weight: 700"> - 응답수: ${answer.count}</span><br>
 									</c:if>
-									<br>
 								</c:forEach>
 							</c:if>
 						</c:forEach>
@@ -68,7 +67,7 @@ a[class=text] {
 					<c:forEach var="answer" items="${answers}" varStatus="answerStatus">
 						<!-- 주관식 문항-->
 						<c:if test="${question.questionNum == answer.questionNum}">
-							● ${answer.answer}<br><div style="font-size:12px; font-weight: 700; margin-bottom: 10px;"> - 응답수: ${answer.count}</div>
+							<div style="margin-bottom: 10px;">● ${answer.answer}<span style="font-size: 12px; font-weight: bold;"> - 응답수: ${answer.count}</span></div>
 						</c:if>
 					</c:forEach>
 				</c:if>
