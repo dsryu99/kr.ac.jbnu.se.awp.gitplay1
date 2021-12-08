@@ -31,11 +31,11 @@ a[class=text] {
 	<div id="contentsArea">
 		<div id="surveysArea" class="input-form main"
 			style="display: inline-block; text-align:left; width: 800px">
+			<p>
+				<a class="text">${title}</a>
+			</p>
 			<c:forEach var="question" items="${questions}"
 				varStatus="questionStatus">
-				<p>
-					<a class="text">${title}</a>
-				</p>
 				<hr>
 				<br>
 				<a class="text">질문 ${question.questionNum}.
@@ -55,11 +55,11 @@ a[class=text] {
 						<c:forEach var="Question" items="${multipleQuestion}"
 							varStatus="answerStatus">
 							<c:if test="${Question.questionNum == question.questionNum}">
-									<a class="text"> ${Question.itemNum}. ${Question.itemContent}</a>
+									${Question.itemNum}. ${Question.itemContent}
 									<c:forEach var="answer" items="${answers}"
 									varStatus="answerStatus">
 									<c:if test="${Question.itemContent == answer.answer}">
-											<a class="text"> - 응답수: ${answer.count}</a>
+											 - 응답수: ${answer.count}
 										</c:if>
 								</c:forEach>
 								<br>

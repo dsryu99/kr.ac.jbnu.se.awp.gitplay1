@@ -1,6 +1,7 @@
 package kr.ac.jbnu.se.awp.sirbay.controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ public class UserController {
 			model.addAttribute("isLogin", true);
 		}
 		List<SurveyDTO> surveys = surveyService.getAllSurveys();
+		Collections.reverse(surveys);
 		model.addAttribute("surveys", surveys);
 		
 		return "page_main";
