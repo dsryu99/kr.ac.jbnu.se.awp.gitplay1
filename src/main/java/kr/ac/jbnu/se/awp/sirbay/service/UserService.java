@@ -4,14 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.jbnu.se.awp.sirbay.dao.UserDAO;
+import kr.ac.jbnu.se.awp.sirbay.dao.UserDAOIF;
 import kr.ac.jbnu.se.awp.sirbay.dao.UserInfoDAO;
+import kr.ac.jbnu.se.awp.sirbay.dao.UserInfoDAOIF;
 import kr.ac.jbnu.se.awp.sirbay.dto.UserInfoDTO;
 @Service
 public class UserService implements UserServiceIF {
+	UserDAOIF userDAO;
+	UserInfoDAOIF userInfoDAO;
+	
 	@Autowired
-	UserDAO userDAO;
+	private void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 	@Autowired
-	UserInfoDAO userInfoDAO;
+	private void setUserInfoDAO(UserInfoDAO userInfoDAO) {
+		this.userInfoDAO = userInfoDAO;
+	}
 	
 	@Override
 	public boolean isUserValid(String id, String password) {

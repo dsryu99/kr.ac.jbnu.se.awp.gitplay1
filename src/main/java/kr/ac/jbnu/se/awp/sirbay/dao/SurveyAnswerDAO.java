@@ -34,6 +34,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			return -1;
 		} catch (Exception e) {
 			e.getStackTrace();
+			System.out.println(e);
 		} finally {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
@@ -61,6 +62,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			return answer;//result
 		} catch (Exception e) {
 			e.getStackTrace();
+			System.out.println(e);
 		} finally {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
@@ -92,6 +94,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 			return list;//result
 		} catch (Exception e) {
 			e.getStackTrace();
+			System.out.println(e);
 		} finally {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
@@ -116,6 +119,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getStackTrace();
+			System.out.println(e);
 		} finally {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
@@ -139,6 +143,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getStackTrace();
+			System.out.println(e);
 		} finally {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
@@ -160,6 +165,7 @@ public class SurveyAnswerDAO implements SurveyAnswerDAOIF {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getStackTrace();
+			System.out.println(e);
 		} finally {
 			try { if(conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			try { if(pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }

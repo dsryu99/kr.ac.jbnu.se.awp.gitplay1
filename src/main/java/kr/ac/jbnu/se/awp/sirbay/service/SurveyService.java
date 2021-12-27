@@ -10,26 +10,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.jbnu.se.awp.sirbay.dao.MultipleChoiceQuestionItemDAO;
+import kr.ac.jbnu.se.awp.sirbay.dao.MultipleChoiceQuestionItemDAOIF;
 import kr.ac.jbnu.se.awp.sirbay.dao.QuestionDAO;
+import kr.ac.jbnu.se.awp.sirbay.dao.QuestionDAOIF;
 import kr.ac.jbnu.se.awp.sirbay.dao.SurveyAnswerDAO;
+import kr.ac.jbnu.se.awp.sirbay.dao.SurveyAnswerDAOIF;
 import kr.ac.jbnu.se.awp.sirbay.dao.SurveyDAO;
+import kr.ac.jbnu.se.awp.sirbay.dao.SurveyDAOIF;
 import kr.ac.jbnu.se.awp.sirbay.dao.SurveyJoinDAO;
+import kr.ac.jbnu.se.awp.sirbay.dao.SurveyJoinDAOIF;
 import kr.ac.jbnu.se.awp.sirbay.dto.MultipleChoiceQuestionItemDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.QuestionDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyAnswerDTO;
 import kr.ac.jbnu.se.awp.sirbay.dto.SurveyDTO;
 @Service
 public class SurveyService implements SurveyServiceIF {
+	SurveyDAOIF surveyDAO;
+	SurveyJoinDAOIF surveyJoinDAO;
+	SurveyAnswerDAOIF surveyAnswerDAO;
+	QuestionDAOIF questionDAO;
+	MultipleChoiceQuestionItemDAOIF multipleChoiceQuestionItemDAO;
+	
 	@Autowired
-	SurveyDAO surveyDAO;
+	private void setSurveyDAO(SurveyDAO surveyDAO) {
+		this.surveyDAO = surveyDAO;
+	}
 	@Autowired
-	SurveyJoinDAO surveyJoinDAO;
+	private void setSurveyJoinDAO(SurveyJoinDAO surveyJoinDAO) {
+		this.surveyJoinDAO = surveyJoinDAO;
+	}
 	@Autowired
-	SurveyAnswerDAO surveyAnswerDAO;
+	private void setSurveyAnswerDAO(SurveyAnswerDAO surveyAnswerDAO) {
+		this.surveyAnswerDAO = surveyAnswerDAO;
+	}
 	@Autowired
-	QuestionDAO questionDAO;
+	private void setQuestionDAO(QuestionDAO questionDAO) {
+		this.questionDAO = questionDAO;
+	}
 	@Autowired
-	MultipleChoiceQuestionItemDAO multipleChoiceQuestionItemDAO;
+	private void setMultipleChoiceQuestionItemDAO(MultipleChoiceQuestionItemDAO multipleChoiceQuestionItemDAO) {
+		this.multipleChoiceQuestionItemDAO = multipleChoiceQuestionItemDAO;
+	}
 	
 	@Override
 	public boolean addSurvey(String userId, String surveyTitle, List<QuestionDTO> questions,
@@ -96,10 +117,13 @@ public class SurveyService implements SurveyServiceIF {
 			for(Integer key : answers.keySet()) {
 				count = surveyAnswerDAO.surveyAnswergetCount(key, surveyId, answers.get(key));
 				if(count == -1) {//first generation
+					System.out.println("first");
 					surveyAnswerDAO.surveyAnswerInsert(key, surveyId, answers.get(key), 1);
 				} else if(count == -2) {//DB exception
+					System.out.println("DB");
 					return false;
 				} else {//success
+					System.out.println("success");
 					surveyAnswerDAO.surveyAnswerUpdate(key, surveyId, answers.get(key), count+1);
 				}
 			}
@@ -110,6 +134,7 @@ public class SurveyService implements SurveyServiceIF {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
+		System.out.println("exception");
 		return false;
 	}
 	
